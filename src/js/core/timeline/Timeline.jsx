@@ -40,7 +40,7 @@ export default class Timeline extends Component {
         var timeline = this.refs.timeline;
         var line = this.refs.timelineLine;
         var projectLength = Projects.length;
-        console.log(Projects.length);
+        //console.log(Projects.length);
         var project0 = this.refs.project0;
         var project1 = this.refs.project1;
         var project2 = this.refs.project2;

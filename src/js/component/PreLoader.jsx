@@ -7,8 +7,6 @@ import React, { Component, PropTypes }  from 'react';
 import classNames                       from 'classnames';
 import {Motion, spring, TransitionMotion}                         from 'react-motion';
 
-import { circle34, circle14striped }     from 'svg/shapes';
-// {circle14striped("blue")}
 
 export default class MotionTest extends Component {
 

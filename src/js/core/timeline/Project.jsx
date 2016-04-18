@@ -14,6 +14,8 @@ import Placeholders             from 'config/placeholder';
 import Config                   from 'config/config';
 import Projects                 from 'config/projects';
 
+import ImageZoomer              from 'component/ImageZoomer';
+
 import TweenMax from 'gsap/src/minified/TweenMax.min.js';
 import TweenLite from 'gsap/src/minified/TweenLite.min.js';
 
@@ -38,9 +40,7 @@ export default class Article extends Component {
 
     nextProject() {
         var currentUrl = parseInt(this.props.url);
-        console.log(currentUrl);
-        console.log('/project/' + (parseInt(currentUrl) + 1) + "");
-        if (currentUrl + 1 > Projects.length) {
+        if (currentUrl + 1 >= Projects.length) {
             currentUrl = 0;
         }
         else 
@@ -51,8 +51,9 @@ export default class Article extends Component {
     }
     prevProject() {
         var currentUrl = this.props.url;
-        if (currentUrl-1 < 0) {
-            currentUrl = Projects.length;
+        //console.log(currentUrl);
+        if (currentUrl <= 0) {
+            currentUrl = Projects.length - 1;
         }
         else
             currentUrl--;
@@ -60,7 +61,6 @@ export default class Article extends Component {
             this.props.history.push('/project/' + currentUrl + "");
         }, 10);
     }
-
 
     onClick() {
          this.props.onClick();
@@ -70,14 +70,20 @@ export default class Article extends Component {
     componentDidMount(){
 
         var content = this.refs.contentWrapper;
+        var title = this.refs.titleWrapper;
         var img0 = this.refs.img0;
         var year = this.refs.year;
+        var prevProject = this.refs.prevProject;
+        var nextProject = this.refs.nextProject;
 
         
         this.tl
-        .from(content, 0.6, { opacity:0, x:-500, ease: Circ.easeInOut }, "+0.5")
-        .fromTo(img0, 0.6, { opacity:0, x:-30, ease: Expo.easeInOut, rotationY:-20, rotationX:0 }, {opacity:1, x:0, ease: Expo.easeInOut, rotationY:-30, rotationX:5}, "-=0.8")
-        .from(year, 0.6, { opacity:0, x:-50, ease: Circ.easeInOut }, "+0.5");
+        .from(title, 0.6, { opacity:0, y:-50, ease: Circ.easeInOut }, "+0.5")
+        .fromTo(img0, 0.6, { opacity:0, y:-30, ease: Expo.easeInOut, rotationY:0, rotationX:0 }, {opacity:1, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:10}, "-=0.8")
+        .from(content, 0.6, { opacity:0, x:-50, ease: Circ.easeInOut }, "+0.5")
+        .from(year, 0.6, { opacity:0, y:-50, ease: Circ.easeInOut }, "+0.5")
+        .from(prevProject, 0.5, { opacity:0, x:-100, ease: Circ.easeInOut, clearProps: "all" }, "+0.5")
+        .from(nextProject, 0.5, { opacity:0, x:100, ease: Circ.easeInOut, clearProps: "all" }, "+0.5");
 
         if (this.props.url)
         {
@@ -94,28 +100,34 @@ export default class Article extends Component {
 
             return (
                 <div className={classNames("screen-box project", {open:this.state.open}) }>
-                    <div ref="contentWrapper" className={classNames( 'content-wrapper', { active : this.state.active } ) }>
+                    <div ref="titleWrapper" className={classNames( 'title-wrapper', { active : this.state.active } ) }>
                         <h5 className="italic">{Projects[url].month}</h5>
                         <header>
                             <h2 dangerouslySetInnerHTML={{__html: Projects[url].title}}></h2>
+                            <span className="square-tag">{Projects[url].purpose}</span>
                         </header>
+                    </div>
+                    <a href={Projects[url].website} target="_blank" className="img-wrapper">
+                        <img src={Projects[url].img[0]} ref="img0" className="img-article img-article-0"/>
+                        <div className="img-overlay"/>
+                    </a>
+                    <div ref="contentWrapper" className={classNames( 'content-wrapper', { active : this.state.active } ) }>
                         <p
                             dangerouslySetInnerHTML={{__html: Projects[url].content}}
                             className={ "content", classNames({active:this.state.active}) }
                         >
                         </p>
                     </div>
-                    <a href={Projects[url].website} target="_blank" className="img-wrapper">
-                        <img src={Projects[url].img[0]} ref="img0" className="img-article img-article-0"/>
-                        <div className="img-overlay"/>
+                    <a ref="prevProject" className="prev-project" onClick={ ::this.prevProject } >
+                        <span/>
                     </a>
-                    <a className="prev-project" onClick={ ::this.prevProject } >
-                        <i className="icon icon-chevron_left"/>
-                    </a>
-                    <a className="next-project" onClick={ ::this.nextProject } >
-                        <i className="icon icon-chevron_right"/>
+                    <a ref="nextProject" className="next-project" onClick={ ::this.nextProject } >
+                        <span/>
                     </a>
                     <div ref="year" className="project-year">{Projects[url].year}</div>
+                    {/*<ImageZoomer alt="Image alt"
+                        src='images/portfolio/pngs/framework_desktop.png'
+                        zoomSrc='images/portfolio/pngs/framework_desktop.png'/>*/}
                 </div>
             );
 

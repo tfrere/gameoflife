@@ -23,6 +23,7 @@
 @import "atom/hr";
 @import "atom/tag";
 @import "atom/select";
+@import "atom/underlined-link";
 
 @import "molecule/inclined";
 @import "molecule/form";
@@ -55,7 +56,9 @@
  //    background-repeat: repeat-xy;
 }
 
-
+iframe {
+  width:100%;
+}
 //html {background-color:#E2E2E2;}
 
 

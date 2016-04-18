@@ -15,7 +15,7 @@ $offset-angle: 30; // defines the separation angle between each buttons
 $radius: $circle-size * 0.85;
 
 .contact {
-	width: 46%;
+	width: 85%;
 	margin: 0 auto;
 
 	header {
@@ -26,22 +26,44 @@ $radius: $circle-size * 0.85;
 			font-weight: bold;
 		}
 	}
-	p a {
-		color: color("grey", "darken-2");
+	small {
+		display:block;
+		margin-top:$text-size * 2;
+		margin-bottom: -$text-size / 2;
+		&:after {
+			clear:both;
+			content:"";
+		}
+	}
+	p a:not(.no-style) {
+		color: color("primary", "base");
 		font-weight: 600;
 		border-bottom: 1px solid color("grey", "lighten-1");
-		transition:all 100ms ease-in-out;
+		transition:all 100ms ease;
 		&:focus, &:hover {
 			text-decoration: none;
-			border-bottom: 1px solid color("primary", "darken-5");
+			border-bottom: 1px solid color("primary", "darken-1");
 		}
 	}
 	a.no-style {
 		border:none;
 		text-decoration: none;
-		&:hover {
+		&>span {
+			@extend .tag;
+			color: color("primary", "darken-4");
+			background-color: white;
+			transition: all 100ms ease;
+		}
+		&:hover, &:active, &:focus {
 			border:none;
 			text-decoration: none;
+			&>span {
+				background-color: color("primary", "base");
+				color: white;
+			}
+		}
+		&:nth-child(2n + 1) {
+			margin-left: 12px;
 		}
 	}
 
@@ -56,11 +78,26 @@ $radius: $circle-size * 0.85;
 			width:$circle-size;
 			height:$circle-size;
 			background-color: color("primary", "base");
-			border: $border-size solid color("primary", "lighten-1");
+			border: $border-size solid rgba(color("primary", "darken-1"), 0.5);
 			border-radius: 50%;
 			position:relative;
 			z-index: 1;
 			box-sizing:border-box;
+			overflow:hidden;
+			display:flex;
+			//background-image: url("../images/portfolio/jpgs/thibaud.jpg");
+			//background-size: cover;
+			.hi {
+				width: $circle-size;
+				height: $circle-size;
+				background-image: url("../images/portfolio/svgs/hi.svg");
+				background-size: cover;
+				margin: auto;
+				transition: all 200ms ease;
+				&:hover{
+					transform:translateY(-10px);
+				}
+			}
 		}
 		a {
 			margin-left:10px;
@@ -77,7 +114,7 @@ $radius: $circle-size * 0.85;
 				width:$button-size;
 				height:$button-size;
 				transition:all 350ms ease-in-out;
-				opacity:0.8;
+				opacity:0.3;
 				@for $i from 0 through $number-of-buttons {
 					$x: $radius * cos($base-angle);
 					$y: $radius * sin($base-angle);
@@ -89,6 +126,7 @@ $radius: $circle-size * 0.85;
 						&:hover {
 							transform:translateX($x)translateY($y)rotate(360deg);
 							opacity:1;
+							
 						}
 					}
 					// incrementing base angle
@@ -97,22 +135,45 @@ $radius: $circle-size * 0.85;
 				&.github {
 					background-image: url("../images/portfolio/svgs/github.svg");
 					background-size: cover;
+					-webkit-filter: grayscale(100%);
+					&:hover {
+						-webkit-filter:none;
+					}
 				}
 				&.behance {
 					background-image: url("../images/portfolio/svgs/behance.svg");
 					background-size: cover;
+					-webkit-filter: grayscale(100%);
+					&:hover {
+						-webkit-filter:none;
+					}
 				}
 				&.twitter {
 					background-image: url("../images/portfolio/svgs/twitter.svg");
 					background-size: cover;
+					-webkit-filter: grayscale(100%);
+					&:hover {
+						-webkit-filter:none;
+					}
 				}
 				&.linkedin {
 					background-image: url("../images/portfolio/svgs/linkedin.svg");
 					background-size: cover;
+					-webkit-filter: grayscale(100%);
+					&:hover {
+						-webkit-filter:none;
+					}
 				}
 
 			}
 		}
 	}
 
+}
+
+
+@include phablet {
+	.contact {
+		width: 46%;
+	}
 }

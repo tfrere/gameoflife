@@ -24,7 +24,7 @@ $base-index: 1200;
 		margin-left: -10px;
 		display: block;
 		width: 10px;
-		height: 2px;
+		height: 1px;
 		background: $base-color;
 		&:before, &:after {
 			transition: all $duration linear;
@@ -33,7 +33,7 @@ $base-index: 1200;
 			right: 0;
 			background: inherit;
 			width: 20px;
-			height: 2px;
+			height: 1px;
 			z-index: $base-index - 1;
 		}
 		&:before {

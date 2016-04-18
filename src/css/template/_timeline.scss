@@ -5,21 +5,19 @@ $dash-lenght: 50px;
 $base-index: 0;
 $line-color: rgba(0,0,0,0.2);
 
+.timeline {
+	margin-top:80px;
+}
+
 .cell {
 	width: 80%;
 	margin: 0 auto;
 	:before {
 		display:none;
 	}
-}
-
-@keyframes cursorBlink {
-  0% { opacity: 0; }
-  33% { opacity: 0; }
-  50% { opacity: 0; }
-  51% { opacity: 1; }
-  66% { opacity: 1; }
-  100% { opacity: 1; }
+	h2 {
+		display: inline-block;
+	}
 }
 
 @include phablet {
@@ -43,18 +41,33 @@ $line-color: rgba(0,0,0,0.2);
 
 		.cell {
 			opacity:0;
-			transition:all 200ms ease-in-out;
+			transition:all 200ms ease;
 			.data {
-				transition:all 500ms ease-in-out;
+				transition:all 500ms ease;
+				h2,h5,p,span {
+					opacity:1;
+				}
 			}
 			h2{
 				font-family: "Libre Baskerville"!important;
 				text-transform: uppercase;
 				letter-spacing: .1rem;
 				margin-bottom:$text-size * 2;
+				
+				display:inline;
+				background-image: linear-gradient(180deg,rgba(0, 0, 0, 0) 50%,color("primary", "lighten-4") 0);
+				background-size: 0 100%;
+				background-repeat: no-repeat;
+				text-decoration: none;
+				transition: background-size .4s ease;
+
+			}
+			&>div:hover h2 {
+				background-size: 100% 100%;
+				cursor: pointer;
 			}
 			h5 {
-				font-weight: bold;
+				//font-weight: bold;
 				font-style: italic;
 				letter-spacing: .05rem;
 				font-family: "Libre Baskerville"!important;
@@ -113,7 +126,10 @@ $line-color: rgba(0,0,0,0.2);
 				margin-left:50%;
 			}
 			.clicked .data{
-				transform:translateX(800px)!important;
+				transform:translateX(1200px)!important;
+				h2,h5,p,span {
+					opacity:0;
+				}
 			}
 		}
 		.cell:nth-child(2n + 1) {
@@ -123,7 +139,10 @@ $line-color: rgba(0,0,0,0.2);
 				margin-left:calc(50% - #{$dash-lenght});
 			}
 			.clicked .data{
-				transform:translateX(-800px)!important;
+				transform:translateX(-600px)!important;
+				h2,h5,p,span {
+					opacity:0;
+				}
 			}
 		}
 	}
@@ -131,6 +150,14 @@ $line-color: rgba(0,0,0,0.2);
 	.timeline.clicked {
 		.cell>div:not(.clicked) {
 			opacity:0;
+		
+		}
+		.cell>div.clicked {
+			h2,h5,p,span {
+				transition:all 100ms ease;
+				opacity:1;
+			}
+		
 		}
 		header, .circle, .cell:before {
 			opacity:0!important;

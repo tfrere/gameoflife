@@ -7,25 +7,43 @@ $base-color: color("primary", "base");
 	overflow:hidden;
 	visibility: hidden;
 	z-index: $base-index;
+	.nav-mobile-gradient {
+		width:100%;
+		height:100px;
+		background-color: white;
+		position:fixed;
+		z-index: $base-index - 5;
+	}
 	.nav-info {
 		position:fixed;
 		top:27px;
 		left:40px;
 		z-index: $base-index - 4;
-		h5 { transition:all 200ms ease-in-out; margin-top: 17px; color: $base-color; text-transform: uppercase; letter-spacing: .3em;}
+		h5 {
+			@extend fadeIn();
+			transition:all 200ms ease;
+			margin-top: 12px;
+			color: $base-color;
+			text-transform: uppercase;
+			letter-spacing: .3em;
+		}
 		h5.active {
 			float:left;
-			transform:translateX(29px);
+			transform:translateX($text-size);
 		}
 	}
 
 	.back-button {
 		float:left;
 		cursor:pointer;
-		width:44px;
-		height:44px;
+		width:46px;
+		height:38px;
 		background-image: url("../images/portfolio/svgs/back.svg");
 		background-size: cover;
+		transition:all 200ms ease;
+		&:hover {
+			transform:translateX(-10px);
+		}
 	}
 	.nav-button {
 		cursor:pointer;
@@ -58,7 +76,7 @@ $base-color: color("primary", "base");
 		display:flex;
 		visibility:hidden;
 		opacity:0;
-		transition: opacity 200ms ease-in-out;
+		transition: opacity 100ms ease-in-out;
 		transition-delay:0ms;
 
 		div {
@@ -139,7 +157,7 @@ $base-color: color("primary", "base");
 		text-align: center;
 	}
 	ul li a{
-		transition: all 350ms ease-in;
+		transition: all 200ms ease-in;
 		opacity:0;
 	}
 
@@ -160,13 +178,27 @@ $base-color: color("primary", "base");
 		right:0;
 		text-align: center;
 		a {
-			color: color("primary", "darken-2");
-			font-weight: 600;
+			font-style: italic;
+			color: color("primary", "darken-3");
 			border-bottom: 1px solid color("primary", "darken-1");
 			&:focus, &:hover {
 				text-decoration: none;
 				border-bottom: 1px solid color("primary", "darken-2");
 			}
+		}
+	}
+}
+
+@include phablet {
+	.nav-mobile-gradient {
+		height:0px!important;
+		&:after {
+			position:fixed;
+			top:0px;
+			content:"";
+			width:100%;
+			height:50px;
+			background: linear-gradient(to bottom, rgba(255,255,255, 0.901961) 10%, rgba(255,255,255,0) 100%);
 		}
 	}
 }

@@ -32,7 +32,8 @@
 
 		$title-font: "Roboto", sans-serif;
 		$text-font: "Libre Baskerville", serif;
-		$base-color: color("grey", "darken-3");
+		$base-color: rgba(0,0,0,0.6);
+		$title-color: rgba(0,0,0,0.8);
 
 	/* # Core
 	–––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -75,8 +76,9 @@
 			margin-top:$text-size * 1.2;
 			margin-bottom: $text-size;
 			letter-spacing: 2px;
-			color: darken($base-color, 10%);
+			color: $title-color;
 			&a { font-weight: inherit; }
+			//word-break: break-all;
 		}
 
 		h1, .h1 { @include modular-scale(3, $title-size, $ratio); letter-spacing: -.1rem;}

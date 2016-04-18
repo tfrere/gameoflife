@@ -52,7 +52,9 @@ export default class Blog extends Component {
                     <div id={i} key={i} className="cell force-1" ref={`project${i}`} >
                         <div>
                             <h2>{object.title}</h2>
-                            <h6 className="uppercase">{Articles[i].creationDate}</h6>
+                            <div className="cell-img" style={{backgroundImage: 'url(' + `${Articles[i].imgUrl}` + ')'}}>
+                                <h6 className="square-tag uppercase">{Articles[i].creationDate}</h6>
+                            </div>
                             <p dangerouslySetInnerHTML={{__html: Articles[i].contentHtml}}/>
                             <br/><br/>
                             <hr className="half line"/>

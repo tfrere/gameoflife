@@ -41,7 +41,20 @@ export default class Nav extends Component {
 
     onBack() {
         setTimeout( () => {
-            this.props.history.push('/');
+            //console.log(this.props.history);
+
+            const url = this.props.location.pathname;
+            var re = /.*\/.*\/[0-9]*/i;
+
+            if (url.match(re))
+                this.props.history.push('/portfolio');
+            else if( url.match(/portfolio/i) || 
+                     url.match(/contact/i) ||
+                     url.match(/blog/i) )
+                this.props.history.push('/');
+            else
+                this.props.history.goBack();
+
         }, 10);
     }
 
@@ -67,7 +80,7 @@ export default class Nav extends Component {
     render() {
 
         var url = this.props.location.pathname;
-        
+        //console.log(url);
         var isBackButtonDisplayed = true;
 
         if (url == "/"){
@@ -77,18 +90,23 @@ export default class Nav extends Component {
         else 
             url = url.replace(/\//g, ' ');
 
-        console.log(this.onBack);
+        if (url.includes("project"))
+            url = "project";
+
         return (
             <div>
                 <div className={ classNames( 'nav-wrapper displayed', { active : this.state.active }) }>
-                    <PreLoader/>
+                    {/*<PreLoader/>*/}
+                    <div className="nav-mobile-gradient"/>
                     <div className="nav-info">
                         {(function(props, isBackButtonDisplayed, onBack) {
                           if (isBackButtonDisplayed) {
                             return (<div onClick={onBack.bind(null, "")} className="back-button"></div>); 
                           } 
                         })(this.props, isBackButtonDisplayed, this.onBack)}
-                        <h5 className={classNames({"active": isBackButtonDisplayed})}>{url}</h5>
+                        <h5 className={classNames({"active": isBackButtonDisplayed})}>
+                            {url}
+                        </h5>
                     </div>
 
                     <div  className="nav-button">

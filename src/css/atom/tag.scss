@@ -12,6 +12,24 @@
 	margin-bottom:$text-size * 2;
 	transition:all 200ms ease-in-out;
 	&:hover {
-		border: 1px solid rgba(0,0,0,0.5);
+		border: 1px solid color("primary", "base");
 	}
+}
+
+.square-tag {
+    font-family: "Open Sans",sans-serif;
+    font-weight: 600;
+    display: inline-block;
+    padding: 0.6rem 0.8rem 0.6rem 1.2rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    margin: 0 auto 4rem auto;
+    color: #333E48;
+	margin-bottom: 1em;
+    font-size: 1rem;
+    border: 0px solid currentColor;
+    margin-bottom: 1.6em;
+    background: rgba(0,0,0,0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }

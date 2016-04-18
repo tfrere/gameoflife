@@ -2,7 +2,7 @@ import $                                from 'jquery';
 import React, { Component, PropTypes }  from 'react';
 import classNames                       from 'classnames';
 
-export default class BurgerMenu extends Component {
+export default class  extends Component {
 
     constructor( props ) {
         super( props );
@@ -24,6 +24,11 @@ export default class BurgerMenu extends Component {
       console.log(event.type); // => "click"
       if (event.keyCode == 192)
         $('body').toggleClass('show-baseline');
+      if (event.keyCode == 37) // left
+        $('body').toggleClass('test');
+      if (event.keyCode == 39)  // right
+        $('body').toggleClass('test');
+
     }
 
     render() {

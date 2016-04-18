@@ -26,7 +26,7 @@ export default class ProjectCard extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props);
+        //console.log(this.props);
     }
 
     componentWillUnmount() {
@@ -34,15 +34,15 @@ export default class ProjectCard extends Component {
 
     onClick() {
 
-        console.log("onclickarticle");
+        //console.log("onclickarticle");
          this.props.onClick();
          this.setState( { active: true } );
 
         setTimeout( () => {
-            console.log(this.props.history);
-            this.props.history.pushState(null, '/project/'+ this.props.id);
+            //console.log(this.props.history);
             this.setState( { active : false } );
-        }, 600 );
+            this.props.history.pushState(null, '/project/'+ this.props.id);
+        }, 450 );
     }
 
     render() {
@@ -58,7 +58,7 @@ export default class ProjectCard extends Component {
                                 <h5 className="italic">{this.props.data.month}</h5>
                                 <h2>{this.props.data.title}</h2>
                                 <p>{this.props.data.short}</p>
-                                <span>{this.props.data.purpose}</span>
+                                <span className="square-tag">{this.props.data.purpose}</span>
                             </div>
                         </figure>
                     </div>

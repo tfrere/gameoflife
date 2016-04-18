@@ -39,9 +39,9 @@ export default class Guidelines extends Component {
                 <div className="center">
                       <article>
                         <h2 className="h2">Colors</h2>
-                        <hr/>
-                        <blockquote>Primary </blockquote>
-                        <div className="row row-gutter colors">
+                        <br/>
+                        <h5>Primary </h5>
+                        <div className="row colors">
                           <div className="cell primary lighten-4"/>
                           <div className="cell primary lighten-3"/>
                           <div className="cell primary lighten-2"/>
@@ -52,8 +52,8 @@ export default class Guidelines extends Component {
                           <div className="cell primary darken-3"/>
                           <div className="cell primary darken-4"/>
                         </div>
-                         <blockquote>Complement </blockquote>
-                        <div className="row row-gutter colors">
+                         <h5>Complement </h5>
+                        <div className="row colors">
                           <div className="cell complement lighten-4"/>
                           <div className="cell complement lighten-3"/>
                           <div className="cell complement lighten-2"/>
@@ -64,8 +64,8 @@ export default class Guidelines extends Component {
                           <div className="cell complement darken-3"/>
                           <div className="cell complement darken-4"/>
                         </div>
-                         <blockquote>Grey </blockquote>
-                        <div className="row row-gutter colors">
+                         <h5>Grey </h5>
+                        <div className="row colors">
                           <div className="cell grey lighten-4"/>
                           <div className="cell grey lighten-3"/>
                           <div className="cell grey lighten-2"/>
@@ -77,7 +77,7 @@ export default class Guidelines extends Component {
                           <div className="cell grey darken-4"/>
                         </div>
                         <h2 className="h2">Typography</h2>
-                        <hr/>
+                        <br/>
                         <h1>Title 1</h1>
                         <h2>Title 2</h2>
                         <h3>Title 3</h3>
@@ -86,39 +86,7 @@ export default class Guidelines extends Component {
                         <h6>Title 6</h6>
                         <p> I believe that we are who we choose to be. Nobody’s going to come and save you, you’ve got to save yourself. Nobody’s going to give you anything. You’ve got to go out and fight for it. Nobody knows what you want except for you. And nobody will be as sorry </p>
                         <blockquote>I believe that we are who we choose to be. Nobody’s going to come and save you, you’ve got to save yourself. Nobody’s going to give you anything. You’ve got to go out and fight for it. Nobody knows what you want except for you. And nobody will be as sorry as you if you don’t get it. So don’t give up on your dreams.</blockquote>
-                      
-                      <h2 className="h2"> Animations </h2>
-                      <hr/>
-                        <div className="row row-gutter colors">
-                          <div className="cell">
-                            <div className="ball-pulse">
-                              <div/>
-                              <div/>
-                              <div/>
-                            </div>
-                          </div>
-                          <div className="cell">
-                            <div className="ball-scale">
-                              <div/>
-                            </div> 
-                          </div>
-                          <div className="cell">
-                            <div className="line-scale">
-                              <div/>
-                              <div/>
-                              <div/>
-                              <div/>
-                              <div/>
-                            </div>
-                          </div>
-                          <div className="cell">
-                            <div className="circle-line-scale">
-                              <div/>
-                              <div/>
-                              <div/>
-                            </div>
-                          </div>
-                        </div>
+
                     </article>
 
                 </div>

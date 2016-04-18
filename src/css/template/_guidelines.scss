@@ -4,6 +4,9 @@
 	z-index: 1;
 	width:100%;
 	margin-top:150px;
+	h1,h2,h3,h4,h5,h6 {
+		font-family: "Libre Baskerville";
+	}
 	.center {
 		width:55%;
 		margin: 0 auto;
@@ -12,38 +15,8 @@
 		height:75px;
 	}
 	.h2 { margin-top: $text-size * 4;}
-	.ball-pulse {
-		@include ball-pulse(color("primary", "base"));
-	}
-	.ball-scale {
-		@include ball-scale(color("primary", "base"));
-	}
-	.line-scale {
-		@include line-scale(color("primary", "base"));
-	}
-	.circle-line-scale {
-		@include circle-line-scale(color("primary", "base"));
-	}
-	.naira {
-		@include naira(white, color("primary", "base"));
-	}
-	.push {
-		@include push(white, color("primary", "base"));
-	}
-	.underline-by-scale {
-	  @include underline-by-scale(color("primary", "base"));
-	}
-	.underline-by-left {
-	  @include underline-by-left(color("primary", "base"));
-	}
-	.underline-by-right {
-	  @include underline-by-right(color("primary", "base"));
-	}
-	.underline-by-double {
-	  @include underline-by-double(color("primary", "base"));
-	}
-	.underline-fancy {
-	  @include underline-fancy(color("primary", "base"));
+	h5 {
+		margin:$text-size 0;
 	}
 	hr {
 		margin-bottom:$text-size * 3;
