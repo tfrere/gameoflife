@@ -139,7 +139,7 @@ $line-color: rgba(0,0,0,0.2);
 				margin-left:calc(50% - #{$dash-lenght});
 			}
 			.clicked .data{
-				transform:translateX(-600px)!important;
+				transform:translateX(-100px)!important;
 				h2,h5,p,span {
 					opacity:0;
 				}

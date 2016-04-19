@@ -59,7 +59,7 @@ $small-img-ratio: 1/4;
 		box-shadow: 1px 0px 0 #fff,0 0 10px rgba(0,95,99,0.2);
 		transform: rotateY(0deg) rotateX(20deg);
 		position:absolute;
-		transition: all, 400ms, ease-in-out;
+		transition: all, 400ms, ease;
 		&.img-article-0 {
 			opacity:0;
 			width: 80%;
