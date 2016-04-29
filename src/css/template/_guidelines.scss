@@ -1,9 +1,6 @@
 .guidelines {
-	animation: fadeIn;
-	animation-duration: .5s;
-	z-index: 1;
 	width:100%;
-	margin-top:150px;
+	margin-top:250px;
 	h1,h2,h3,h4,h5,h6 {
 		font-family: "Libre Baskerville";
 	}
@@ -22,10 +19,6 @@
 		margin-bottom:$text-size * 3;
 	}
 
-	.cell {
-	    margin-top:5px!important;
-	    margin-bottom:5px!important;
-	}
 	&>footer {
 		padding-top:80px;
 		padding-bottom:80px;

@@ -42,12 +42,14 @@ export default class Intro extends Component {
         var ctaSpan = this.refs.ctaSpan;
         var name = this.refs.name;
         var work = this.refs.work;
+        var since = this.refs.since;
         
         this.tl.stop();
 
         this.tl
         .fromTo(name, 0.6, { opacity:0, y:-30, ease: Expo.easeInOut, rotationY:0, rotationX:60 }, {opacity:1, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:0}, "+=0.8")
         .fromTo(work, 0.6, { opacity:0, y:-30, ease: Expo.easeInOut, rotationY:0, rotationX:60 }, {opacity:1, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:0}, "-=0.8")
+        .fromTo(since, 0.6, { opacity:0, y:-30, ease: Expo.easeInOut, rotationY:0, rotationX:60 }, {opacity:1, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:0}, "-=0.8")
         .to(cta, 0.2, { opacity:1 })
 
         this.tl.play();
@@ -62,7 +64,9 @@ export default class Intro extends Component {
                          {overlay("black")}
                          {sunrise("grey")}*/}
                         <h1 ref="name">Thibaud Frere </h1>
-                        <h4 ref="work" className="i uppercase">designer</h4>
+                        <h4 ref="work" className="i uppercase">designer indépendant</h4>
+                        <h5 ref="since" className="square-tag">depuis 2008</h5>
+                        <br className="clearfix"/>
                         <button ref="cta" className="cta" onClick={ ::this.onClick } >
                             <span ref="ctaSpan">PORTFOLIO</span>
                         </button>

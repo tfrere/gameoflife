@@ -13,36 +13,50 @@ $base-color: color("primary", "base");
 		background-color: white;
 		position:fixed;
 		z-index: $base-index - 5;
+		box-shadow: 0 0 5px 0 rgba(0,0,0,.15);
 	}
-	.nav-info {
+	
+	.nav-typo {
+		font-family: $nav-font;
+		color: $base-color;
+		text-transform: uppercase;
+		letter-spacing: .3em;
+	}
+
+	.nav-back {
 		position:fixed;
-		top:27px;
+		cursor:pointer;
+		top:32px;
 		left:40px;
 		z-index: $base-index - 4;
+		transition:all 200ms ease;
 		h5 {
-			@extend fadeIn();
-			transition:all 200ms ease;
-			margin-top: 12px;
-			color: $base-color;
-			text-transform: uppercase;
-			letter-spacing: .3em;
+			margin-left:65px;
+			margin-top:11px;
+			display:none;
 		}
-		h5.active {
+		.back-arrow {
 			float:left;
-			transform:translateX($text-size);
+			width:46px;
+			height:38px;
+			background-image: url("../images/portfolio/svgs/back.svg");
+			background-size: cover;
+		}
+		&:hover {
+			transform:translateX(-10px);
 		}
 	}
 
-	.back-button {
-		float:left;
-		cursor:pointer;
-		width:46px;
-		height:38px;
-		background-image: url("../images/portfolio/svgs/back.svg");
-		background-size: cover;
+	.nav-info {
+		position:fixed;
+		@extend fadeIn();
 		transition:all 200ms ease;
-		&:hover {
-			transform:translateX(-10px);
+		top: 26px;
+		right:120px;
+		z-index: $base-index;
+		&.active {
+			float:left;
+			transform:translateX($text-size);
 		}
 	}
 	.nav-button {
@@ -68,6 +82,7 @@ $base-color: color("primary", "base");
 		transform:scale(0);
 		opacity:0;
 	}
+	
 	.nav {
 		z-index: $base-index - 2;
 		position:fixed;
@@ -89,7 +104,7 @@ $base-color: color("primary", "base");
 					text-transform: uppercase;
 					color:white;
 					@include modular-scale(4, $title-size, $ratio);
-					font-family: "Open Sans";
+					font-family: $nav-font;
 					font-weight: 100;
 					&.active {
 						opacity:1!important;
@@ -152,7 +167,7 @@ $base-color: color("primary", "base");
 	.nav {
 		display:flex;
 	}
-	h1,h2,h3,h4,h5,h6,p, i {
+	h1,h2,h3,h4,h6,p, i {
 		color: white;
 		text-align: center;
 	}
@@ -192,6 +207,7 @@ $base-color: color("primary", "base");
 @include phablet {
 	.nav-mobile-gradient {
 		height:0px!important;
+		box-shadow: none;
 		&:after {
 			position:fixed;
 			top:0px;
@@ -200,5 +216,8 @@ $base-color: color("primary", "base");
 			height:50px;
 			background: linear-gradient(to bottom, rgba(255,255,255, 0.901961) 10%, rgba(255,255,255,0) 100%);
 		}
+	}
+	.nav-back h5 {
+		display:block!important;
 	}
 }

@@ -46,6 +46,7 @@ export default class Timeline extends Component {
         var project2 = this.refs.project2;
         var project3 = this.refs.project3;
         var project4 = this.refs.project4;
+        var project5 = this.refs.project5;
 
         this.tl
         .fromTo(line, 1, { opacity:0, y:500, ease: Cubic.linear },
@@ -54,7 +55,8 @@ export default class Timeline extends Component {
         .fromTo(project1, 0.5, { opacity:0, ease: Cubic.linear }, { opacity:1, y:0, ease: Cubic.linear })
         .fromTo(project2, 0.5, { opacity:0, ease: Cubic.linear }, { opacity:1, y:0, ease: Cubic.linear })
         .fromTo(project3, 0.5, { opacity:0, ease: Cubic.linear }, { opacity:1, y:0, ease: Cubic.linear })
-        .fromTo(project4, 0.5, { opacity:0, ease: Cubic.linear }, { opacity:1, y:0, ease: Cubic.linear });
+        .fromTo(project4, 0.5, { opacity:0, ease: Cubic.linear }, { opacity:1, y:0, ease: Cubic.linear })
+        .fromTo(project5, 0.5, { opacity:0, ease: Cubic.linear }, { opacity:1, y:0, ease: Cubic.linear });
 
     }
 
@@ -68,15 +70,18 @@ export default class Timeline extends Component {
             <div className={classNames("timeline", {clicked: this.state.clicked}) }>
 
                 <div ref="timeline" className="row row-gutter">
-                     {Projects.map((object, i) => <div className="cell force-1"
-                                                    ref={`project${i}`}
-                                                                > <ProjectCard 
-                                                                onClick={ ::this.onClick } 
-                                                                history={this.props.history} 
-                                                                data={object}
-                                                                id={i}
-                                                                key={i} /></div>
-                                                                )}
+                     {Projects.map((object, i) => <div className={classNames("cell force-1", {addPlaceForYear: object.isLastProjectOfYear && i != 0}) }
+                                                    ref={`project${i}`}>
+                                                    {/*<img src={object.img[0]} />*/}
+                                                    <div className={classNames("year", {visible: object.isLastProjectOfYear && i != 0}) }>{object.year}</div>
+                                                    <ProjectCard 
+                                                        onClick={ ::this.onClick } 
+                                                        history={this.props.history} 
+                                                        data={object}
+                                                        id={i}
+                                                        key={i} />
+                                                  </div>
+                      )}
                     <div ref="timelineLine" className="line"/>
                 </div>
             </div>

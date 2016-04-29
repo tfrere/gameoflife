@@ -41,7 +41,7 @@ export default class ProjectCard extends Component {
         setTimeout( () => {
             //console.log(this.props.history);
             this.setState( { active : false } );
-            this.props.history.pushState(null, '/project/'+ this.props.id);
+            this.props.history.pushState(null, '/projet/'+ this.props.id);
         }, 450 );
     }
 
@@ -53,7 +53,6 @@ export default class ProjectCard extends Component {
                     <div className={classNames("delay-" + this.props.id)}>
                         <div className="circle"></div>
                         <figure>
-                            <img src={this.props.data.imgUrl} />
                             <div className="data">
                                 <h5 className="italic">{this.props.data.month}</h5>
                                 <h2>{this.props.data.title}</h2>

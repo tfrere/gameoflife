@@ -6,21 +6,52 @@ $base-index: 0;
 $line-color: rgba(0,0,0,0.2);
 
 .timeline {
-	margin-top:80px;
+	margin-top:120px;
+	.cell {
+		width: 80%;
+		margin: 0 auto;
+		:before {
+			display:none;
+		}
+		figure {
+			margin: 1em;
+		}
+		h2 {
+			display: inline-block;
+		}
+		img {
+			display:none;
+		}
+
+	}
 }
 
-.cell {
-	width: 80%;
-	margin: 0 auto;
-	:before {
-		display:none;
-	}
-	h2 {
+
+.year {
+    display: none;
+    padding: 10px 15px;
+    font-size: $text-size;
+    border: 1px solid $line-color;
+    background-color: #FFF;
+    color:color("grey", "base");
+	text-transform: uppercase;
+	letter-spacing: .1rem;
+	margin-left: 13px;
+	&.visible {
 		display: inline-block;
 	}
 }
 
 @include phablet {
+
+	.year {
+	    position: absolute;
+	    text-align: center;
+	    left: 50%;
+	    top:-30px;
+	    padding: 10px 15px;
+	    margin-left: -36px;
+	}
 
 	.timeline {
 		width: 80%;
@@ -35,13 +66,19 @@ $line-color: rgba(0,0,0,0.2);
 			top: 0px;
 			left:0;
 			height:100%;
-			margin-top:calc(9% - 16px);
+			margin-top:5.36em;
 			border-right:1px solid $line-color;
 		}
 
 		.cell {
 			opacity:0;
 			transition:all 200ms ease;
+			figure {
+				margin: 3em 40px;
+			}
+			&.addPlaceForYear {
+				margin-top:50px;
+			}
 			.data {
 				transition:all 500ms ease;
 				h2,h5,p,span {
@@ -49,18 +86,15 @@ $line-color: rgba(0,0,0,0.2);
 				}
 			}
 			h2{
-				font-family: "Libre Baskerville"!important;
 				text-transform: uppercase;
 				letter-spacing: .1rem;
 				margin-bottom:$text-size * 2;
-				
 				display:inline;
-				background-image: linear-gradient(180deg,rgba(0, 0, 0, 0) 50%,color("primary", "lighten-4") 0);
+				background-image: linear-gradient(180deg,rgba(0, 0, 0, 0) 50%,color("primary", "lighten-3") 0);
 				background-size: 0 100%;
 				background-repeat: no-repeat;
 				text-decoration: none;
 				transition: background-size .4s ease;
-
 			}
 			&>div:hover h2 {
 				background-size: 100% 100%;
@@ -70,7 +104,6 @@ $line-color: rgba(0,0,0,0.2);
 				//font-weight: bold;
 				font-style: italic;
 				letter-spacing: .05rem;
-				font-family: "Libre Baskerville"!important;
 				margin-bottom:$text-size * 2;
 			}
 			p {
@@ -83,6 +116,7 @@ $line-color: rgba(0,0,0,0.2);
 			width:50%;
 			position:relative;
 			z-index: $base-index + 2;
+			perspective:1200px;
 			&:before {
 				content:"";
 				z-index: $base-index - 1;
@@ -112,6 +146,20 @@ $line-color: rgba(0,0,0,0.2);
 				transition:all 100ms ease-in-out;
 
 			}
+			img {
+				display:block;
+				position:absolute;
+				right:50px;
+				opacity:1;
+				width:30%;
+				top:75px;
+				transform: rotateX(0deg) rotateY(0deg) translateX(0px);
+				transition: all 350ms ease;
+			}
+			&>div:hover img {
+				opacity:1;
+				transform: rotateX(0deg) rotateY(-20deg) translateX(-20px);
+			}
 			&>div:hover .circle{
 				width:$circle-size * $circle-hover-ratio;
 				height:$circle-size * $circle-hover-ratio;
@@ -124,6 +172,12 @@ $line-color: rgba(0,0,0,0.2);
 			padding-left:55%;
 			&:before {
 				margin-left:50%;
+			}
+			img {
+				left: 50px;
+			}
+			&>div:hover img {
+				transform: rotateX(0deg) rotateY(20deg) translateX(20px);
 			}
 			.clicked .data{
 				transform:translateX(1200px)!important;

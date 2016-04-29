@@ -32,6 +32,7 @@ export default class Article extends Component {
         this.onClick = this.onClick.bind(this);
         this.nextProject = this.nextProject.bind(this);
         this.prevProject = this.prevProject.bind(this);
+        this.onKeyPress = this.onKeyPress.bind(this);
         setTimeout( () => {
             this.setState( { open : true } );
         }, 1500 );
@@ -46,9 +47,10 @@ export default class Article extends Component {
         else 
             currentUrl++;
         setTimeout( () => {
-            this.props.history.push('/project/' + currentUrl + "");
+            this.props.history.push('/projet/' + currentUrl + "");
         }, 10);
     }
+
     prevProject() {
         var currentUrl = this.props.url;
         //console.log(currentUrl);
@@ -58,7 +60,7 @@ export default class Article extends Component {
         else
             currentUrl--;
         setTimeout( () => {
-            this.props.history.push('/project/' + currentUrl + "");
+            this.props.history.push('/projet/' + currentUrl + "");
         }, 10);
     }
 
@@ -67,7 +69,12 @@ export default class Article extends Component {
          this.setState( { active: !this.state.active } );
     }
 
+
     componentDidMount(){
+
+        // window.scrollTo(0,0);
+        
+        document.addEventListener('keydown', this.onKeyPress, false);
 
         var content = this.refs.contentWrapper;
         var title = this.refs.titleWrapper;
@@ -75,15 +82,17 @@ export default class Article extends Component {
         var year = this.refs.year;
         var prevProject = this.refs.prevProject;
         var nextProject = this.refs.nextProject;
+        var sitelink = this.refs.sitelink;
 
         
         this.tl
         .from(title, 0.6, { opacity:0, y:-50, ease: Circ.easeInOut }, "+0.5")
-        .fromTo(img0, 0.6, { opacity:0, y:-30, ease: Expo.easeInOut, rotationY:0, rotationX:0 }, {opacity:1, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:10}, "-=0.8")
+        .fromTo(img0, 0.6, { opacity:0, y:-30, ease: Expo.easeInOut, rotationY:0, rotationX:0 }, {opacity:1, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:10}, "-=1")
         .from(content, 0.6, { opacity:0, x:-50, ease: Circ.easeInOut }, "+0.5")
         .from(year, 0.6, { opacity:0, y:-50, ease: Circ.easeInOut }, "+0.5")
         .from(prevProject, 0.5, { opacity:0, x:-100, ease: Circ.easeInOut, clearProps: "all" }, "+0.5")
-        .from(nextProject, 0.5, { opacity:0, x:100, ease: Circ.easeInOut, clearProps: "all" }, "+0.5");
+        .from(nextProject, 0.5, { opacity:0, x:100, ease: Circ.easeInOut, clearProps: "all" }, "+0.5")
+        .from(sitelink, 0.5, { opacity:0, ease: Circ.easeInOut, clearProps: "all" }, "+1");
 
         if (this.props.url)
         {
@@ -94,6 +103,21 @@ export default class Article extends Component {
         }
     }
 
+    onKeyPress(event) {
+      //console.log(event); // => nullified object.
+      //console.log(event.type); // => "click"
+      if (event.keyCode == 192)
+        $('body').toggleClass('show-baseline');
+      if (event.keyCode == 37) // left
+        this.prevProject();
+      if (event.keyCode == 39)  // right
+        this.nextProject();
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this.onKeyPress, false);
+    }
+    
     render() {
 
             var url = this.props.url;
@@ -107,16 +131,23 @@ export default class Article extends Component {
                             <span className="square-tag">{Projects[url].purpose}</span>
                         </header>
                     </div>
-                    <a href={Projects[url].website} target="_blank" className="img-wrapper">
-                        <img src={Projects[url].img[0]} ref="img0" className="img-article img-article-0"/>
-                        <div className="img-overlay"/>
-                    </a>
+                    <div className="img-wrapper">
+                        <div className="perspective-wrapper">
+                            <img src={Projects[url].img[0]} ref="img0" className="img-article img-article-0"/>
+                        </div>
+                        <a href={Projects[url].website} target="_blank" ref="sitelink" className="site-link">
+                            <h5>Visiter le site</h5>
+                        </a>
+                    </div>
                     <div ref="contentWrapper" className={classNames( 'content-wrapper', { active : this.state.active } ) }>
                         <p
                             dangerouslySetInnerHTML={{__html: Projects[url].content}}
-                            className={ "content", classNames({active:this.state.active}) }
-                        >
+                            className={ "content", classNames({active:this.state.active}) }>
                         </p>
+                        <h5>Technologies employées</h5>
+                        {Projects[url].tags.map((object, i) => <div className="tech-tag">{object} </div>)}
+                        {/*<h3>Date de sortie</h3>
+                        <p>bientôt :)</p>*/}
                     </div>
                     <a ref="prevProject" className="prev-project" onClick={ ::this.prevProject } >
                         <span/>

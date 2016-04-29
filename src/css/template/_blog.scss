@@ -1,21 +1,34 @@
 .blog {
-	animation: fadeIn;
-	animation-duration: .5s;
-	margin-top:100px;
+	margin-top:150px;
 	.container {
 		width:85%;
 		margin: 0 auto;
 		h2 {
 			//@include subtle-underlined();
-			font-family: "Libre Baskerville";
 			transition:all 200ms ease-in-out;
 		}
+	}
+	hr {
+		margin-top:$text-size * 5;
+	}
+	.square-tag {
+		margin-bottom: $text-size / 2;
+	}
+	p {
+		margin-top: $text-size / 2;
+		margin-bottom:$text-size * 2;
+	}
+	.cell {
+		width: 80%;
+		margin: 0 auto;
 	}
 	.cell-img {
 		width:100%;
 		padding-bottom: 25%;
 		background-color: #f8f8f8;
-		@extend brightness();
+		filter: brightness(0.7);
+		-webkit-filter: brightness(0.7);
+
 		h6 {
 			margin-top: $text-size;
 			margin-left: $text-size;

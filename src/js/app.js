@@ -25,7 +25,7 @@ ReactDOM.render((
   	<Route component={Nav}>
 		<Route path="/" component={Intro}/>
 		<Route path="portfolio" component={Timeline}/>
-		<Route path="project/:projectId" component={ProjectWrapper}/>
+		<Route path="projet/:projectId" component={ProjectWrapper}/>
 		<Route path="blog" component={Blog}/>
 		<Route path="contact" component={Contact}/>
 		<Route path="guidelines" component={Guidelines}/>

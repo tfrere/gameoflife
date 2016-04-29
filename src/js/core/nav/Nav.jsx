@@ -48,9 +48,7 @@ export default class Nav extends Component {
 
             if (url.match(re))
                 this.props.history.push('/portfolio');
-            else if( url.match(/portfolio/i) || 
-                     url.match(/contact/i) ||
-                     url.match(/blog/i) )
+            else if( url.match(/portfolio/i) ) 
                 this.props.history.push('/');
             else
                 this.props.history.goBack();
@@ -90,26 +88,31 @@ export default class Nav extends Component {
         else 
             url = url.replace(/\//g, ' ');
 
-        if (url.includes("project"))
-            url = "project";
+        if (url.includes("projet"))
+            url = "projet";
+        if (url.includes("guidelines"))
+            url = "charte graphique";
 
         return (
             <div>
                 <div className={ classNames( 'nav-wrapper displayed', { active : this.state.active }) }>
                     {/*<PreLoader/>*/}
                     <div className="nav-mobile-gradient"/>
-                    <div className="nav-info">
-                        {(function(props, isBackButtonDisplayed, onBack) {
-                          if (isBackButtonDisplayed) {
-                            return (<div onClick={onBack.bind(null, "")} className="back-button"></div>); 
-                          } 
-                        })(this.props, isBackButtonDisplayed, this.onBack)}
-                        <h5 className={classNames({"active": isBackButtonDisplayed})}>
-                            {url}
-                        </h5>
-                    </div>
+                    {(function(props, isBackButtonDisplayed, onBack) {
+                      if (isBackButtonDisplayed) {
+                        return (
+                            <div className="nav-back" onClick={onBack.bind(null, "")}>
+                                <div className="back-arrow"/>
+                                <h5 className="nav-typo"> retour </h5>
+                            </div>
+                            ); 
+                      } 
+                    })(this.props, isBackButtonDisplayed, this.onBack)}
 
-                    <div  className="nav-button">
+                    <h5 className={classNames("nav-info", "nav-typo", { "active": isBackButtonDisplayed})}>
+                        {url}
+                    </h5>
+                    <div className="nav-button">
                         <div onClick={ ::this.onClick } className={ classNames( 'burger-menu', { active : this.state.active } ) }>
                             <div></div>
                         </div>
@@ -149,7 +152,7 @@ export default class Nav extends Component {
                                         activeClassName='active'
                                         to={`/guidelines`}
                                 >
-                                    Guidelines
+                                    Charte graphique 
                                 </Link>
                             </footer>
                         </div>

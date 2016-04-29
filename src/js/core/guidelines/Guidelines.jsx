@@ -18,75 +18,66 @@ import Colors                   from 'config/color';
 import Placeholders             from 'config/placeholder';
 
 import Config                   from 'config/config';
- 
+
+
+import TweenMax                 from 'gsap/src/minified/TweenMax.min.js';
+import TweenLite                from 'gsap/src/minified/TweenLite.min.js';
+
+
 export default class Guidelines extends Component {
+
+    constructor( props ) {
+        super( props );
+        this.tl = new TimelineLite();
+    }
 
     componentWillMount() {
     }
 
-    componentDidMount() {
-    }
-
-    componentWillUnmount() {
+    componentDidMount(){
+        var guidelines = this.refs.guidelines;
+        this.tl
+        .fromTo(guidelines, 0.3, {opacity:0, y:-20, ease: Cubic.linear},{opacity:1, y:0, ease: Cubic.linear}, "+=0.5");
     }
 
     render() {
 
-        var heart = "<3";
+        var heart = "♡";
 
         return (
-            <div className="screen-box guidelines">
+            <div ref="guidelines" className="screen-box guidelines">
                 <div className="center">
                       <article>
-                        <h2 className="h2">Colors</h2>
-                        <br/>
-                        <h5>Primary </h5>
-                        <div className="row colors">
-                          <div className="cell primary lighten-4"/>
-                          <div className="cell primary lighten-3"/>
-                          <div className="cell primary lighten-2"/>
-                          <div className="cell primary lighten-1"/>
-                          <div className="cell primary"/>
-                          <div className="cell primary darken-1"/>
-                          <div className="cell primary darken-2"/>
-                          <div className="cell primary darken-3"/>
-                          <div className="cell primary darken-4"/>
+                        <h1>Titre principal</h1>
+                        <h3>Title secondaire</h3>
+                        <div className="square-tag">tag</div>
+                        <p> Equitis Romani autem esse filium criminis <a href='#'>loco poni</a> ab accusatoribus neque his iudicantibus oportuit neque defendentibus nobis. Equitis Romani autem esse filium criminis loco poni ab accusatoribus neque his iudicantibus oportuit neque defendentibus nobis. </p>
+                        <blockquote>Nam quod de pietate dixistis, est quidem ista nostra existimatio, sed iudicium certe parentis; quid nos opinemur, audietis ex iuratis; quid parentes sentiant, lacrimae matris incredibilisque maeror, squalor patris et haec praesens maestitia, quam cernitis, luctusque declarat.</blockquote>
+                        <blockquote className="pullquote">
+                          <p>The less you reveal the more people can wonder.</p>
+                          <footer>Henri Ford.</footer>
+                        </blockquote>
+                        <hr className="invisible"/>
+                        <div className="tech-tag">mot clé 1 </div>
+                        <div className="tech-tag">mot clé 2 </div>
+                        <div className="tech-tag">mot clé 3 </div>
+                        <hr className="lines"/>
+                        <div className="row">
+                          <div className="cell">
+                            <div className="row colors">
+                              <div className="cell force-1 primary"/>
+                              <div className="cell force-2 primary lighten-2"/>
+                              <div className="cell force-2 primary darken-2"/>
+                            </div>
+                          </div>
+                          <div className="cell">
+                            <div className="row colors">
+                              <div className="cell force-1 complement"/>
+                              <div className="cell force-2 complement lighten-2"/>
+                              <div className="cell force-2 complement darken-2"/>
+                            </div>
+                          </div>
                         </div>
-                         <h5>Complement </h5>
-                        <div className="row colors">
-                          <div className="cell complement lighten-4"/>
-                          <div className="cell complement lighten-3"/>
-                          <div className="cell complement lighten-2"/>
-                          <div className="cell complement lighten-1"/>
-                          <div className="cell complement"/>
-                          <div className="cell complement darken-1"/>
-                          <div className="cell complement darken-2"/>
-                          <div className="cell complement darken-3"/>
-                          <div className="cell complement darken-4"/>
-                        </div>
-                         <h5>Grey </h5>
-                        <div className="row colors">
-                          <div className="cell grey lighten-4"/>
-                          <div className="cell grey lighten-3"/>
-                          <div className="cell grey lighten-2"/>
-                          <div className="cell grey lighten-1"/>
-                          <div className="cell grey"/>
-                          <div className="cell grey darken-1"/>
-                          <div className="cell grey darken-2"/>
-                          <div className="cell grey darken-3"/>
-                          <div className="cell grey darken-4"/>
-                        </div>
-                        <h2 className="h2">Typography</h2>
-                        <br/>
-                        <h1>Title 1</h1>
-                        <h2>Title 2</h2>
-                        <h3>Title 3</h3>
-                        <h4>Title 4</h4>
-                        <h5>Title 5</h5>
-                        <h6>Title 6</h6>
-                        <p> I believe that we are who we choose to be. Nobody’s going to come and save you, you’ve got to save yourself. Nobody’s going to give you anything. You’ve got to go out and fight for it. Nobody knows what you want except for you. And nobody will be as sorry </p>
-                        <blockquote>I believe that we are who we choose to be. Nobody’s going to come and save you, you’ve got to save yourself. Nobody’s going to give you anything. You’ve got to go out and fight for it. Nobody knows what you want except for you. And nobody will be as sorry as you if you don’t get it. So don’t give up on your dreams.</blockquote>
-
                     </article>
 
                 </div>

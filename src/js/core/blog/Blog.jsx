@@ -35,15 +35,17 @@ export default class Blog extends Component {
     componentDidMount(){
         var blog = this.refs.blog;
         this.tl
-        .fromTo(blog, 1, {y:-50, opacity:0, ease: Cubic.linear}, {y:0, opacity:1, ease: Cubic.linear});
+        .fromTo(blog, 0.3, {opacity:0, y:-20, ease: Cubic.linear},{opacity:1, y:0, ease: Cubic.linear}, "+=0.5");
     }
 
 
     componentWillUnmount() {
     }
+
+
     render() {
 
-        var heart = "<3";
+        var heart = "♡";
 
         return (
             <div ref="blog" className="screen-box blog">
@@ -52,12 +54,13 @@ export default class Blog extends Component {
                     <div id={i} key={i} className="cell force-1" ref={`project${i}`} >
                         <div>
                             <h2>{object.title}</h2>
-                            <div className="cell-img" style={{backgroundImage: 'url(' + `${Articles[i].imgUrl}` + ')'}}>
-                                <h6 className="square-tag uppercase">{Articles[i].creationDate}</h6>
-                            </div>
-                            <p dangerouslySetInnerHTML={{__html: Articles[i].contentHtml}}/>
+                            <h6 className="square-tag uppercase">{object.creationDate}</h6>
+                            {/*<div className="cell-img" style={{backgroundImage: 'url(' + `${object.imgUrl}` + ')'}}>
+                            </div>*/}
+                            <p dangerouslySetInnerHTML={{__html: object.contentHtml}}/>
                             <br/><br/>
-                            <hr className="half line"/>
+                            {object.tags.map((object, i) => <div className="tech-tag">{object} </div>)}
+                            <hr className="lines"/>
                             <br/><br/><br/><br/>
                         </div>
                     </div>

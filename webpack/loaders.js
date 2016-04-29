@@ -80,7 +80,7 @@ module.exports = [
         loader:  sassLoader
     },
     {
-        test: /\.(jpe?g|gif|png)$/,
+        test: /\.(jpe?g|gif|png|pdf)$/,
         loader: 'url-loader'
     },
     {

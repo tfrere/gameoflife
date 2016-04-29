@@ -52,31 +52,31 @@ export default class Contact extends Component {
                         <div className="circle-form">
                             <div ref="hi" className="hi"/>
                         </div>
-                        <a href="https://www.linkedin.com/in/thibaud-frere-3462b264">
+                        <a target="_blank" href="https://www.linkedin.com/in/thibaud-frere-3462b264">
                             <div ref="contactCircle0" className="delay-0 small-circle linkedin"/>
                         </a>    
-                        <a href="https://twitter.com/thibaudfrere">
+                        <a target="_blank" href="https://twitter.com/thibaudfrere">
                             <div ref="contactCircle1" className="delay-1 small-circle twitter"/>
                         </a>    
-                        <a href="http://github.com/tfrere">
+                        <a target="_blank" href="http://github.com/tfrere">
                             <div ref="contactCircle2" className="delay-2 small-circle github"/>
                         </a>    
-                        <a href="https://www.behance.net/frerethibaud9207">
+                        <a target="_blank" href="https://www.behance.net/frerethibaud9207">
                             <div ref="contactCircle3" className="delay-3 small-circle behance"/>
                         </a>    
                     </div>
                     <h1 ref="title">Bonjour,</h1>
                     <p ref="content">
                         Un project cool en tête et vous pensez que je pourrais y contribuer ?
-                        <br/>
-                        Envoyez moi un email à <a href="mailto:ecrire@tfrere.fr">ecrire@tfrere.fr</a>
+                        Pensez à aller jeter un oeil à <a target="_blank" href="images/cv.pdf">mes compétences</a> et
+                        envoyez moi un email à <a href="mailto:ecrire@tfrere.fr">ecrire@tfrere.fr</a>
                         <br/>
                         <small className="i">Je suis disponible à</small>
                         <a className="no-style" target="_blank" href="https://www.google.fr/maps/place/Paris/data=!4m2!3m1!1s0x47e66e1f06e2b70f:0x40b82c3688c9460?sa=X&ved=0ahUKEwjO1aWRvajLAhUCM5oKHblzAqAQ8gEIfjAQ">
-                            <span>{/*<i className="icon icon-location_on"/>*/}Paris</span>
+                            <span>Paris</span>
                         </a>
                         <a className="no-style" target="_blank" href="https://www.google.fr/maps/place/Metz/data=!4m2!3m1!1s0x4794dc1b6074b6a9:0x596be4b635bba669?sa=X&ved=0ahUKEwjawPfeuqjLAhVjYZoKHQTFDhoQ8gEIfzAQ">
-                            <span>{/*<i className="icon icon-location_on"/>*/}Metz</span>
+                            <span>Metz</span>
                         </a>
                     </p>
                 </header>

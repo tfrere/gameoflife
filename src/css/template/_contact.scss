@@ -22,7 +22,6 @@ $radius: $circle-size * 0.85;
 		margin-top:150px;
 		text-align:center;
 		h1 {
-			font-family: "Libre Baskerville";
 			font-weight: bold;
 		}
 	}
@@ -78,26 +77,28 @@ $radius: $circle-size * 0.85;
 			width:$circle-size;
 			height:$circle-size;
 			background-color: color("primary", "base");
-			border: $border-size solid rgba(color("primary", "darken-1"), 0.5);
 			border-radius: 50%;
 			position:relative;
 			z-index: 1;
 			box-sizing:border-box;
 			overflow:hidden;
 			display:flex;
-			//background-image: url("../images/portfolio/jpgs/thibaud.jpg");
-			//background-size: cover;
-			.hi {
-				width: $circle-size;
-				height: $circle-size;
-				background-image: url("../images/portfolio/svgs/hi.svg");
-				background-size: cover;
-				margin: auto;
-				transition: all 200ms ease;
-				&:hover{
-					transform:translateY(-10px);
-				}
-			}
+			background-image: url("../images/portfolio/jpgs/thibaud.jpg");
+			background-size: cover;
+			
+			//border: $border-size solid rgba(color("primary", "darken-1"), 0.5);
+			
+			// .hi {
+			// 	width: $circle-size;
+			// 	height: $circle-size;
+			// 	background-image: url("../images/portfolio/svgs/hi.svg");
+			// 	background-size: cover;
+			// 	margin: auto;
+			// 	transition: all 200ms ease;
+			// 	&:hover{
+			// 		transform:translateY(-10px);
+			// 	}
+			// }
 		}
 		a {
 			margin-left:10px;
@@ -174,6 +175,6 @@ $radius: $circle-size * 0.85;
 
 @include phablet {
 	.contact {
-		width: 46%;
+		width: 48%;
 	}
 }
