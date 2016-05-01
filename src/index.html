@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Thibaud Frere - Portfolio</title>
     <meta name="description" content="Designer indépendant, Thibaud FRERE, passionné de typographie et d'ergonomie, spécialisé dans la communication sur internet, à votre service">
-    <meta 
     <link rel="stylesheet" href="css/app.css?v=<%= buildTime %>">
     <link rel="icon" href="images/favicon.ico">
 
@@ -26,11 +25,10 @@
 <body>
     <!-- App version : <%= version %>, build time : <%= ( new Date( +buildTime ) ).toString() %> -->
     <div id="app-container"></div>
-    <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery-mousewheel/3.1.13/jquery.mousewheel.js"></script>
+    <script href="es5-shim.js"></script>
     <script src="js/polyfills.js?v=<%= buildTime %>"></script>
     <script src="js/vendors.js?v=<%= buildTime %>"></script>
     <script src="js/app.js?v=<%= buildTime %>"></script>
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
     <div id="preload-1"/>
     <div id="preload-2"/>
     <div id="preload-3"/>
