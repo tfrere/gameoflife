@@ -103,7 +103,7 @@ $base-color: color("primary", "base");
 				a {
 					text-transform: uppercase;
 					color:white;
-					@include modular-scale(4, $title-size, $ratio);
+					@include modular-scale(3, $title-size, $ratio);
 					font-family: $nav-font;
 					font-weight: 100;
 					&.active {
@@ -204,6 +204,7 @@ $base-color: color("primary", "base");
 	}
 }
 
+
 @include phablet {
 	.nav-mobile-gradient {
 		height:0px!important;
@@ -217,6 +218,7 @@ $base-color: color("primary", "base");
 			background: linear-gradient(to bottom, rgba(255,255,255, 0.901961) 10%, rgba(255,255,255,0) 100%);
 		}
 	}
+	.nav div ul li a {@include modular-scale(4, $title-size, $ratio);}
 	.nav-back h5 {
 		display:block!important;
 	}

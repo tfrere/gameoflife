@@ -37,6 +37,7 @@ $line-color: rgba(0,0,0,0.2);
 	text-transform: uppercase;
 	letter-spacing: .1rem;
 	margin-left: 13px;
+	margin-bottom: 40px;
 	&.visible {
 		display: inline-block;
 	}
@@ -51,6 +52,7 @@ $line-color: rgba(0,0,0,0.2);
 	    top:-30px;
 	    padding: 10px 15px;
 	    margin-left: -36px;
+	    margin-bottom: 0px;
 	}
 
 	.timeline {

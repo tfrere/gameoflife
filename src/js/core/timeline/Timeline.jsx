@@ -37,6 +37,9 @@ export default class Timeline extends Component {
     }
 
     componentDidMount(){
+
+        window.scrollTo(0,0);
+
         var timeline = this.refs.timeline;
         var line = this.refs.timelineLine;
         var projectLength = Projects.length;
@@ -46,7 +49,6 @@ export default class Timeline extends Component {
         var project2 = this.refs.project2;
         var project3 = this.refs.project3;
         var project4 = this.refs.project4;
-        var project5 = this.refs.project5;
 
         this.tl
         .fromTo(line, 1, { opacity:0, y:500, ease: Cubic.linear },
@@ -55,8 +57,7 @@ export default class Timeline extends Component {
         .fromTo(project1, 0.5, { opacity:0, ease: Cubic.linear }, { opacity:1, y:0, ease: Cubic.linear })
         .fromTo(project2, 0.5, { opacity:0, ease: Cubic.linear }, { opacity:1, y:0, ease: Cubic.linear })
         .fromTo(project3, 0.5, { opacity:0, ease: Cubic.linear }, { opacity:1, y:0, ease: Cubic.linear })
-        .fromTo(project4, 0.5, { opacity:0, ease: Cubic.linear }, { opacity:1, y:0, ease: Cubic.linear })
-        .fromTo(project5, 0.5, { opacity:0, ease: Cubic.linear }, { opacity:1, y:0, ease: Cubic.linear });
+        .fromTo(project4, 0.5, { opacity:0, ease: Cubic.linear }, { opacity:1, y:0, ease: Cubic.linear });
 
     }
 

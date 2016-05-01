@@ -1,3 +1,31 @@
+
+
+@keyframes bounce {
+	0%, 25%, 100% {
+			-webkit-transform: translate(0, 0);
+			transform: translate(0, 0);
+	}
+	12% {
+			-webkit-transform: translate(0, -15px);
+			transform: translate(0, -15px);
+	}
+}
+
+.intro {
+	h4 {
+		@include modular-scale(-1, $title-size, $ratio);
+	}
+}
+
+
+@include phablet {
+	.intro {
+		h4 {
+			@include modular-scale(0, $title-size, $ratio);
+		}
+	}
+}
+
 .intro {
 	width:100%;
 	height:100%;
@@ -6,7 +34,6 @@
 	&>div {
 		perspective:1200px;
 		margin: auto;
-		padding-top:50px;
 		text-align: center;
 		color: color("grey", "lighten-3");
 		h1 {
@@ -34,26 +61,54 @@
 		margin-top:10px;
 	}
 	.cta {
+		display:block;
+		position:absolute;
+		bottom:10%;
+		left:0;
+		right:0;
+		width:150px;
+		height: 100px;
+    	overflow: hidden;
+		margin: 0 auto;
 		font-size: modular-scale(0, $text-size, $ratio);
 		display:inline-block;
 		white-space: nowrap;
 		background:transparent;
-		border: 1px solid rgba(0,0,0,0.2);
-		border-radius: 50px;
+		border: none;
+		color: color("primary", "base");
 		padding: 1em;
-		margin-left:-5px;
-		display:inline-block;
-		margin-top:$text-size * 2;
-		margin-bottom:$text-size * 2;
 		transition:all 200ms ease;
 		opacity:0;
 		span {
-			padding: 0 2rem;
+			transition: all 200ms ease;
+			//opacity:0.6;
+		}
+		span.arrow-down {
+			background-image: url("../images/portfolio/svgs/arrow_down.svg");
+			background-repeat: no-repeat;
+			width:44px;
+			height:44px;
+			display:block;
+			margin: 0 auto;
+			margin-top:10px;
+			opacity:1;
+			transition: all 350ms ease;
 		}
 		&:hover {
-			border: 1px solid color("primary", "base");
-			background:color("primary", "base");
-			color:white;
+			span {
+				//opacity:1;
+			}
+			span.arrow-down {
+				animation:none;
+				transform: translateY(10px);
+			}
+		}
+		&.active {
+			span.arrow-down {
+				animation:none;
+				transform: translateY(25px);
+				opacity:0;
+			}
 		}
 	}
 }

@@ -115,7 +115,7 @@ $radius: $circle-size * 0.85;
 				width:$button-size;
 				height:$button-size;
 				transition:all 350ms ease-in-out;
-				opacity:0.3;
+				opacity:0.5;
 				@for $i from 0 through $number-of-buttons {
 					$x: $radius * cos($base-angle);
 					$y: $radius * sin($base-angle);

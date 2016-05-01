@@ -17,6 +17,9 @@ export default class Contact extends Component {
     }
 
     componentDidMount(){
+
+        window.scrollTo(0,0);
+
         var circle = this.refs.contactCircle;
         
         var circle0 = this.refs.contactCircle0;

@@ -31,14 +31,14 @@
     border: 0px solid currentColor;
     margin-bottom: 1.6em;
     background: rgba(0,0,0,0.05);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    //backdrop-filter: blur(10px);
+    //-webkit-backdrop-filter: blur(10px);
 }
 
 .tech-tag {
     position:relative;
     white-space: nowrap;
-    margin: 0 5px 10px 20px;
+    margin: 0 5px 10px 15px;
     display: inline-block;
     height: 26px;
     padding: 0 15px 0 15px;

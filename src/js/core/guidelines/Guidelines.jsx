@@ -50,17 +50,21 @@ export default class Guidelines extends Component {
                       <article>
                         <h1>Titre principal</h1>
                         <h3>Title secondaire</h3>
-                        <div className="square-tag">tag</div>
-                        <p> Equitis Romani autem esse filium criminis <a href='#'>loco poni</a> ab accusatoribus neque his iudicantibus oportuit neque defendentibus nobis. Equitis Romani autem esse filium criminis loco poni ab accusatoribus neque his iudicantibus oportuit neque defendentibus nobis. </p>
+                        <p> Equitis Romani autem esse filium criminis <a href='#'>un lien</a> ab accusatoribus neque his iudicantibus oportuit neque defendentibus nobis. Equitis Romani autem esse filium criminis loco poni ab accusatoribus neque his iudicantibus oportuit neque defendentibus nobis. </p>
                         <blockquote>Nam quod de pietate dixistis, est quidem ista nostra existimatio, sed iudicium certe parentis; quid nos opinemur, audietis ex iuratis; quid parentes sentiant, lacrimae matris incredibilisque maeror, squalor patris et haec praesens maestitia, quam cernitis, luctusque declarat.</blockquote>
                         <blockquote className="pullquote">
                           <p>The less you reveal the more people can wonder.</p>
                           <footer>Henri Ford.</footer>
                         </blockquote>
                         <hr className="invisible"/>
+                        <div className="square-tag">mot clé 1</div>
+                        <div className="square-tag">mot clé 2</div>
+                        <div className="square-tag">mot clé 3</div>
+                        <hr className="invisible"/>
                         <div className="tech-tag">mot clé 1 </div>
                         <div className="tech-tag">mot clé 2 </div>
                         <div className="tech-tag">mot clé 3 </div>
+                        <hr className="invisible"/>
                         <hr className="lines"/>
                         <div className="row">
                           <div className="cell">

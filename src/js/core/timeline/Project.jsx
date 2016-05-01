@@ -72,7 +72,7 @@ export default class Article extends Component {
 
     componentDidMount(){
 
-        // window.scrollTo(0,0);
+        window.scrollTo(0,0);
         
         document.addEventListener('keydown', this.onKeyPress, false);
 

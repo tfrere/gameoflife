@@ -31,6 +31,8 @@ $small-img-ratio: 1/4;
 		text-transform: uppercase;
 		letter-spacing: .1rem;
 		margin-bottom:$text-size * 2;
+		text-shadow: 2px 2px 0 white, 3px 3px 0 rgba(0,0,0,0.1);
+
 	}
 	h5 {
 		font-style: italic;
@@ -190,6 +192,7 @@ $small-img-ratio: 1/4;
 		border:none;
 		text-decoration: none;
 		opacity:1;
+		display:none;
 	}
 	.next-project {
 		right:40px;
@@ -203,6 +206,15 @@ $small-img-ratio: 1/4;
 		&:hover {
 			transform:translateX(10px);
 			text-decoration: none;
+		}
+	}
+	a:not(.prev-project):not(.next-project) {
+		color: $color-primary;
+		font-weight: 600;
+		border-bottom: 1px solid color("grey", "lighten-1");
+		&:focus, &:hover {
+			text-decoration: none;
+			border-bottom: 1px solid color("grey", "darken-2");
 		}
 	}
 	.prev-project {
@@ -221,3 +233,10 @@ $small-img-ratio: 1/4;
 	}
 }
 
+@include phablet {
+	.project {
+		.prev-project, .next-project {
+			display:block!important;
+		}
+	}
+}
