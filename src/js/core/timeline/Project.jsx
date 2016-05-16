@@ -33,6 +33,7 @@ export default class Article extends Component {
         this.nextProject = this.nextProject.bind(this);
         this.prevProject = this.prevProject.bind(this);
         this.onKeyPress = this.onKeyPress.bind(this);
+        this.onLeave = this.onLeave.bind(this);
         setTimeout( () => {
             this.setState( { open : true } );
         }, 1500 );
@@ -69,11 +70,17 @@ export default class Article extends Component {
          this.setState( { active: !this.state.active } );
     }
 
+    onLeave() {
+        this.tl.reverse();
+    }
+
 
     componentDidMount(){
 
         window.scrollTo(0,0);
-        
+                
+        document.addEventListener('leaving', this.onLeave, false);
+
         document.addEventListener('keydown', this.onKeyPress, false);
 
         var content = this.refs.contentWrapper;
@@ -115,6 +122,7 @@ export default class Article extends Component {
     }
 
     componentWillUnmount() {
+        document.removeEventListener('leaving', this.onLeave, false);
         document.removeEventListener('keydown', this.onKeyPress, false);
     }
     

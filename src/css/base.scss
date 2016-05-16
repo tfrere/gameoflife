@@ -4,7 +4,8 @@
 	/* # Imports and variable
 	–––––––––––––––––––––––––––––––––––––––––––––––––– */
 		
-		@import url(//fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700,700italic,900,900italic|Pacifico:400,700|Istok+Web:400,700,400italic,700italic|Cookie:300,500|Roboto:300,500,700|Lora:400,700,400italic,700italic|Nunito:400,300,700|Ubuntu:400,700italic,500italic,400italic,300italic,700,500,300|Open+Sans:400,800,700,600,300,300italic,400italic,600italic,800italic,700italic|Oswald:400,300,700|Merriweather:400,300,700,900,300italic,400italic,700italic,900italic|Quicksand:400,700,300|Raleway:400,200,300,500,600,700,800,900|Raleway+Dots|EB+Garamond|Libre+Baskerville:400,400italic,700);
+		@import url(//fonts.googleapis.com/css?family=Lora:400,400italic,700italic,700|Playfair+Display:400,400italic,700,700italic,900,900italic|Pacifico:400,700|Istok+Web:400,700,400italic,700italic|Cookie:300,500|Roboto:300,500,700|Lora:400,700,400italic,700italic|Nunito:400,300,700|Ubuntu:400,700italic,500italic,400italic,300italic,700,500,300|Open+Sans:400,800,700,600,300,300italic,400italic,600italic,800italic,700italic|Oswald:400,300,700|Merriweather:400,300,700,900,300italic,400italic,700italic,900italic|Quicksand:400,700,300|Raleway:400,200,300,500,600,700,800,900|Raleway+Dots|EB+Garamond|Libre+Baskerville:400,400italic,700);
+
 
 		@include include-font("~/fonts/icomoon/", "icomoon");
 
@@ -31,9 +32,9 @@
 		$title-size: 2.2rem;
 		$text-size: 1.4rem;
 
-		$title-font: "Libre Baskerville", serif;
+		$title-font: "Playfair Display", serif;
 		$nav-font: "Open Sans", sans-serif;
-		$text-font: "Libre Baskerville", serif;
+		$text-font: "Open Sans", serif;
 		$base-color: rgba(0,0,0,0.6);
 		$title-color: rgba(0,0,0,0.8);
 

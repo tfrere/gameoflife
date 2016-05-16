@@ -28,17 +28,26 @@ export default class Guidelines extends Component {
 
     constructor( props ) {
         super( props );
+        this.onLeave = this.onLeave.bind(this);
         this.tl = new TimelineLite();
     }
-
-    componentWillMount() {
+    onLeave() {
+        this.tl.reverse();
     }
 
     componentDidMount(){
+        document.addEventListener('leaving', this.onLeave, false);
+
         var guidelines = this.refs.guidelines;
         this.tl
         .fromTo(guidelines, 0.3, {opacity:0, y:-20, ease: Cubic.linear},{opacity:1, y:0, ease: Cubic.linear}, "+=0.5");
     }
+
+    componentWillUnmount() {
+        document.removeEventListener('leaving', this.onLeave, false);
+
+    }
+
 
     render() {
 

@@ -20,6 +20,8 @@ export default class Nav extends Component {
         super( props );
         this.state = {};
         this.tl = new TimelineLite();
+        this.leavingEvent = document.createEvent('Event');
+        this.leavingEvent.initEvent('leaving', true, true);
         this.onClick = this.onClick.bind(this);
         this.onBack = this.onBack.bind(this);
     }
@@ -40,6 +42,10 @@ export default class Nav extends Component {
     }
 
     onBack() {
+
+        console.log(this);
+        document.dispatchEvent(this.leavingEvent);
+
         setTimeout( () => {
             //console.log(this.props.history);
 
@@ -53,10 +59,11 @@ export default class Nav extends Component {
             else
                 this.props.history.goBack();
 
-        }, 10);
+        }, 1000);
     }
 
     componentDidMount() {
+
 
         var footer = this.refs.navFooter;
         var link0 = this.refs.navLink0;
@@ -83,7 +90,7 @@ export default class Nav extends Component {
 
         if (url == "/"){
             isBackButtonDisplayed = false;
-            var url = "";
+            var url = "menu";
         }
         else 
             url = url.replace(/\//g, ' ');
@@ -109,7 +116,7 @@ export default class Nav extends Component {
                       } 
                     })(this.props, isBackButtonDisplayed, this.onBack)}
 
-                    <h5 className={classNames("nav-info", "nav-typo", { "active": isBackButtonDisplayed})}>
+                    <h5 className={classNames("nav-info", "nav-typo", { "active": this.state.active})}>
                         {url}
                     </h5>
                     <div className="nav-button">

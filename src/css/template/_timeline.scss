@@ -13,7 +13,7 @@ $line-color: rgba(0,0,0,0.2);
 		:before {
 			display:none;
 		}
-		figure {
+		.cell-wrapper {
 			margin: 1em;
 		}
 		h2 {
@@ -75,7 +75,7 @@ $line-color: rgba(0,0,0,0.2);
 		.cell {
 			opacity:0;
 			transition:all 200ms ease;
-			figure {
+			.cell-wrapper {
 				margin: 3em 40px;
 			}
 			&.addPlaceForYear {

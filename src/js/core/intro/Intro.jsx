@@ -1,5 +1,9 @@
 import _                        from 'lodash';
 import $                        from 'jquery';
+import svgdraw                  from './svgdraw.js';
+import arctext                  from './arctext.js';
+
+
 import React,
        { Component, PropTypes } from 'react';
 import { Router, Route, Link, browserHistory }  from 'react-router';
@@ -43,7 +47,16 @@ export default class Intro extends Component {
         var name = this.refs.name;
         var work = this.refs.work;
         var since = this.refs.since;
-        
+
+        var illustration = this.refs.illustration;
+
+        $(work).arctext({radius: 100, dir: 1});
+        $(since).arctext({radius: 80, dir: -1});
+
+        var mySVG = $(illustration).drawsvg({
+            duration: 3000,
+            stagger: 0
+        });
         this.tl.stop();
 
         this.tl
@@ -56,7 +69,11 @@ export default class Intro extends Component {
         .fromTo(since, 0.5, { opacity:0, y:-30, ease: Expo.easeInOut, rotationY:0, rotationX:60 },
                            {opacity:1, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:0}
                            , "-=0.4")
-        .to(cta, 0.2, { opacity:1 })
+        .to(cta, 0.2, { opacity:1 });
+
+        setTimeout( () => {
+            mySVG.drawsvg('animate');
+        }, 2000 );
 
         this.tl.play();
     }
@@ -66,13 +83,12 @@ export default class Intro extends Component {
             return (
                 <div className="intro">
                     <div>
-                         {/*{illustration("grey")}
-                         {overlay("black")}
-                         {sunrise("grey")}*/}
-                        <h1 ref="name">Thibaud Frere </h1>
-                        <h4 ref="work" className="i uppercase">designer indépendant</h4>
-                        <h5 ref="since" className="square-tag">depuis 2008</h5>
-                        <br className="clearfix"/>
+                        {illustration("#EBEBEB")}
+                        <div className="text">
+                        <h4 ref="work">THIBAUD FRERE</h4>
+                        <h1 ref="name" className="i uppercase">web designer </h1>
+                        <h5 ref="since">DEPUIS 2008</h5>
+                        </div>
                     </div>
                     <button ref="cta" className={classNames("cta", {active: this.state.active}) } onClick={ ::this.onClick } >
                         <span ref="ctaSpan">PORTFOLIO</span>

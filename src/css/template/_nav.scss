@@ -52,7 +52,7 @@ $base-color: color("primary", "base");
 		@extend fadeIn();
 		transition:all 200ms ease;
 		top: 26px;
-		right:120px;
+		right:100px;
 		z-index: $base-index;
 		&.active {
 			float:left;

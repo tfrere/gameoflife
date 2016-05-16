@@ -21,8 +21,7 @@ const copy = [
     { from: path.resolve( __dirname, '../src/images' ), to: 'images' },
     { from: path.resolve( __dirname, '../src/fonts' ),  to: 'fonts' },
     { from: path.resolve( __dirname, '../src/robot.txt' ),  to: 'robot.txt' },
-    { from: path.resolve( __dirname, '../src/sitemap.xml' ),  to: 'sitemap.xml' },
-    { from: path.resolve( __dirname, '../src/es5-shim.js' ),  to: 'es5-shim.js' }
+    { from: path.resolve( __dirname, '../src/sitemap.xml' ),  to: 'sitemap.xml' }
 ];
 
 if( DEV ) {

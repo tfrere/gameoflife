@@ -25,6 +25,7 @@ export default class Timeline extends Component {
         super( props );
         this.state = {clicked:false};
         this.onClick = this.onClick.bind(this);
+        this.onLeave = this.onLeave.bind(this);
         this.tl = new TimelineLite();
     }
 
@@ -36,7 +37,14 @@ export default class Timeline extends Component {
         }, 600 );
     }
 
+    onLeave() {
+        this.tl.seek(1)
+        this.tl.reverse();
+    }
+
     componentDidMount(){
+
+        document.addEventListener('leaving', this.onLeave, false);
 
         window.scrollTo(0,0);
 
@@ -62,7 +70,7 @@ export default class Timeline extends Component {
     }
 
     componentWillUnMount() {
-
+        document.removeEventListener('leaving', this.onLeave, false);
     }
 
     render() {

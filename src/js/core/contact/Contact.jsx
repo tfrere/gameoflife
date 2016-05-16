@@ -13,10 +13,16 @@ export default class Contact extends Component {
 
     constructor( props ) {
         super( props );
+        this.onLeave = this.onLeave.bind(this);
         this.tl = new TimelineLite();
+    }
+    
+    onLeave() {
+        this.tl.reverse();
     }
 
     componentDidMount(){
+        document.addEventListener('leaving', this.onLeave, false);
 
         window.scrollTo(0,0);
 
@@ -34,16 +40,16 @@ export default class Contact extends Component {
         this.tl
         .from(circle, 1, { y:-500, ease: Circ.easeInOut })
         .set(circle0, {className: '+=active'}, "+.6")
-        .set(circle1, {className: '+=active'}, "+0.8")
-        .set(circle2, {className: '+=active'}, "+1")
-        .set(circle3, {className: '+=active'}, "+1.2")
+        .set(circle1, {className: '+=active'}, "+.7")
+        .set(circle2, {className: '+=active'}, "+.8")
+        .set(circle3, {className: '+=active'}, "+.9")
         .from(title, 0.5, { opacity:0, y:-20, ease: Cubic.linear }, "+0.5")
         .from(content, 0.5, { opacity:0, y:-50, ease: Cubic.linear }, "+0.5")
         .from(hi, 0.250, { opacity:0, y:150, ease: Cubic.linear, clearProps: "all" });
     }
 
-    componentWillUnMount() {
-        this.tl.reverse();
+    componentWillUnmount() {
+        document.removeEventListener('leaving', this.onLeave, false);
     }
 
     render() {

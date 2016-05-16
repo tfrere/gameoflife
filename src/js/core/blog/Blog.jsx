@@ -26,14 +26,17 @@ export default class Blog extends Component {
 
     constructor( props ) {
         super( props );
+        this.onLeave = this.onLeave.bind(this);
         this.tl = new TimelineLite();
     }
-
-    componentWillMount() {
+    
+    onLeave() {
+        this.tl.reverse();
     }
 
     componentDidMount(){
-
+        document.addEventListener('leaving', this.onLeave, false);
+        
         window.scrollTo(0,0);
 
         var blog = this.refs.blog;
@@ -43,6 +46,7 @@ export default class Blog extends Component {
 
 
     componentWillUnmount() {
+        document.removeEventListener('leaving', this.onLeave, false);
     }
 
 

@@ -52,14 +52,14 @@ export default class ProjectCard extends Component {
                 <a onClick={ ::this.onClick }>
                     <div className={classNames("delay-" + this.props.id)}>
                         <div className="circle"></div>
-                        <figure>
+                        <div className="cell-wrapper">
                             <div className="data">
                                 <h5 className="italic">{this.props.data.month}</h5>
                                 <h2>{this.props.data.title}</h2>
                                 <p>{this.props.data.short}</p>
                                 <span className="square-tag">{this.props.data.purpose}</span>
                             </div>
-                        </figure>
+                        </div>
                     </div>
                 </a>
             </div>
