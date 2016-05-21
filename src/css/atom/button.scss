@@ -23,7 +23,6 @@
         text-decoration: none;
         white-space: nowrap;
         transition: all, 200ms, ease-in-out;
-        border-radius:5px;
         user-select:none;
 
         &.self-center {
@@ -45,12 +44,10 @@
 
         i + span {
             display:inline-block;
-            margin-left:10px;
         }
 
         span + i {
             display:inline-block;
-            margin-left:10px;
         }
 
         &:hover {

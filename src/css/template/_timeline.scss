@@ -18,6 +18,10 @@ $line-color: rgba(0,0,0,0.2);
 		}
 		h2 {
 			display: inline-block;
+			letter-spacing: .1rem;
+			font-weight: 600;
+			font-style: italic;
+
 		}
 		img {
 			display:none;
@@ -33,7 +37,7 @@ $line-color: rgba(0,0,0,0.2);
     font-size: $text-size;
     border: 1px solid $line-color;
     background-color: #FFF;
-    color:color("grey", "base");
+    color:color("grey", "darken-4");
 	text-transform: uppercase;
 	letter-spacing: .1rem;
 	margin-left: 13px;
@@ -88,11 +92,12 @@ $line-color: rgba(0,0,0,0.2);
 				}
 			}
 			h2{
-				text-transform: uppercase;
 				letter-spacing: .1rem;
+				font-weight: 600;
+				font-style: italic;
+				background-image: linear-gradient(180deg,rgba(0, 0, 0, 0) 50%,color("primary", "lighten-3") 0);
 				margin-bottom:$text-size * 2;
 				display:inline;
-				background-image: linear-gradient(180deg,rgba(0, 0, 0, 0) 50%,color("primary", "lighten-3") 0);
 				background-size: 0 100%;
 				background-repeat: no-repeat;
 				text-decoration: none;

@@ -3,6 +3,7 @@ import $                        from 'jquery';
 import React,
        { Component, PropTypes } from 'react';
 import { Router, Route, Link, browserHistory } from 'react-router';
+import svgdraw                  from '../intro/svgdraw.js';
 
 import ReactDOM                 from 'react-dom';
 import classNames               from 'classnames';
@@ -15,6 +16,8 @@ import Articles                 from 'config/articles';
 
 import TweenMax                 from 'gsap/src/minified/TweenMax.min.js';
 import TweenLite                from 'gsap/src/minified/TweenLite.min.js';
+
+import {illustration}             from './blogillu.jsx';
 
 
 
@@ -38,6 +41,17 @@ export default class Blog extends Component {
         document.addEventListener('leaving', this.onLeave, false);
         
         window.scrollTo(0,0);
+        
+        var illustration = this.refs.illustration;
+
+        var mySVG = $(illustration).drawsvg({
+            duration: 3000,
+            stagger: 0
+        });
+
+        setTimeout( () => {
+            mySVG.drawsvg('animate');
+        }, 200 );
 
         var blog = this.refs.blog;
         this.tl
@@ -56,6 +70,7 @@ export default class Blog extends Component {
 
         return (
             <div ref="blog" className="screen-box blog">
+                {illustration("#CCCCCC")}
                 <div className="container">
                  {Articles.map((object, i) =>
                     <div id={i} key={i} className="cell force-1" ref={`project${i}`} >
@@ -66,9 +81,9 @@ export default class Blog extends Component {
                             </div>
                             <div className="sub-header">
                                 <h2>{object.title}</h2>
-                                <h5 className="i">
+                                {/*<h5 className="i">
                                     <span>{object.themes}</span>
-                                </h5>
+                                </h5>*/}
                             </div>
                         </header>
                         <div className="clearfix"/>
@@ -77,7 +92,7 @@ export default class Blog extends Component {
                         <p dangerouslySetInnerHTML={{__html: object.contentHtml}}/>
                         <br/><br/>
                         {/*{object.tags.map((object, i) => <div className="tech-tag">{object} </div>)}*/}
-                        <hr className="lines"/>
+                        <hr/>
                         <br/><br/><br/><br/>
                     </div>
                  )}

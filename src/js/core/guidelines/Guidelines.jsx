@@ -66,6 +66,11 @@ export default class Guidelines extends Component {
                           <footer>Henri Ford.</footer>
                         </blockquote>
                         <hr className="invisible"/>
+                        <a className="button">
+                          <i className="icon icon-heart"/>
+                          <span>Un bouton</span>
+                        </a>
+                        <hr className="invisible"/>
                         <div className="square-tag">mot clé 1</div>
                         <div className="square-tag">mot clé 2</div>
                         <div className="square-tag">mot clé 3</div>

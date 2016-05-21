@@ -12,8 +12,6 @@ import classNames               from 'classnames';
 import ReactTooltip             from 'react-tooltip';
 import TypeWriter               from 'react-typewriter';
 import {illustration}             from './illustration.jsx';
-import {overlay}                  from './overlay.jsx';
-import {sunrise}                  from './sunrise.jsx';
 
 import TweenMax from 'gsap/src/minified/TweenMax.min.js';
 import TweenLite from 'gsap/src/minified/TweenLite.min.js';
@@ -36,7 +34,7 @@ export default class Intro extends Component {
             //console.log(this.props.history);
             this.props.history.pushState(null, '/portfolio');
             this.setState( { active : false } );
-        }, 1000 );
+        }, 1500 );
     }
 
 
@@ -69,11 +67,12 @@ export default class Intro extends Component {
         .fromTo(since, 0.5, { opacity:0, y:-30, ease: Expo.easeInOut, rotationY:0, rotationX:60 },
                            {opacity:1, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:0}
                            , "-=0.4")
-        .to(cta, 0.2, { opacity:1 });
+        .to(cta, 0.2, { opacity:1 })
+        .fromTo(illustration, 0.5, {opacity:0}, {opacity:1});
 
         setTimeout( () => {
             mySVG.drawsvg('animate');
-        }, 2000 );
+        }, 600 );
 
         this.tl.play();
     }
@@ -83,7 +82,7 @@ export default class Intro extends Component {
             return (
                 <div className="intro">
                     <div>
-                        {illustration("#EBEBEB")}
+                        {illustration("#CCCCCC")}
                         <div className="text">
                         <h4 ref="work">THIBAUD FRERE</h4>
                         <h1 ref="name" className="i uppercase">web designer </h1>

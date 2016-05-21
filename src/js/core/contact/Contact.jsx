@@ -64,7 +64,7 @@ export default class Contact extends Component {
                         <a target="_blank" href="https://www.linkedin.com/in/thibaud-frere-3462b264">
                             <div ref="contactCircle0" className="delay-0 small-circle linkedin"/>
                         </a>    
-                        <a target="_blank" href="https://twitter.com/thibaudfrere">
+                        <a target="_blank" href="https://codepen.io/tfrere">
                             <div ref="contactCircle1" className="delay-1 small-circle twitter"/>
                         </a>    
                         <a target="_blank" href="http://github.com/tfrere">

@@ -2,7 +2,7 @@ import React from 'react';
 
 export function illustration(fillColor) {
   return (
-<svg ref="illustration" id="svg5247" class="illu" overflow="visible" height="500" viewBox="0 0 500 500" width="500" version="1.1" enable-background="new 0 0 500 500">
+<svg ref="illustration" id="svg5247" class="blogillu" overflow="visible" height="500" viewBox="0 0 500 500" width="500" version="1.1" enable-background="new 0 0 500 500">
 
  <path id="path5249" d="M185.59,449.57,46.607,295.21,110.79,97.667,313.97,54.482l7.8197,8.6859,131.17,145.67-64.187,197.54z" stroke={fillColor} strokeLinecap="round" strokeWidth="1.38819516" class="path" fill="#FFF"/>
  <path id="path5251" d="M206.59,455.2,52.235,316.21,95.42,113.04,292.96,48.852,310.44,64.585l136.89,123.26-1.1078,5.2071-42.078,197.96z" stroke={fillColor} strokeLinecap="round" strokeWidth="1.38819516" class="path" fill="#FFF"/>

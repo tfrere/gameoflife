@@ -1,9 +1,6 @@
 .guidelines {
 	width:100%;
 	margin-top:250px;
-	h1,h2,h3,h4,h5,h6 {
-		font-family: "Libre Baskerville";
-	}
 	.dafoe {
 		font-family: "Dafoe";
 	}
@@ -24,7 +21,9 @@
 	hr {
 		margin-bottom:$text-size * 3;
 	}
-
+	a.button {
+		@include naira(color("primary", "base"), color("primary", "base"));
+	}
 	&>footer {
 		padding-top:80px;
 		padding-bottom:80px;

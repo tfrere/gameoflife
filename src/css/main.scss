@@ -52,15 +52,25 @@
 #app-container, #app-container>div  {
 	width:100%;
 	height:100%;
-	// background-image: url('../images/patterns/dot-grey.png');
- //    background-repeat: repeat-xy;
 }
+
+// #app-container>div:before {
+//     content: ' ';
+//     display: block;
+//     position: fixed;
+//     left: 0;
+//     top: 0;
+//     width: 100%;
+//     height: 100%;
+//     z-index: -1;
+//     opacity: 0.6;
+// 	background-image: url('../images/patterns/old_wall.png');
+//   background-repeat: repeat-xy;
+// }
 
 iframe {
   width:100%;
 }
-//html {background-color:#E2E2E2;}
-
 
 #preload-1 { background: url(~/images/portfolio/pngs/derock_desktop.png) no-repeat -9999px -9999px; }
 #preload-2 { background: url(~/images/portfolio/pngs/derock_phone.png) no-repeat -9999px -9999px; }

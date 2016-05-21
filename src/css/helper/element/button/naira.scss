@@ -45,9 +45,10 @@
   }
   & i {
     position: absolute;
-    top: 5px;
-    left: calc(50%-20px);
-    width:40px;
+    top: 7px;
+    left: calc(50% - 10px);
+    width:20px;
+    margin: 0 auto;
     color: white;
     transform: translate3d(0, -100%, 0);
   }
@@ -60,6 +61,7 @@
   &:hover::before {
     animation: anim-naira 0.3s forwards ease-in;
     background-color: $hover-background;
+    border:0;
   }
 
   &:hover {

@@ -47,14 +47,16 @@ export default class Nav extends Component {
         document.dispatchEvent(this.leavingEvent);
 
         setTimeout( () => {
-            //console.log(this.props.history);
-
+            console.log(this.props.history);
+            console.log(window.history.length);
             const url = this.props.location.pathname;
             var re = /.*\/.*\/[0-9]*/i;
 
             if (url.match(re))
                 this.props.history.push('/portfolio');
             else if( url.match(/portfolio/i) ) 
+                this.props.history.push('/');
+            else if (window.history.length > 1)
                 this.props.history.push('/');
             else
                 this.props.history.goBack();
@@ -99,6 +101,7 @@ export default class Nav extends Component {
             url = "projet";
         if (url.includes("guidelines"))
             url = "charte graphique";
+
 
         return (
             <div>

@@ -47,9 +47,14 @@ export default class Article extends Component {
         }
         else 
             currentUrl++;
+        this.tl.seek('displayNav');
+        this.tl.reverse();
+        this.tl.timeScale(4); 
         setTimeout( () => {
+            this.tl.play();
             this.props.history.push('/projet/' + currentUrl + "");
-        }, 10);
+            this.tl.timeScale(1); 
+        }, 1000);
     }
 
     prevProject() {
@@ -60,9 +65,14 @@ export default class Article extends Component {
         }
         else
             currentUrl--;
+        this.tl.seek('displayNav');
+        this.tl.reverse();
+        this.tl.timeScale(4); 
         setTimeout( () => {
+            this.tl.play();
             this.props.history.push('/projet/' + currentUrl + "");
-        }, 10);
+            this.tl.timeScale(1); 
+        }, 1000);
     }
 
     onClick() {
@@ -97,6 +107,7 @@ export default class Article extends Component {
         .fromTo(img0, 0.6, { opacity:0, y:-30, ease: Expo.easeInOut, rotationY:0, rotationX:0 }, {opacity:1, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:10}, "-=1")
         .from(content, 0.6, { opacity:0, x:-50, ease: Circ.easeInOut }, "+0.5")
         .from(year, 0.6, { opacity:0, y:-50, ease: Circ.easeInOut }, "+0.5")
+        .add('displayNav') 
         .from(prevProject, 0.5, { opacity:0, x:-100, ease: Circ.easeInOut, clearProps: "all" }, "+0.5")
         .from(nextProject, 0.5, { opacity:0, x:100, ease: Circ.easeInOut, clearProps: "all" }, "+0.5")
         .from(sitelink, 0.5, { opacity:0, ease: Circ.easeInOut, clearProps: "all" }, "+1");
@@ -133,9 +144,9 @@ export default class Article extends Component {
             return (
                 <div className={classNames("screen-box project", {open:this.state.open}) }>
                     <div ref="titleWrapper" className={classNames( 'title-wrapper', { active : this.state.active } ) }>
-                        <h5 className="italic">{Projects[url].month}</h5>
+                        {/*<h5 className="italic">{Projects[url].month}</h5>*/}
                         <header>
-                            <h2 dangerouslySetInnerHTML={{__html: Projects[url].title}}></h2>
+                            <h1 dangerouslySetInnerHTML={{__html: Projects[url].title}}></h1>
                             <span className="square-tag">{Projects[url].purpose}</span>
                         </header>
                     </div>
@@ -143,19 +154,19 @@ export default class Article extends Component {
                         <div className="perspective-wrapper">
                             <img src={Projects[url].img[0]} ref="img0" className="img-article img-article-0"/>
                         </div>
-                        <a href={Projects[url].website} target="_blank" ref="sitelink" className="site-link">
-                            <h5>Visiter le site</h5>
-                        </a>
                     </div>
                     <div ref="contentWrapper" className={classNames( 'content-wrapper', { active : this.state.active } ) }>
                         <p
                             dangerouslySetInnerHTML={{__html: Projects[url].content}}
                             className={ "content", classNames({active:this.state.active}) }>
                         </p>
+                        <a href={Projects[url].website} target="_blank" ref="sitelink" className="button">
+                            <i className="icon icon-arrow_upward"/>
+                            <span>Visiter le site</span>
+                        </a>
+                        <hr className="double-padding invisible"/>
                         <h5>Technologies employées</h5>
                         {Projects[url].tags.map((object, i) => <div className="tech-tag">{object} </div>)}
-                        {/*<h3>Date de sortie</h3>
-                        <p>bientôt :)</p>*/}
                     </div>
                     <a ref="prevProject" className="prev-project" onClick={ ::this.prevProject } >
                         <span/>

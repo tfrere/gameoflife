@@ -12,6 +12,7 @@ blockquote.pullquote {
 	display: inline-block;
 	font-style: italic;
 	padding-left: 60px;
+	font-family: $title-font;
 	p {
 		@include modular-scale(1, $title-size, $ratio);
 		font-style: inherit;
