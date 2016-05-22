@@ -45,8 +45,8 @@ export default class Blog extends Component {
         var illustration = this.refs.illustration;
 
         var mySVG = $(illustration).drawsvg({
-            duration: 3000,
-            stagger: 0
+            duration: 2000,
+            stagger: 5
         });
 
         setTimeout( () => {

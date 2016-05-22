@@ -52,8 +52,8 @@ export default class Intro extends Component {
         $(since).arctext({radius: 80, dir: -1});
 
         var mySVG = $(illustration).drawsvg({
-            duration: 3000,
-            stagger: 0
+            duration: 2000,
+            stagger: 5
         });
         this.tl.stop();
 

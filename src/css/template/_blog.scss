@@ -1,25 +1,28 @@
 @keyframes levitate{
 	0% {
-	    transform: translateY(-5px);
+	    transform: translateY(-10px);
 	}
 	50% {
 	    transform: translateY(0px);
 	}
 	100%{
-	    transform: translateY(-5px);
+	    transform: translateY(-10px);
 	}
 
 }
 
-.blog {
-	//margin-top:150px;
+.levitation {
+	animation: levitate 3s alternate ease-in-out infinite; 
+}
 
+.blog {
 	svg {
-		margin: 0 auto;
+		margin-top:125px;
+		margin-bottom:0px;
+		margin-left:calc(50% - 225px);
 	    display: block;
-	    margin-top:100px;
-	    margin-bottom:100px;
-		animation: levitate 3s ease infinite; 
+	    scale:0.7;
+	    @extend .levitation;
 	}
 
 	.container {
@@ -42,7 +45,7 @@
 		margin-bottom:$text-size * 2;
 	}
 	.cell {
-		width: 80%;
+		width: 100%;
 		margin: 0 auto;
 		header {
 			margin-left:0px;
@@ -133,7 +136,11 @@
 
 @include phablet {
 	.blog {
-		//margin-top:250px;
+		svg {
+			margin-top:140px;
+			margin-bottom:100px;
+			scale:1;
+		}
 	  	.square-date {
 	    	display:block!important;
 	    }

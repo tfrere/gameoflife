@@ -15,14 +15,8 @@
 	h4 {
 		@include modular-scale(-1, $title-size, $ratio);
 	}
-}
+	&>div {
 
-
-@include phablet {
-	.intro {
-		h4 {
-			@include modular-scale(0, $title-size, $ratio);
-		}
 	}
 }
 
@@ -35,6 +29,7 @@
 		perspective:1200px;
 		position:relative;
 		margin: auto;
+		margin-left: calc( 50% - 250px);
 		text-align: center;
 		color: color("grey", "lighten-3");
 		.text {
@@ -117,3 +112,20 @@
 	}
 }
 
+.intro {
+	&>div {
+		scale:0.7;
+	}
+}
+
+
+@include phablet {
+	.intro {
+		h4 {
+			@include modular-scale(0, $title-size, $ratio);
+		}
+		&>div {
+			scale:1;
+		}
+	}
+}
