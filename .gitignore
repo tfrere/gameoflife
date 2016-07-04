@@ -16,4 +16,5 @@ npm-debug.log
 dist
 
 # raw photo
-./src/images/portfolio/photo/raw/*
+./src/images/portfolio/jpgs/photo/raw/*
+./build/images/portfolio/jpgs/photo/raw/*
