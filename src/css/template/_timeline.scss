@@ -7,6 +7,9 @@ $line-color: rgba(0,0,0,0.2);
 
 .timeline {
 	margin-top:120px;
+	&>.row {
+		padding-bottom:120px;
+	}
 	.cell {
 		width: 80%;
 		margin: 0 auto;
@@ -31,7 +34,7 @@ $line-color: rgba(0,0,0,0.2);
 }
 
 
-.year {
+.year, .this-year {
     display: none;
     padding: 10px 15px;
     font-size: $text-size;
@@ -47,6 +50,41 @@ $line-color: rgba(0,0,0,0.2);
 	}
 }
 
+.this-year {
+	position:relative;
+	width:66px;
+	height: 36px;
+	overflow: hidden;
+	opacity:0;
+	transition: all .2s ease;
+	span {
+		transform: translateY(0px);
+		position:absolute;
+		margin: 0 auto;
+		transition: all .2s ease;
+	}
+	span:first-child {
+		transform: translateY(-36px);
+		width:130px;
+		margin-left:-33px;
+	}
+	span:last-child {
+		transform: translateY(0px);
+		margin-left:0px;
+	}
+	&.active {
+		width: 133px;
+		span:first-child {
+			transform: translateY(0px);
+			margin-left:0px;
+		}
+		span:last-child {
+			transform: translateY(36px);
+			margin-left:33px;
+		}
+	}
+}
+
 @include phablet {
 
 	.year {
@@ -59,10 +97,17 @@ $line-color: rgba(0,0,0,0.2);
 	    margin-bottom: 0px;
 	}
 
+	.this-year {
+		margin: 0 auto;
+		&.clicked {
+			opacity:0!important;
+		}
+	}
+
 	.timeline {
 		width: 80%;
 		margin: 0 auto;
-		margin-top:150px;
+		margin-top:250px;
 		position:relative;
 		.line {
 			content:"";
@@ -72,7 +117,7 @@ $line-color: rgba(0,0,0,0.2);
 			top: 0px;
 			left:0;
 			height:100%;
-			margin-top:5.36em;
+			margin-top:2.56em;
 			border-right:1px solid $line-color;
 		}
 
@@ -80,7 +125,7 @@ $line-color: rgba(0,0,0,0.2);
 			opacity:0;
 			transition:all 200ms ease;
 			.cell-wrapper {
-				margin: 3em 40px;
+				margin: 3em 40px 0px 3em;
 			}
 			&.addPlaceForYear {
 				margin-top:50px;
@@ -114,9 +159,10 @@ $line-color: rgba(0,0,0,0.2);
 				margin-bottom:$text-size * 2;
 			}
 			p {
-				margin-bottom:$text-size * 2;
+				margin-bottom:0;
 			}
 			span {
+				margin-top:$text-size * 2;
 				color:color("grey", "base");
 			}
 			text-align:left;
@@ -151,7 +197,19 @@ $line-color: rgba(0,0,0,0.2);
 				    0 0 0 ($circle-size / 2) * $border-ratio / 1.68 rgba(color("primary","darken-2"),0.6),
 				    0 0 0 ($circle-size / 1) * $border-ratio / 1.68 rgba(color("primary","darken-1"),0.6);
 				transition:all 100ms ease-in-out;
-
+				&::after {
+					position: absolute;
+					top: 49%;
+					left: 49%;
+					width: 2%;
+					height: 2%;
+					border-radius: 50%;
+					content: '';
+					background-color: color("primary", "darken-4");
+					text-indent: 0;
+					opacity: 1;
+					transition: all .2s ease;
+				}
 			}
 			img {
 				display:block;
@@ -172,6 +230,12 @@ $line-color: rgba(0,0,0,0.2);
 				height:$circle-size * $circle-hover-ratio;
 				margin-top:-$circle-size * $circle-hover-ratio / 2;
 				margin-left:-$circle-size * $circle-hover-ratio / 2;
+				&::after {
+					top: 25%;
+					left: 25%;
+					width: 50%;
+					height: 50%;
+				}
 			}
 		}
 
@@ -187,7 +251,7 @@ $line-color: rgba(0,0,0,0.2);
 				transform: rotateX(0deg) rotateY(20deg) translateX(20px);
 			}
 			.clicked .data{
-				transform:translateX(1200px)!important;
+				transform:translateX(100px)!important;
 				h2,h5,p,span {
 					opacity:0;
 				}

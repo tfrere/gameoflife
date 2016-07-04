@@ -24,6 +24,8 @@
 @import "atom/tag";
 @import "atom/select";
 @import "atom/underlined-link";
+@import "atom/special-button";
+@import "atom/parallax";
 
 @import "molecule/inclined";
 @import "molecule/form";
@@ -39,8 +41,11 @@
 @import "component/share-menu";
 @import "component/video-handler";
 @import "component/preloader";
+@import "component/say-hi-circle";
+@import "component/photo-circle";
 
 @import "template/guidelines";
+@import "template/about";
 @import "template/nav";
 @import "template/timeline";
 @import "template/contact";
@@ -48,8 +53,10 @@
 @import "template/article";
 @import "template/project";
 @import "template/intro";
+@import "template/galleries";
+@import "template/gallerie";
 
-#app-container, #app-container>div  {
+#app-container, #app-container>div, .screen-box  {
 	width:100%;
 	height:100%;
 }
@@ -71,6 +78,24 @@
 iframe {
   width:100%;
 }
+
+@keyframes levitate{
+  0% {
+      transform: translateY(-10px);
+  }
+  50% {
+      transform: translateY(0px);
+  }
+  100%{
+      transform: translateY(-10px);
+  }
+
+}
+
+.levitation {
+  animation: levitate 3s alternate ease-in-out infinite; 
+}
+
 
 #preload-1 { background: url(~/images/portfolio/pngs/derock_desktop.png) no-repeat -9999px -9999px; }
 #preload-2 { background: url(~/images/portfolio/pngs/derock_phone.png) no-repeat -9999px -9999px; }

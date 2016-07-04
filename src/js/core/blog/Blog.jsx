@@ -73,7 +73,7 @@ export default class Blog extends Component {
                 {illustration("#CCCCCC")}
                 <div className="container">
                  {Articles.map((object, i) =>
-                    <div id={i} key={i} className="cell force-1" ref={`project${i}`} >
+                    <div id={i} key={`project${i}`} className="cell force-1" ref={`project${i}`} >
                         <header>
                             <div className="square-date">
                                 <h4>{object.month}</h4>

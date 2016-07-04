@@ -1,6 +1,16 @@
 var Articles =
 [
 	{
+		title:"Motion design",
+		descHtml:"\<b\>blabla\</b\>",
+		year: "2015",
+		month: "OCT",
+		themes: "éléctronique, imprimante 3d",
+		imgUrl:"images/portfolio/anim.gif",
+		tags:["motion design", "blender"],
+		contentHtml: "N'arrivant pas à trouver un outil de prototyping de motion design, je me suis tenté à un petit essais sous blender. \<br/\>\<br/\>\<img src='images/portfolio/anim.gif'/>\<br/\>\<br/\>  ",
+	},
+	{
 		title:"Data<morphose>",
 		descHtml:"\<b\>blabla\</b\>",
 		year: "2015",

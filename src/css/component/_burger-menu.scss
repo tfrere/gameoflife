@@ -15,6 +15,7 @@ $base-index: 1200;
 	cursor: pointer;
 	border-radius: 50%;
 	background-color: #FFF;
+	transition: all $duration / 2 ease-in-out;
 	div {
 		transition: all $duration / 2 ease-in-out;
 		position: absolute;
@@ -27,7 +28,7 @@ $base-index: 1200;
 		height: 1px;
 		background: $base-color;
 		&:before, &:after {
-			transition: all $duration linear;
+			transition: all $duration ease;
 			content: '';
 			position: absolute;
 			right: 0;
@@ -57,16 +58,15 @@ $base-index: 1200;
 	&.active {
 		background-color: rgba(255,255,255,0.6);
 		div {
-			background-color:color("primary", "base");
-			background: rgba(0,0,0,0);
+			background-color: rgba(color("primary", "darken-3"), 0);
 			&:before {
 				top:0;
-				background: color("primary", "base");
+				background: color("primary", "darken-3");
 				transform: rotate(135deg);
 			}
 			&:after {
 				bottom:0;
-				background: color("primary", "base");
+				background: color("primary", "darken-3");
 				transform: rotate(-135deg);
 			}
 		}

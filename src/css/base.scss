@@ -9,12 +9,7 @@
 
 		@include include-font("~/fonts/icomoon/", "icomoon");
 
-		// Here are some local fonts cap-height sizes to get you started:
-		// Georgia: 0.66, Times / Times New Roman: 0.65, Palatino: 0.52
-		// Lucida Grande: 0.72, Helvetica: 0.66, Verdana: 0.76, Tahoma: 0.76
-
-		// Selection of Typekit fonts cap-height sizes:
-		// Proxima Nova: 0.57, Museo Slab: 0.66, JAF Facit: 0.7, Brandon Grotesque: 0.65, Clavo: 0.7, Adelle: 0.66, FF Tisa Pro: 0.82, Jubilat: 0.66, Futura PT: 0.66, Chaparral Pro: 0.5, Minion Pro: 0.66, Myriad Pro: 0.66, Adobe Caslon Pro: 0.36
+		// eb garamond
 
 		$font-georgia:          	Georgia, "Times New Roman", Times, serif;
 
@@ -115,23 +110,44 @@
 		 	}
  		}
 
- 		article p:first-child {
+ 		.article p:first-child {
  			margin-bottom: $text-size * 3;
  		}
 
 	/* # Lettrine
 	–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-		article>p:first-child:first-letter {
+		.lettrine:first-child:first-letter {
 			float: left;
-			color: $base-color;
-			font-size: $text-size * 6;
-			line-height: 8rem;
+			color: rgba(0, 0, 0, 0.6);
+			font-size: 5.8rem;
+			line-height: 4.7rem;
 			padding-top: 4px;
-			padding-right: 8px;
-			padding-left: 3px; 
+			padding-right: 5px;
+			padding-left: 3px;
 		}
 
+		.lettrine:first-letter, .lettrine>p:first-child:first-letter {
+			float: left;
+			color: rgba(0, 0, 0, 0.6);
+			font-size: 5.8rem;
+			line-height: 4.7rem;
+			padding-top: 4px;
+			padding-right: 5px;
+			padding-left: 3px;
+		}
+
+		.text-introduction {
+			font-family: $title-font;
+			@include modular-scale(2, $text-size * 1.2, $ratio);
+			font-weight: 400;
+			line-height: $text-size * 2.8;
+			&.lettrine:first-letter {
+				font-size: 8.7rem;
+				line-height: 7rem;
+				padding-right: 10px;
+			}
+		}
 
 		/* # Icons
 		–––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -181,4 +197,36 @@
 		.capitalize 	{ text-transform: capitalize; }
 		.upper-first	{ display:block; &:first-letter { text-transform: uppercase; }  }
 
-		.unselectable   { user-select: unselectable; }
+		.unselectable   { user-select: none; -webkit-user-select: none; }
+
+		.remove-top 	{ margin-top: 0 !important; }
+		.half-top 		{ margin-top: $text-size / 2 !important; }
+		.add-top 		{ margin-top: $text-size !important; }
+		.double-top 	{ margin-top: $text-size * 2 !important; }
+		.quad-top 		{ margin-top: $text-size * 4 + 0.6 !important; }
+		.octo-top 		{ margin-top: $text-size * 8 !important; }
+
+		.remove-left 	{ margin-left: 0 !important; }
+		.half-left 		{ margin-left: $text-size / 2 !important; }
+		.add-left 		{ margin-left: $text-size !important; }
+		.double-left 	{ margin-left: $text-size * 2 !important; }
+		.quad-left 		{ margin-left: $text-size * 4 !important; }
+		.octo-left 		{ margin-left: $text-size * 8 !important; }
+
+		.remove-right 	{ margin-right: 0 !important; }
+		.half-right 	{ margin-right: $text-size / 2 !important; }
+		.add-right 		{ margin-right: $text-size !important; }
+		.double-right 	{ margin-right: $text-size * 2 !important; }
+		.quad-right 	{ margin-right: $text-size * 4 !important; }
+		.octo-right 	{ margin-right: $text-size * 8 !important; }
+
+		.remove-bottom 	{ margin-bottom: 0 !important; }
+		.half-bottom 	{ margin-bottom: $text-size / 2 !important; }
+		.add-bottom 	{ margin-bottom: $text-size !important; }
+		.double-bottom 	{ margin-bottom: $text-size * 2 !important; }
+		.quad-bottom 	{ margin-bottom: $text-size * 4 !important; }
+		.octo-bottom 	{ margin-bottom: $text-size * 8 !important; }
+
+		.valign-bottom { vertical-align: bottom }
+
+

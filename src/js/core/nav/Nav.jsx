@@ -7,6 +7,8 @@ import { Router, Route, Link, browserHistory } from 'react-router';
 import TweenMax from 'gsap/src/minified/TweenMax.min.js';
 import TweenLite from 'gsap/src/minified/TweenLite.min.js';
 
+// scroll lock mixin for react
+//https://codepen.io/somethingkindawierd/post/react-mixin-scroll-lock
 
 export default class Nav extends Component {
 
@@ -23,32 +25,72 @@ export default class Nav extends Component {
         this.leavingEvent = document.createEvent('Event');
         this.leavingEvent.initEvent('leaving', true, true);
         this.onClick = this.onClick.bind(this);
+        this.scroll = this.scroll.bind(this);
         this.onBack = this.onBack.bind(this);
     }
 
-    onClick() {
-         this.props.onClick();
+    scroll() {
+
+    }
+
+    onClick(dest) {
+
+
+        var link0 = this.refs.navLink0;
+        var link1 = this.refs.navLink1;
+        var link2 = this.refs.navLink2;
+
+        if ($(this.refs.navLink0).hasClass("active")) {
+            this.tl.kill({className:true}, [link1, link2]);
+            this.tl.set(link0, {className: '+=deployed'}, "-=0.1");
+        }
+        else if ($(this.refs.navLink1).hasClass("active")) {
+            this.tl.kill({className:true}, [link0, link2]);
+            this.tl.set(link1, {className: '+=deployed'}, "-=0.1");
+        }
+        else if ($(this.refs.navLink2).hasClass("active")) {
+            this.tl.kill({className:true}, [link0, link1]);
+            this.tl.set(link2, {className: '+=deployed'}, "-=0.1");
+        }
+        else {
+            this.tl.kill({className:true}, [link0, link1, link2]);
+        }
+
+
          if (!this.state.active){
             this.tl.play();
             this.setState( { active: true } );
          }
          else{
-            this.setState( { active: false } );
+            this.tl.timeScale(1.5);
+            this.tl.seek(-0.4);
+            this.tl.reverse();
             setTimeout( () => {
-                this.tl.seek(0);
-                this.tl.reverse();
-            }, 100 );
+                this.setState( { active: false } );
+                this.tl.timeScale(1);
+                if (dest) {
+                    if (dest == "contact")
+                        this.props.history.push('/contact');
+                    else if(dest == "portfolio") 
+                        this.props.history.push('/portfolio');
+                    else if (dest == "about")
+                        this.props.history.push('/about');
+                    else if (dest == "blog")
+                        this.props.history.push('/blog');
+                    else if (dest == "photo")
+                        this.props.history.push('/photo');
+                    else if (dest == "guidelines")
+                        this.props.history.push('/guidelines');
+                }
+            }, 350 );
          }
     }
 
     onBack() {
 
-        console.log(this);
         document.dispatchEvent(this.leavingEvent);
 
         setTimeout( () => {
-            console.log(this.props.history);
-            console.log(window.history.length);
             const url = this.props.location.pathname;
             var re = /.*\/.*\/[0-9]*/i;
 
@@ -66,19 +108,20 @@ export default class Nav extends Component {
 
     componentDidMount() {
 
-
         var footer = this.refs.navFooter;
         var link0 = this.refs.navLink0;
         var link1 = this.refs.navLink1;
         var link2 = this.refs.navLink2;
-        var link3 = this.refs.navLink3;
+
+        console.log($(this.refs.navLink1).hasClass("active"));
 
         this.tl.stop();
         this.tl
-        .from(link0, 0.2, { opacity:0, x:-25, ease: Circ.easeInOut }, "+=0.3")
-        .from(link1, 0.2, { opacity:0, x:-25, ease: Circ.easeInOut }, "-=0.1")
-        .from(link2, 0.2, { opacity:0, x:-25, ease: Circ.easeInOut }, "-=0.1")
-        .from(footer, 0.2, { opacity:0, y:40, ease: Circ.easeInOut }, "-=0.3");
+        .from(link0, 0.2, { opacity:0, y:-15, ease: Circ.easeInOut }, "+=0.3")
+        .from(link1, 0.2, { opacity:0, y:-15, ease: Circ.easeInOut }, "-=0.1")
+        .from(link2, 0.2, { opacity:0, y:-15, ease: Circ.easeInOut }, "-=0.1")
+        .from(footer, 0.4, { opacity:0, ease: Circ.easeInOut })
+
     }
 
     componentWillUnmount() {
@@ -86,21 +129,22 @@ export default class Nav extends Component {
 
     render() {
 
-        var url = this.props.location.pathname;
+        const url = this.props.location.pathname.replace(/\//g, '');
         //console.log(url);
         var isBackButtonDisplayed = true;
+        var urlToDisplay = "menu";
 
-        if (url == "/"){
+        if (url == "")
             isBackButtonDisplayed = false;
-            var url = "menu";
-        }
-        else 
-            url = url.replace(/\//g, ' ');
-
+        console.log(url);
         if (url.includes("projet"))
-            url = "projet";
-        if (url.includes("guidelines"))
-            url = "charte graphique";
+            urlToDisplay = "projet";
+        if (url == "portfolio")
+            urlToDisplay = "portfolio";
+        if (url == "guidelines")
+            urlToDisplay = "charte graphique";
+        if (url == "about")
+            urlToDisplay = "a propos";
 
 
         return (
@@ -120,7 +164,7 @@ export default class Nav extends Component {
                     })(this.props, isBackButtonDisplayed, this.onBack)}
 
                     <h5 className={classNames("nav-info", "nav-typo", { "active": this.state.active})}>
-                        {url}
+                        {urlToDisplay}
                     </h5>
                     <div className="nav-button">
                         <div onClick={ ::this.onClick } className={ classNames( 'burger-menu', { active : this.state.active } ) }>
@@ -131,39 +175,35 @@ export default class Nav extends Component {
                     <div className="nav">
                         <div>
                             <ul>
-                                <li ref="navLink0">
-                                    <Link onClick={ ::this.onClick }
-                                            activeClassName='active'
-                                            to={`/blog`}
-                                    >
-                                        Blog
-                                    </Link>
+                                <li ref="navLink0" className={ classNames( { active: url == "contact" } ) }>
+                                    <a onClick={ () => { this.onClick("contact") }}>
+                                        contact
+                                    </a>
                                 </li>
-                                <li ref="navLink1">
-                                    <Link onClick={ ::this.onClick }
-                                            activeClassName='active'
-                                            to={`/contact`}
-                                    >
-                                        Contact
-                                    </Link>
+                                <li ref="navLink1" className={ classNames( { active: url == "about" } ) }>
+                                    <a onClick={ () => { this.onClick("about") }}>
+                                        a propos
+                                    </a>
                                 </li>
-                                <li ref="navLink2">
-                                    <Link onClick={ ::this.onClick }
-                                            activeClassName='active'
-                                            to={`/portfolio`}
-                                    >
-                                        Portfolio
-                                    </Link>
-
+                                <li ref="navLink2" className={ classNames( { active: url == "portfolio" }, { active: url.includes("projet") } ) }>
+                                    <a onClick={ () => { this.onClick("portfolio") }}>
+                                        portfolio
+                                    </a>
                                 </li>
                             </ul>
                             <footer ref="navFooter">
-                                <Link onClick={ ::this.onClick }
-                                        activeClassName='active'
-                                        to={`/guidelines`}
-                                >
-                                    Charte graphique 
-                                </Link>
+                                <a onClick={ () => { this.onClick("blog") }} >
+                                    blog
+                                </a>
+                                <a onClick={ () => { this.onClick("photo") }} >
+                                    photo
+                                </a>
+                                <a onClick={ () => { this.onClick("guidelines") }} >
+                                    charte graphique 
+                                </a>
+                                <a className="right" href="mailto:ecrire@tfrere.fr">
+                                    ecrire@tfrere.fr
+                                </a>
                             </footer>
                         </div>
                     </div>

@@ -30,6 +30,7 @@ $gutter: 2.4rem !default;
   list-style: none;
   margin: 0;
   padding: 0;
+  position:relative;
 }
 
 .col
@@ -62,6 +63,10 @@ $gutter: 2.4rem !default;
 
 .row-auto-height > .cell {
   display: flex;
+}
+
+.row-auto-height>.cell div {
+    margin: auto;
 }
 
 .row-left {

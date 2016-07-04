@@ -16,6 +16,15 @@
 		}
 	}
 
+	.ul {
+		padding-left:20px;
+		list-style-image: url('../images/portfolio/svgs/list-circle.svg');
+	}
+	.ul-color-complement {
+		padding-left:20px;
+		list-style-image: url('../images/portfolio/svgs/list-circle-complement.svg');
+	}
+
 	li {
 		margin-bottom: $text-size / 2;
 	}

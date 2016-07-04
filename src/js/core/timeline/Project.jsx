@@ -31,48 +31,56 @@ export default class Article extends Component {
         this.state = {};
         this.onClick = this.onClick.bind(this);
         this.nextProject = this.nextProject.bind(this);
-        this.prevProject = this.prevProject.bind(this);
         this.onKeyPress = this.onKeyPress.bind(this);
         this.onLeave = this.onLeave.bind(this);
         setTimeout( () => {
             this.setState( { open : true } );
         }, 1500 );
         this.tl = new TimelineLite();
+        this.navTl = new TimelineLite();
+        this.imgTl = new TimelineLite();
+        this.imgSwapTl = new TimelineLite();
     }
 
-    nextProject() {
+    nextProject(direction) {
+
         var currentUrl = parseInt(this.props.url);
-        if (currentUrl + 1 >= Projects.length) {
-            currentUrl = 0;
+        
+        if (direction == "next")
+        {
+            if (currentUrl + 1 >= Projects.length) {
+                currentUrl = 0;
+            }
+            else 
+                currentUrl++;
         }
-        else 
-            currentUrl++;
-        this.tl.seek('displayNav');
-        this.tl.reverse();
-        this.tl.timeScale(4); 
-        setTimeout( () => {
-            this.tl.play();
-            this.props.history.push('/projet/' + currentUrl + "");
-            this.tl.timeScale(1); 
-        }, 1000);
-    }
+        else {
+            if (currentUrl <= 0) {
+                currentUrl = Projects.length - 1;
+            }
+            else
+                currentUrl--;
+        }
 
-    prevProject() {
-        var currentUrl = this.props.url;
-        //console.log(currentUrl);
-        if (currentUrl <= 0) {
-            currentUrl = Projects.length - 1;
-        }
-        else
-            currentUrl--;
-        this.tl.seek('displayNav');
-        this.tl.reverse();
-        this.tl.timeScale(4); 
+        this.tl.seek(0.5).stop();
+
+        this.imgSwapTl.timeScale(1);
+        this.imgSwapTl.reverse();
+
         setTimeout( () => {
-            this.tl.play();
+
+            this.imgSwapTl.timeScale(0.3);
+            this.imgSwapTl.play();
+
             this.props.history.push('/projet/' + currentUrl + "");
-            this.tl.timeScale(1); 
-        }, 1000);
+
+            setTimeout( () => {
+
+                this.tl.play();
+
+            }, 300);
+
+        }, 300);
     }
 
     onClick() {
@@ -82,6 +90,8 @@ export default class Article extends Component {
 
     onLeave() {
         this.tl.reverse();
+        this.imgTl.reverse();
+        this.navTl.reverse();
     }
 
 
@@ -93,9 +103,12 @@ export default class Article extends Component {
 
         document.addEventListener('keydown', this.onKeyPress, false);
 
-        var content = this.refs.contentWrapper;
         var title = this.refs.titleWrapper;
+        var purpose = this.refs.purposeWrapper;
+        var text = this.refs.textWrapper;
+        var techTag = this.refs.techTagWrapper;
         var img0 = this.refs.img0;
+        var img1 = this.refs.img1;
         var year = this.refs.year;
         var prevProject = this.refs.prevProject;
         var nextProject = this.refs.nextProject;
@@ -103,14 +116,27 @@ export default class Article extends Component {
 
         
         this.tl
-        .from(title, 0.6, { opacity:0, y:-50, ease: Circ.easeInOut }, "+0.5")
-        .fromTo(img0, 0.6, { opacity:0, y:-30, ease: Expo.easeInOut, rotationY:0, rotationX:0 }, {opacity:1, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:10}, "-=1")
-        .from(content, 0.6, { opacity:0, x:-50, ease: Circ.easeInOut }, "+0.5")
-        .from(year, 0.6, { opacity:0, y:-50, ease: Circ.easeInOut }, "+0.5")
-        .add('displayNav') 
+        .from(title, 0.6, { opacity:0, x:-50, ease: Circ.easeInOut }, "+0.5")
+        .from(purpose, 0.8, { opacity:0, x:-50, ease: Circ.easeInOut }, "+0.5")
+        .from(text, 0.3, { opacity:0, y:5, ease: Circ.easeInOut }, "+1")
+        .from(year, 0.6, { opacity:1, ease: Circ.easeInOut }, "+0.5")
+        //.from(techTag, 0.3, { opacity:0, x:0, ease: Circ.easeInOut }, "+1.5")
+        .from(sitelink, 0.3, { opacity:0, ease: Circ.easeInOut, clearProps: "all" }, "+1.3");
+        
+        this.imgTl
+        .fromTo(img0, 0.6, { opacity:0, x:-10, ease: Expo.easeInOut, rotationY:0, rotationX:0 }, {opacity:1, x:0, ease: Expo.easeInOut, rotationY:-10, rotationX:3}, "-=1")
+        .fromTo(img1, 0.6, { opacity:0, x:-10, ease: Expo.easeInOut, rotationY:0, rotationX:0 }, {opacity:1, x:0, ease: Expo.easeInOut, rotationY:-10, rotationX:3}, "-=0.7")
+        
+        this.imgSwapTl.stop();
+        this.imgSwapTl
+        .fromTo(img0, 0.3, {opacity:0, y:-10, ease: Expo.easeInOut, rotationY:-10, rotationX:0}, {opacity:1, y:0, ease: Expo.easeInOut, rotationY:-10, rotationX:0})
+        .fromTo(img1, 0.3, {opacity:0, y:-10, ease: Expo.easeInOut, rotationY:-10, rotationX:0}, {opacity:1, y:0, ease: Expo.easeInOut, rotationY:-10, rotationX:0}, "-=0.3")
+        .add("end");
+        this.imgSwapTl.seek("end");
+
+        this.navTl
         .from(prevProject, 0.5, { opacity:0, x:-100, ease: Circ.easeInOut, clearProps: "all" }, "+0.5")
-        .from(nextProject, 0.5, { opacity:0, x:100, ease: Circ.easeInOut, clearProps: "all" }, "+0.5")
-        .from(sitelink, 0.5, { opacity:0, ease: Circ.easeInOut, clearProps: "all" }, "+1");
+        .from(nextProject, 0.5, { opacity:0, x:100, ease: Circ.easeInOut, clearProps: "all" }, "+0.5");
 
         if (this.props.url)
         {
@@ -127,9 +153,9 @@ export default class Article extends Component {
       if (event.keyCode == 192)
         $('body').toggleClass('show-baseline');
       if (event.keyCode == 37) // left
-        this.prevProject();
+        this.nextProject("prev");
       if (event.keyCode == 39)  // right
-        this.nextProject();
+        this.nextProject("next");
     }
 
     componentWillUnmount() {
@@ -142,42 +168,49 @@ export default class Article extends Component {
             var url = this.props.url;
 
             return (
-                <div className={classNames("screen-box project", {open:this.state.open}) }>
-                    <div ref="titleWrapper" className={classNames( 'title-wrapper', { active : this.state.active } ) }>
-                        {/*<h5 className="italic">{Projects[url].month}</h5>*/}
-                        <header>
-                            <h1 dangerouslySetInnerHTML={{__html: Projects[url].title}}></h1>
-                            <span className="square-tag">{Projects[url].purpose}</span>
-                        </header>
-                    </div>
-                    <div className="img-wrapper">
-                        <div className="perspective-wrapper">
-                            <img src={Projects[url].img[0]} ref="img0" className="img-article img-article-0"/>
+                <div className={classNames("project", {open:this.state.open}) }>
+                    <div className="row">
+                        <div className="cell">
+                            <div className={classNames( 'title-wrapper', { active : this.state.active } ) }>
+                                {/*<h5 className="italic">{Projects[url].month}</h5>*/}
+                                <header>
+                                    <h1 ref="titleWrapper" dangerouslySetInnerHTML={{__html: Projects[url].title}}></h1>
+                                    <span ref="purposeWrapper" className="square-tag">{Projects[url].purpose}</span>
+                                </header>
+                            </div>
+                            <div className={classNames( 'content-wrapper', { active : this.state.active } ) }>
+                                <p
+                                    ref="textWrapper"
+                                    dangerouslySetInnerHTML={{__html: Projects[url].content}}
+                                    className={ "content", classNames({active:this.state.active}) }>
+                                </p>
+                                {/*<div ref="techTagWrapper" className="tech-tag-wrapper">
+                                    {Projects[url].tags.map((object, i) => <div className="tech-tag">{object} </div>)}
+                                </div>*/}
+                                <hr className="invisible clearfix"/>
+                                <a href={Projects[url].website} target="_blank" ref="sitelink" className="special-button">
+                                    <span className="content">Visiter le site</span>
+                                    <span className="extra first"></span>
+                                    <span className="extra last"></span>
+                                </a>
+                            </div>
+                            <a ref="prevProject" className="prev-project" onClick={ () => {this.nextProject("prev")} } >
+                                <span/>
+                            </a>
+                            <a ref="nextProject" className="next-project" onClick={ () => {this.nextProject("next")} } >
+                                <span/>
+                            </a>
+                            <div ref="year" className="project-year">{Projects[url].year}</div>
+                            {/*<ImageZoomer alt="Image alt"
+                                src='images/portfolio/pngs/framework_desktop.png'
+                                zoomSrc='images/portfolio/pngs/framework_desktop.png'/>*/}
+                        </div>
+                        <div className="cell img-wrapper">
+                            <div className="perspective-wrapper">
+                                {Projects[url].img.map((object, i) => <img src={object} key={`img${i}`} ref={`img${i}`} className={`img-article img-article-${i}`}/>)}
+                            </div>
                         </div>
                     </div>
-                    <div ref="contentWrapper" className={classNames( 'content-wrapper', { active : this.state.active } ) }>
-                        <p
-                            dangerouslySetInnerHTML={{__html: Projects[url].content}}
-                            className={ "content", classNames({active:this.state.active}) }>
-                        </p>
-                        <a href={Projects[url].website} target="_blank" ref="sitelink" className="button">
-                            <i className="icon icon-arrow_upward"/>
-                            <span>Visiter le site</span>
-                        </a>
-                        <hr className="double-padding invisible"/>
-                        <h5>Technologies employées</h5>
-                        {Projects[url].tags.map((object, i) => <div className="tech-tag">{object} </div>)}
-                    </div>
-                    <a ref="prevProject" className="prev-project" onClick={ ::this.prevProject } >
-                        <span/>
-                    </a>
-                    <a ref="nextProject" className="next-project" onClick={ ::this.nextProject } >
-                        <span/>
-                    </a>
-                    <div ref="year" className="project-year">{Projects[url].year}</div>
-                    {/*<ImageZoomer alt="Image alt"
-                        src='images/portfolio/pngs/framework_desktop.png'
-                        zoomSrc='images/portfolio/pngs/framework_desktop.png'/>*/}
                 </div>
             );
 

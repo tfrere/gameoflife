@@ -23,10 +23,31 @@ export default class Timeline extends Component {
 
     constructor( props ) {
         super( props );
-        this.state = {clicked:false};
+        this.state = {
+            clicked:false,
+            isScrolled: false
+        };
         this.onClick = this.onClick.bind(this);
+        this.scroll = this.scroll.bind(this);
         this.onLeave = this.onLeave.bind(this);
         this.tl = new TimelineLite();
+    }
+
+    scroll() {
+
+        var scrollTop = $(window).scrollTop();
+
+        if (scrollTop >= 50)
+        {
+            setTimeout( () => {
+                this.setState( { isScrolled : true } );
+            }, 200 );
+        }
+        else {
+            setTimeout( () => {
+                this.setState( { isScrolled : false } );
+            }, 200 );
+        }
     }
 
     onClick() {
@@ -44,33 +65,36 @@ export default class Timeline extends Component {
 
     componentDidMount(){
 
+        document.addEventListener('scroll', this.scroll);
         document.addEventListener('leaving', this.onLeave, false);
 
         window.scrollTo(0,0);
 
         var timeline = this.refs.timeline;
         var line = this.refs.timelineLine;
+        var thisYear = this.refs.thisYear;
         var projectLength = Projects.length;
-        //console.log(Projects.length);
+
         var project0 = this.refs.project0;
         var project1 = this.refs.project1;
         var project2 = this.refs.project2;
         var project3 = this.refs.project3;
-        var project4 = this.refs.project4;
 
         this.tl
         .fromTo(line, 1, { opacity:0, y:500, ease: Cubic.linear },
                             { opacity:1, y:0, ease: Cubic.linear }, "+=0.2")
-        .fromTo(project0, 0.5, { opacity:0, ease: Cubic.linear }, { opacity:1, y:0, ease: Cubic.linear }, "-=0.5")
+        .fromTo(thisYear, 0.5, { opacity:0, ease: Cubic.linear }, { opacity:1, y:0, ease: Cubic.linear }, "-=0.2")
+        .fromTo(project0, 0.5, { opacity:0, ease: Cubic.linear }, { opacity:1, y:0, ease: Cubic.linear }, "-=0.2")
         .fromTo(project1, 0.5, { opacity:0, ease: Cubic.linear }, { opacity:1, y:0, ease: Cubic.linear })
         .fromTo(project2, 0.5, { opacity:0, ease: Cubic.linear }, { opacity:1, y:0, ease: Cubic.linear })
-        .fromTo(project3, 0.5, { opacity:0, ease: Cubic.linear }, { opacity:1, y:0, ease: Cubic.linear })
-        .fromTo(project4, 0.5, { opacity:0, ease: Cubic.linear }, { opacity:1, y:0, ease: Cubic.linear });
+        .fromTo(project3, 0.5, { opacity:0, ease: Cubic.linear }, { opacity:1, y:0, ease: Cubic.linear });
 
     }
 
     componentWillUnMount() {
+        console.log("unmountedyeah");
         document.removeEventListener('leaving', this.onLeave, false);
+        document.removeEventListener('scroll', this.scroll);
     }
 
     render() {
@@ -79,16 +103,22 @@ export default class Timeline extends Component {
             <div className={classNames("timeline", {clicked: this.state.clicked}) }>
 
                 <div ref="timeline" className="row row-gutter">
-                     {Projects.map((object, i) => <div className={classNames("cell force-1", {addPlaceForYear: object.isLastProjectOfYear && i != 0}) }
+
+                     <div ref="thisYear" className={classNames("this-year visible", {active: this.state.isScrolled ? false : true}, {clicked: this.state.clicked}) }>
+                        <span>Cette année</span>
+                        <span>{Projects[0].year}</span>
+                     </div>
+
+                     {Projects.map((object, i) => <div key={`project${i}`} className={classNames("cell force-1", {addPlaceForYear: object.isLastProjectOfYear && i != 0}) }
                                                     ref={`project${i}`}>
                                                     {/*<img src={object.img[0]} />*/}
-                                                    <div className={classNames("year", {visible: object.isLastProjectOfYear && i != 0}) }>{object.year}</div>
+                                                    <div key={`date${i}`} className={classNames("year", {visible: object.isLastProjectOfYear && i != 0}) }>{object.year}</div>
                                                     <ProjectCard 
                                                         onClick={ ::this.onClick } 
                                                         history={this.props.history} 
                                                         data={object}
                                                         id={i}
-                                                        key={i} />
+                                                        key={`projectCard${i}`} />
                                                   </div>
                       )}
                     <div ref="timelineLine" className="line"/>

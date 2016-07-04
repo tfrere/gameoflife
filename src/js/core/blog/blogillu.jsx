@@ -4,23 +4,23 @@ export function illustration(fillColor) {
   return (
 	<svg ref="illustration" className="illu" height="200" width="450" version="1.1" >
 
- <path d="m220.3,24.91,128.25,0-17.198,17.198-111.79,0" strokeDashoffset="0" display="block" stroke={fillColor} strokeMiterlimit="4" strokeDasharray="none" strokeWidth="1.71948671" class="tbase" fill="none"/>
- <path d="m220.58,24.91-130.01,0,17.198,17.198,111.79,0" strokeDashoffset="0" display="block" stroke={fillColor} strokeMiterlimit="4" strokeDasharray="none" strokeWidth="1.71948671" class="tbase" fill="none"/>
- <path d="m219.7,33.51,137.44,0-137.59,137.59" strokeDashoffset="0" display="block" stroke={fillColor} strokeMiterlimit="4" strokeDasharray="none" strokeWidth="1.71948671" class="ttip0" fill="none"/>
- <path d="m219.41,33.51-137.44,0,137.59,137.59" strokeDashoffset="0" display="block" stroke={fillColor} strokeMiterlimit="4" strokeDasharray="none" strokeWidth="1.71948671" class="ttip0" fill="none"/>
+ <path d="m220.3,24.91,128.25,0-17.198,17.198-111.79,0" strokeDashoffset="0" display="block" stroke={fillColor} strokeMiterlimit="4" strokeDasharray="none" strokeWidth="1.71948671" className="tbase" fill="none"/>
+ <path d="m220.58,24.91-130.01,0,17.198,17.198,111.79,0" strokeDashoffset="0" display="block" stroke={fillColor} strokeMiterlimit="4" strokeDasharray="none" strokeWidth="1.71948671" className="tbase" fill="none"/>
+ <path d="m219.7,33.51,137.44,0-137.59,137.59" strokeDashoffset="0" display="block" stroke={fillColor} strokeMiterlimit="4" strokeDasharray="none" strokeWidth="1.71948671" className="ttip0" fill="none"/>
+ <path d="m219.41,33.51-137.44,0,137.59,137.59" strokeDashoffset="0" display="block" stroke={fillColor} strokeMiterlimit="4" strokeDasharray="none" strokeWidth="1.71948671" className="ttip0" fill="none"/>
 
- <path stroke-linejoin="miter" d="m22.616,52.29,395.55,0-72.077,72.18-250.78,0z" stroke={fillColor} stroke-linecap="butt" strokeWidth="1.68829548px" fill="#FFF"/>
- <path d="M276.06,99.42h-113.96l56.977,59.682,56.976-59.682z" stroke={fillColor} stroke-linecap="round" strokeMiterlimit="4" strokeDasharray="none" strokeWidth="1.76176918" class="path" fill="none"/>
- <path d="m173.5,99.42,45.581,47.748,45.58-47.748" stroke={fillColor} stroke-linecap="round" strokeMiterlimit="4" strokeDasharray="none" strokeWidth="1.76176918" class="path" fill="none"/>
- <path d="m184.89,99.42,34.187,35.806,34.184-35.806" stroke={fillColor} stroke-linecap="round" strokeMiterlimit="4" strokeDasharray="none" strokeWidth="1.76176918" class="path" fill="none"/>
- <path d="m196.29,99.42,22.791,23.873,22.79-23.873" stroke={fillColor} stroke-linecap="round" strokeMiterlimit="4" strokeDasharray="none" strokeWidth="1.76176918" class="path" fill="none"/>
- <path stroke-linejoin="miter" d="m45.729,61.23,351.39-0.44494-54.827,54.643-242.6,0.0123z" stroke={fillColor} stroke-linecap="butt" strokeWidth="1.42501843px" fill="#FFF"/>
- <path stroke-linejoin="miter" d="m169,131.06-19.682,0,19.352,19.407,19.655,0-19.324-19.407z" stroke={fillColor} stroke-linecap="butt" strokeWidth="1.3690145px" fill="#FFF"/>
- <path stroke-linejoin="miter" d="m270.73,131.8,19.682,0-19.352,19.407-19.655,0,19.324-19.407z" stroke={fillColor} stroke-linecap="butt" strokeWidth="1.3690145px" fill="#FFF"/>
- <path stroke-linejoin="miter" d="m427.95,69.88-36.942,37.025-123.5,0-35.872-37.102z" stroke={fillColor} stroke-linecap="butt" strokeWidth="1.3690145px" fill="#FFF"/>
- <path stroke-linejoin="miter" d="m208.36,69.64-36.942,37.025-123.5,0-35.872-37.102z" stroke={fillColor} stroke-linecap="butt" strokeWidth="1.3690145px" fill="#FFF"/>
- <path stroke-linejoin="bevel" d="m229.77,91.028c0,5.6646-4.592,10.257-10.257,10.257-5.6646,0-10.257-4.5921-10.257-10.257,0-5.6646,4.5921-10.257,10.257-10.257,5.6646,0,10.257,4.5921,10.257,10.257z" strokeDashoffset="0" stroke={fillColor} strokeMiterlimit="4" strokeWidth="1.74062788" fill="none"/>
- <path stroke-linejoin="bevel" d="m224.86,91.009c0,2.8618-2.32,5.182-5.182,5.182-2.8618,0-5.182-2.32-5.182-5.182,0-2.8618,2.32-5.182,5.182-5.182,2.8618,0,5.182,2.32,5.182,5.182z" strokeDashoffset="0" stroke={fillColor} strokeMiterlimit="4" strokeWidth="0.87938559" fill="none"/>
+ <path strokeLinejoin="miter" d="m22.616,52.29,395.55,0-72.077,72.18-250.78,0z" stroke={fillColor} strokeLinecap="butt" strokeWidth="1.68829548px" fill="#FFF"/>
+ <path d="M276.06,99.42h-113.96l56.977,59.682,56.976-59.682z" stroke={fillColor} strokeLinecap="round" strokeMiterlimit="4" strokeDasharray="none" strokeWidth="1.76176918" className="path" fill="none"/>
+ <path d="m173.5,99.42,45.581,47.748,45.58-47.748" stroke={fillColor} strokeLinecap="round" strokeMiterlimit="4" strokeDasharray="none" strokeWidth="1.76176918" className="path" fill="none"/>
+ <path d="m184.89,99.42,34.187,35.806,34.184-35.806" stroke={fillColor} strokeLinecap="round" strokeMiterlimit="4" strokeDasharray="none" strokeWidth="1.76176918" className="path" fill="none"/>
+ <path d="m196.29,99.42,22.791,23.873,22.79-23.873" stroke={fillColor} strokeLinecap="round" strokeMiterlimit="4" strokeDasharray="none" strokeWidth="1.76176918" className="path" fill="none"/>
+ <path strokeLinejoin="miter" d="m45.729,61.23,351.39-0.44494-54.827,54.643-242.6,0.0123z" stroke={fillColor} strokeLinecap="butt" strokeWidth="1.42501843px" fill="#FFF"/>
+ <path strokeLinejoin="miter" d="m169,131.06-19.682,0,19.352,19.407,19.655,0-19.324-19.407z" stroke={fillColor} strokeLinecap="butt" strokeWidth="1.3690145px" fill="#FFF"/>
+ <path strokeLinejoin="miter" d="m270.73,131.8,19.682,0-19.352,19.407-19.655,0,19.324-19.407z" stroke={fillColor} strokeLinecap="butt" strokeWidth="1.3690145px" fill="#FFF"/>
+ <path strokeLinejoin="miter" d="m427.95,69.88-36.942,37.025-123.5,0-35.872-37.102z" stroke={fillColor} strokeLinecap="butt" strokeWidth="1.3690145px" fill="#FFF"/>
+ <path strokeLinejoin="miter" d="m208.36,69.64-36.942,37.025-123.5,0-35.872-37.102z" stroke={fillColor} strokeLinecap="butt" strokeWidth="1.3690145px" fill="#FFF"/>
+ <path strokeLinejoin="bevel" d="m229.77,91.028c0,5.6646-4.592,10.257-10.257,10.257-5.6646,0-10.257-4.5921-10.257-10.257,0-5.6646,4.5921-10.257,10.257-10.257,5.6646,0,10.257,4.5921,10.257,10.257z" strokeDashoffset="0" stroke={fillColor} strokeMiterlimit="4" strokeWidth="1.74062788" fill="none"/>
+ <path strokeLinejoin="bevel" d="m224.86,91.009c0,2.8618-2.32,5.182-5.182,5.182-2.8618,0-5.182-2.32-5.182-5.182,0-2.8618,2.32-5.182,5.182-5.182,2.8618,0,5.182,2.32,5.182,5.182z" strokeDashoffset="0" stroke={fillColor} strokeMiterlimit="4" strokeWidth="0.87938559" fill="none"/>
  <path d="m245.35,84.13c0.21591-4.7555,0.2167-9.5205,0-14.275" strokeDashoffset="0" stroke={fillColor} strokeDasharray="856.68580295" strokeWidth="1.81768489" display="block" fill="none"/>
  <path d="m236.44,74.84c-0.0211-1.6628-0.0713-3.3252-0.1494-4.9862" strokeDashoffset="0" stroke={fillColor} strokeDasharray="856.68580295" strokeWidth="1.81768489" display="block" fill="none"/>
  <path d="m269.33,107.01c2.3325-12.214,3.211-24.709,2.6133-37.13" strokeDashoffset="0" stroke={fillColor} strokeDasharray="856.68580295" strokeWidth="1.81768489" display="block" fill="none"/>

@@ -1,0 +1,72 @@
+.about {
+	width:100%;
+	margin-top:125px;
+	.dafoe {
+		font-family: "Dafoe";
+	}
+	h1,h2,h3,h4,h5,h6 {
+		font-weight:200;
+	}
+	.center {
+		width:65%;
+		max-width: 960px;
+		margin: 0 auto;
+	}
+	.colors .cell {
+		height:75px;
+	}
+	h2 {
+		margin: $text-size * 4 0;
+	}
+	h5 {
+		margin:$text-size 0;
+	}
+	hr {
+		margin-bottom:$text-size * 3;
+	}
+	a.button {
+		@include naira(color("primary", "base"), color("primary", "base"));
+	}
+	.circle-placeholder {
+		width: 50%; 
+		height: 350px;
+		float: right;
+		margin-left:-1rem; 
+		border-radius: 50%;
+		-webkit-shape-outside:circle();
+		shape-outside:circle();
+	}
+	&>footer {
+		padding-top:80px;
+		padding-bottom:80px;
+		h6 {
+			text-align: center;
+			margin:0;
+			color: color("grey", "lighten-2");
+		}
+		a {
+			color: $color-primary;
+			font-weight: 600;
+			border-bottom: 1px solid color("grey", "lighten-1");
+			&:focus, &:hover {
+				text-decoration: none;
+				border-bottom: 1px solid color("grey", "darken-2");
+			}
+		}
+	}
+
+}
+
+.trust {
+
+	img {
+		width: 100%;
+		filter: grayscale(1);
+		-webkit-filter: grayscale(1);
+		opacity:0.4;
+		&:hover {
+			filter: grayscale(0);
+			-webkit-filter: grayscale(0);
+		}
+	}
+}

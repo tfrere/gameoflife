@@ -1,0 +1,117 @@
+$circle-size: 150px;
+$border-size: 1px;
+
+$button-size: 44px;
+$number-of-buttons: 4;
+
+$centered-button-pos: $circle-size / 2 - $button-size / 2 - $border-size;
+$base-delay: 100ms;
+$x:0;
+$y:0;
+$pi: pi();
+
+$base-angle: 45deg; // defines the first button place
+$offset-angle: 30; // defines the separation angle between each buttons
+$radius: $circle-size * 0.85;
+ 
+
+.say-hi.circle {
+	margin: 0 auto;
+	width:$circle-size;
+	height:$circle-size;
+	margin-bottom:85px;
+	position:relative;
+	box-sizing:border-box;
+	padding:9px;
+	.circle-form {
+		width:$circle-size;
+		height:$circle-size;
+		border-radius: 50%;
+		position:relative;
+		z-index: 1;
+		box-sizing:border-box;
+		overflow:hidden;
+		display:flex;
+		background-color: white;
+		border: $border-size solid rgba(color("grey", "darken-1"), 0.5);
+		.hi {
+			width: $circle-size;
+			height: $circle-size;
+			background-image: url("../images/portfolio/svgs/hi.svg");
+			background-size: cover;
+			margin: auto;
+			transition: all 200ms ease;
+			&:hover{
+				transform:translateY(-10px);
+			}
+		}
+	}
+	a {
+		margin-left:10px;
+		z-index: -1;
+		display:block;
+		position:absolute;
+		top:$centered-button-pos;
+		left:$centered-button-pos;
+		text-decoration: none!important;
+		border:none;
+		.small-circle {
+			border-radius: 50%;
+			margin: auto;
+			width:$button-size;
+			height:$button-size;
+			transition:all 350ms ease-in-out;
+			opacity:0.5;
+			@for $i from 0 through $number-of-buttons {
+				$x: $radius * cos($base-angle);
+				$y: $radius * sin($base-angle);
+
+				&.delay-#{$i}.active {
+					transform: translateX($x)
+							   translateY($y)
+							   rotate(0deg);
+					&:hover {
+						transform:translateX($x)translateY($y)rotate(360deg);
+						opacity:1;
+						
+					}
+				}
+				// incrementing base angle
+				$base-angle: $base-angle + $offset-angle;
+			}
+			&.github {
+				background-image: url("../images/portfolio/svgs/github.svg");
+				background-size: cover;
+				-webkit-filter: grayscale(100%);
+				&:hover {
+					-webkit-filter:none;
+				}
+			}
+			&.behance {
+				background-image: url("../images/portfolio/svgs/behance.svg");
+				background-size: cover;
+				-webkit-filter: grayscale(100%);
+				&:hover {
+					-webkit-filter:none;
+				}
+			}
+			&.twitter {
+				background-image: url("../images/portfolio/svgs/twitter.svg");
+				background-size: cover;
+				-webkit-filter: grayscale(100%);
+				&:hover {
+					-webkit-filter:none;
+				}
+			}
+			&.linkedin {
+				background-image: url("../images/portfolio/svgs/linkedin.svg");
+				background-size: cover;
+				-webkit-filter: grayscale(100%);
+				&:hover {
+					-webkit-filter:none;
+				}
+			}
+
+		}
+	}
+}

@@ -1,20 +1,3 @@
-@keyframes levitate{
-	0% {
-	    transform: translateY(-10px);
-	}
-	50% {
-	    transform: translateY(0px);
-	}
-	100%{
-	    transform: translateY(-10px);
-	}
-
-}
-
-.levitation {
-	animation: levitate 3s alternate ease-in-out infinite; 
-}
-
 .blog {
 	svg {
 		margin-top:125px;

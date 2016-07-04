@@ -18,22 +18,22 @@ $small-img-ratio: 1/4;
 	animation-duration:300ms;
 	width: 70%;
 	margin: 0 auto;
-	text-align: center;
+	text-align: left;
 	margin-bottom: 50px;
 	.title-wrapper {
 		margin-top:150px
 	}
 	.content-wrapper {
-		margin-top:$text-size * 6;
+		margin-top:$text-size * 1;
 		margin-bottom: $text-size * 6;
 	}
 	h1{
-		//text-transform: uppercase;
 		letter-spacing: .1rem;
 		margin-bottom:$text-size * 2;
 		text-shadow: 2px 2px 0 white, 3px 3px 0 rgba(0,0,0,0.1);
 		font-weight: 600;
     	font-style: italic;
+    	width:90%;
 	}
 	h5 {
 		font-style: italic;
@@ -41,21 +41,24 @@ $small-img-ratio: 1/4;
 		margin-bottom:$text-size * 2;
 	}
 	p {
-	    max-width: 80%;
-	    margin: 0 auto;
+		margin: 0;
+		width:90%;
 		margin-bottom:$text-size * 2;
 	}
 	span {
 		color:color("grey", "base");
 	}
-	a.button {
-		@include naira(color("primary", "base"), color("primary", "base"));
+	a.special-button {
+		transform:translateX(-20px);
+		transition: transform .35s ease;
+		&:hover {
+			transform:translateX(0px);
+		}
 	}
 	.img-wrapper {
 		position:relative;
 		width:100%;
-		padding-bottom:35%;
-		margin-top:100px;
+		margin-top:200px;
 		display:block;
 		.perspective-wrapper {			
 			perspective:1200px;
@@ -82,30 +85,27 @@ $small-img-ratio: 1/4;
 	}
 	.img-article {
 		box-shadow: 1px 0px 0 #fff,0 0 10px rgba(0,95,99,0.2);
-		transform: rotateY(0deg) rotateX(20deg);
 		position:absolute;
-		transition: all, 350ms, ease;
 		&.img-article-0 {
 			opacity:0;
-			width: 80%;
-			//padding-bottom:25%;
+			width: 100%;
 			right:0px;
 			left:0px;
 			margin: 0 auto;
-			top:-50px;
+			top:0px;
 		}
 		&.img-article-1 {
 			width: 105px;
 			height:125px;
-			left:65px;
-			bottom:15px;
+			right:65px;
+			top:170px;
 		}
 	}
 	.project-year {
 		font-family: $nav-font!important;
 		font-size: 42vw;
 		font-weight: 800;
-	    position: absolute;
+	    position: fixed;
 	    top: 280px;
 	    left: 0;
 	    z-index: $base-index - 100;
@@ -113,7 +113,7 @@ $small-img-ratio: 1/4;
 	    @extend .unselectable;
 	}
 	header {
-		text-align:center;
+		text-align:left;
 		h1 {
 			font-weight: bold;
 		}
@@ -142,7 +142,7 @@ $small-img-ratio: 1/4;
 			text-decoration: none;
 		}
 	}
-	a:not(.prev-project):not(.next-project):not(.button) {
+	a:not(.prev-project):not(.next-project):not(.special-button) {
 		color: $color-primary;
 		font-weight: 600;
 		border-bottom: 1px solid color("grey", "lighten-1");

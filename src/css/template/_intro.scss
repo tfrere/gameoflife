@@ -25,23 +25,25 @@
 	height:100%;
 	display:flex;
 	overflow:hidden;
-	&>div {
-		perspective:1200px;
+	position: absolute;
+	top:0;
+	.center {
 		position:relative;
 		margin: auto;
-		margin-left: calc( 50% - 250px);
 		text-align: center;
 		color: color("grey", "lighten-3");
+		z-index: 4;
 		.text {
 			position:absolute;
 			top: 120px;
 			left: 0px;
+			right:0px;
 			width:500px;
 			height:500px;
+			margin: 0 auto;
 		}
 		h4 {
 			font-family: $nav-font;
-			//letter-spacing: .1rem;
 			margin-top:28px;
 			@extend .h5;
 		}
@@ -57,9 +59,20 @@
 		}
 	}
 
+	.background-1 {
+		z-index: 1;
+	}
 
+	.background-2 {
+		z-index: 2;
+	}
+
+	.background-3 {
+		z-index: 3;
+	}
 
 	.cta {
+		z-index: 5;
 		display:block;
 		position:absolute;
 		bottom:0;
@@ -113,7 +126,7 @@
 }
 
 .intro {
-	&>div {
+	.center {
 		scale:0.7;
 	}
 }
@@ -124,7 +137,7 @@
 		h4 {
 			@include modular-scale(0, $title-size, $ratio);
 		}
-		&>div {
+		.center {
 			scale:1;
 		}
 	}
