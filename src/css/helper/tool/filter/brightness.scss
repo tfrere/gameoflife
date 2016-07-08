@@ -3,8 +3,8 @@
  * Brightness
  *
  */
-%brightness,
-.brightness {
+%_brightness,
+._brightness {
   @extend %filter-base;
   filter: brightness(0.2);
   -webkit-filter: brightness(0.2);

@@ -44,14 +44,13 @@ export default class Intro extends Component {
     componentDidMount() {
 
         var cta = this.refs.cta;
-        var ctaSpan = this.refs.ctaSpan;
         var name = this.refs.name;
         var work = this.refs.work;
         var since = this.refs.since;
         var parallax = this.refs.parallax;
-        var background = this.refs.background;
-        var background2 = this.refs.background2;
-        var background3 = this.refs.background3;
+        // var background = this.refs.background;
+        // var background2 = this.refs.background2;
+        // var background3 = this.refs.background3;
 
         var illustration = this.refs.illustration;
 
@@ -62,59 +61,56 @@ export default class Intro extends Component {
             duration: 2000,
             stagger: 5
         });
-        var drawBg = $(background).drawsvg({
-            duration: 1700,
-            stagger: 5
-        });
-        var drawBg2 = $(background2).drawsvg({
-            duration: 1700,
-            stagger: 5
-        });
-        var drawBg3 = $(background3).drawsvg({
-            duration: 1700,
-            stagger: 5
-        });
+        // var drawBg = $(background).drawsvg({
+        //     duration: 1700,
+        //     stagger: 5
+        // });
+        // var drawBg2 = $(background2).drawsvg({
+        //     duration: 1700,
+        //     stagger: 5
+        // });
+        // var drawBg3 = $(background3).drawsvg({
+        //     duration: 1700,
+        //     stagger: 5
+        // });
 
-        $(parallax).parallax({
-          calibrateX: false,
-          calibrateY: false,
-          invertX: false,
-          invertY: true,
-          limitX: false,
-          limitY: false,
-          scalarX: 2,
-          scalarY: 8,
-          frictionX: 0.2,
-          frictionY: 0.8,
-          originX: 0.0,
-          originY: 0.0
-        });
+        // $(parallax).parallax({
+        //   calibrateX: false,
+        //   calibrateY: false,
+        //   invertX: false,
+        //   invertY: true,
+        //   limitX: false,
+        //   limitY: false,
+        //   scalarX: 2,
+        //   scalarY: 8,
+        //   frictionX: 0.2,
+        //   frictionY: 0.8,
+        //   originX: 0.0,
+        //   originY: 0.0
+        // });
 
         this.tl.stop();
 
         this.tl
-        .fromTo(work, 0.5, { opacity:0, y:-30, ease: Expo.easeInOut, rotationY:0, rotationX:60 },
+        .fromTo(work, 0.5, { opacity:0, y:-30, ease: Expo.easeInOut, rotationY:0, rotationX:0 },
                            {opacity:1, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:0}
                            , "+=0.4")
-        .fromTo(name, 0.5, { opacity:0, y:-30, ease: Expo.easeInOut, rotationY:0, rotationX:60 },
+        .fromTo([name, since], 0.5, { opacity:0, y:-30, ease: Expo.easeInOut, rotationY:0, rotationX:0 },
                            {opacity:1, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:0}
                            , "-=0.4")
-        .fromTo(since, 0.5, { opacity:0, y:-30, ease: Expo.easeInOut, rotationY:0, rotationX:60 },
-                           {opacity:1, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:0}
-                           , "-=0.4")
-        .to(cta, 0.2, { opacity:1 })
-        .fromTo(illustration, 0.5, {opacity:0}, {opacity:1})
-        .fromTo(background, 0.5, {opacity:0}, {opacity:1}, "-=0.5")
-        .fromTo(background2, 0.5, {opacity:0}, {opacity:1}, "-=0.5")
-        .fromTo(background3, 0.5, {opacity:0}, {opacity:1}, "-=0.5");
+        .fromTo(cta, 0.2, { opacity:0 }, { opacity:1 })
+        .fromTo(illustration, 0.5, {opacity:0}, {opacity:1});
+        //.fromTo(background, 0.5, {opacity:0}, {opacity:1}, "-=0.5");
+        // .fromTo(background2, 0.5, {opacity:0}, {opacity:1}, "-=0.5")
+        // .fromTo(background3, 0.5, {opacity:0}, {opacity:1}, "-=0.5");
 
         setTimeout( () => {
             drawIllu.drawsvg('animate');
-            setTimeout( () => {
-                drawBg.drawsvg('animate');
-                drawBg2.drawsvg('animate');
-                drawBg3.drawsvg('animate');
-            }, 600 );
+            // setTimeout( () => {
+            //     drawBg.drawsvg('animate');
+            //     drawBg2.drawsvg('animate');
+            //     drawBg3.drawsvg('animate');
+            // }, 600 );
         }, 600 );
 
         this.tl.play();
@@ -124,7 +120,7 @@ export default class Intro extends Component {
             
             return (
                 <div className="screen-box">
-                    <div ref="parallax" id="parallax" className="parallax-viewport">
+                    {/*<div ref="parallax" id="parallax" className="parallax-viewport">
                         <div className="layer" data-depth="0.25" >
                             {background("#EEE")}
                         </div>
@@ -134,20 +130,21 @@ export default class Intro extends Component {
                         <div className="layer" data-depth="0.75">
                             {background3("#EEE")}
                         </div>
-                    </div>
+                    </div>*/}
                     <div className="intro">
                         <div className="center">
-                            {illustration("#CCCCCC")}
+                            {illustration("#DDD")}
                             <div className="text">
-                            <h4 ref="work">THIBAUD FRERE</h4>
-                            <h1 ref="name" className="i uppercase">web designer </h1>
-                            <h5 ref="since">DEPUIS 2008</h5>
+                                <h4 ref="work">THIBAUD FRERE</h4>
+                                <h1 ref="name" className="i uppercase">web designer </h1>
+                                <h5 ref="since">DEPUIS 2008</h5>
                             </div>
+                            <a ref="cta" className={classNames("cta special-button", {active: this.state.active}) } onClick={ ::this.onClick }>
+                                <span className="content">Visiter le site</span>
+                                <span className="extra first"></span>
+                                <span className="extra last"></span>
+                            </a>
                         </div>
-                        <button ref="cta" className={classNames("cta", {active: this.state.active}) } onClick={ ::this.onClick } >
-                            <span ref="ctaSpan">TRAVAUX</span>
-                            <span className="arrow-down"/>
-                        </button>
                     </div>
                 </div>
             );

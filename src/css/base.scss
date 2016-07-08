@@ -4,8 +4,7 @@
 	/* # Imports and variable
 	–––––––––––––––––––––––––––––––––––––––––––––––––– */
 		
-		@import url(//fonts.googleapis.com/css?family=Fira+Sans:300,400,500,700,300italic,400italic,500italic,700italic,300bold,400bold,500bold,700bold|Lora:400,400italic,700italic,700|Playfair+Display:400,400italic,700,700italic,900,900italic|Pacifico:400,700|Istok+Web:400,700,400italic,700italic|Cookie:300,500|Roboto:300,500,700|Lora:400,700,400italic,700italic|Nunito:400,300,700|Ubuntu:400,700italic,500italic,400italic,300italic,700,500,300|Open+Sans:400,800,700,600,300,300italic,400italic,600italic,800italic,700italic|Oswald:400,300,700|Merriweather:400,300,700,900,300italic,400italic,700italic,900italic|Quicksand:400,700,300|Raleway:400,200,300,500,600,700,800,900|Raleway+Dots|EB+Garamond|Libre+Baskerville:400,400italic,700);
-
+		@import url(//fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700|Playfair+Display:400,400italic,700,700italic,900,900italic|Open+Sans:400,800,700,600,300,300italic,400italic,600italic,800italic,700italic);
 
 		@include include-font("~/fonts/icomoon/", "icomoon");
 
@@ -29,7 +28,7 @@
 
 		$title-font: "Playfair Display", serif;
 		$nav-font: "Open Sans", sans-serif;
-		$text-font: "Open Sans", serif;
+		$text-font: "Libre Baskerville", serif;
 		$base-color: rgba(0,0,0,0.6);
 		$title-color: rgba(0,0,0,0.8);
 
@@ -100,14 +99,22 @@
  		p, blockquote, li, q {
  			font-feature-settings: 'kern', 'onum', 'liga';
  			@include modular-scale(1, $text-size, $ratio);
+ 			font-size:1.6rem;
  			font-weight: 400;
- 			line-height: $text-size * 2;
+ 			line-height: 2.1;
 			letter-spacing: .03rem;
-			color: $base-color;
+			//color: $base-color;
+			color: color("grey", "base");
 		 	margin-bottom: $text-size;
+		 	font-family: $text-font;
 		 	&:after {
 		 		clear:both;
 		 	}
+ 		}
+
+ 		li {
+ 			font-family: $nav-font;
+ 			line-height: 1.6;
  		}
 
  		.article p:first-child {
@@ -174,7 +181,7 @@
 	–––––––––––––––––––––––––––––––––––––––––––––––––– */
 
 		em, i, .i       { font-style: italic; }
-		strong, b, .b   { font-weight: 800; }
+		strong, b, .b   { font-weight: 600; }
 		.smaller 		{ font-size: 50%; line-height: 50%; }
 		small, .small   { font-size: 70%; line-height: $text-size * 0.5!important; }
 		big, .big		{ font-size: $text-size * 1.3; line-height: $text-size * 1; }

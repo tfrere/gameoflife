@@ -24,7 +24,7 @@ $small-img-ratio: 1/4;
 		margin-top:150px
 	}
 	.content-wrapper {
-		margin-top:$text-size * 1;
+		margin-top:$text-size * 0.45;
 		margin-bottom: $text-size * 6;
 	}
 	h1{
@@ -44,9 +44,6 @@ $small-img-ratio: 1/4;
 		margin: 0;
 		width:90%;
 		margin-bottom:$text-size * 2;
-	}
-	span {
-		color:color("grey", "base");
 	}
 	a.special-button {
 		transform:translateX(-20px);
@@ -106,7 +103,7 @@ $small-img-ratio: 1/4;
 		font-size: 42vw;
 		font-weight: 800;
 	    position: fixed;
-	    top: 280px;
+	    top: 50%;
 	    left: 0;
 	    z-index: $base-index - 100;
 	    color:#fcfcfc;

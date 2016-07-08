@@ -31,78 +31,62 @@ $line-color: rgba(0,0,0,0.2);
 		}
 
 	}
-}
 
-
-.year, .this-year {
-    display: none;
-    padding: 10px 15px;
-    font-size: $text-size;
-    border: 1px solid $line-color;
-    background-color: #FFF;
-    color:color("grey", "darken-4");
-	text-transform: uppercase;
-	letter-spacing: .1rem;
-	margin-left: 13px;
-	margin-bottom: 40px;
-	&.visible {
-		display: inline-block;
-	}
-}
-
-.this-year {
-	position:relative;
-	width:66px;
-	height: 36px;
-	overflow: hidden;
-	opacity:0;
-	transition: all .2s ease;
-	span {
-		transform: translateY(0px);
-		position:absolute;
-		margin: 0 auto;
-		transition: all .2s ease;
-	}
-	span:first-child {
-		transform: translateY(-36px);
-		width:130px;
-		margin-left:-33px;
-	}
-	span:last-child {
-		transform: translateY(0px);
-		margin-left:0px;
-	}
-	&.active {
-		width: 133px;
-		span:first-child {
-			transform: translateY(0px);
-			margin-left:0px;
-		}
-		span:last-child {
-			transform: translateY(36px);
-			margin-left:33px;
-		}
-	}
-}
-
-@include phablet {
-
-	.year {
-	    position: absolute;
-	    text-align: center;
-	    left: 50%;
-	    top:-30px;
+	.year, .this-year {
+	    display: none;
 	    padding: 10px 15px;
-	    margin-left: -36px;
-	    margin-bottom: 0px;
+	    font-size: $text-size;
+	    font-family: $nav-font;
+	    border: 1px solid $line-color;
+	    background-color: #FFF;
+	    color:color("grey", "darken-4");
+		text-transform: uppercase;
+		letter-spacing: .1rem;
+		margin-left: 13px;
+		margin-bottom: 40px;
+		&.visible {
+			display: inline-block;
+		}
 	}
 
 	.this-year {
-		margin: 0 auto;
-		&.clicked {
-			opacity:0!important;
+		position:relative;
+		width:66px;
+		height: 36px;
+		overflow: hidden;
+		opacity:0;
+		transition: all .2s ease;
+		span {
+			transform: translateY(0px);
+			position:absolute;
+			margin: 0 auto;
+			transition: all .2s ease;
+		}
+		span:first-child {
+			transform: translateY(-36px);
+			width:130px;
+			margin-left:-33px;
+		}
+		span:last-child {
+			transform: translateY(0px);
+			margin-left:0px;
+		}
+		&.active {
+			width: 133px;
+			span:first-child {
+				transform: translateY(0px);
+				margin-left:0px;
+			}
+			span:last-child {
+				transform: translateY(36px);
+				margin-left:33px;
+			}
 		}
 	}
+}
+
+
+@include phablet {
 
 	.timeline {
 		width: 80%;
@@ -119,6 +103,22 @@ $line-color: rgba(0,0,0,0.2);
 			height:100%;
 			margin-top:2.56em;
 			border-right:1px solid $line-color;
+		}
+		.year {
+		    position: absolute;
+		    text-align: center;
+		    left: 50%;
+		    top:-30px;
+		    padding: 10px 15px;
+		    margin-left: -36px;
+		    margin-bottom: 0px;
+		}
+
+		.this-year {
+			margin: 0 auto;
+			&.clicked {
+				opacity:0!important;
+			}
 		}
 
 		.cell {

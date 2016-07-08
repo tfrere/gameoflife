@@ -59,21 +59,6 @@ var Projects = [
       img: ["images/portfolio/pngs/derock_desktop.png", "images/portfolio/pngs/ethienne_phone.png"],
       content: "Etienne de Rockigny, algorithmicien en chef de central depuis 15 ans. Site de promotion à l'occasion de la sortie du livre blanc d'Etienne de Rocquigny sur l'algorithmie aux services des PMEs.",
   }
-  // {
-  //     slug: "framework-css",
-  //     title:"RocketCSS",
-  //     subtitle: "Projet open source",
-  //     city:"Paris",
-  //     year:2014,
-  //     isLastProjectOfYear:true,
-  //     short: "Framework Sass reprennant le concept d'architecture moléculaire",
-  //     month: "septembre",
-  //     tags: ["sass", "html5"],
-  //     purpose: "Site vitrine",
-  //     website:"http://tfrere.github.io/RocketCSS/",
-  //     img: ["images/portfolio/pngs/framework_desktop.png", "images/portfolio/pngs/framework_phone.png"],
-  //     content: "Framework Sass reprennant le concept d'architecture moléculaire, conçu pour être simple de prise en main.",
-  // }
   // ,{
   //     slug: "matthieu-ricard",
   //     title:"Matthieu Ricard",

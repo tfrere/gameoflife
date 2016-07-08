@@ -10,6 +10,7 @@ import classNames               from 'classnames';
 import ReactTooltip             from 'react-tooltip';
 
 import FixedBackground          from 'component/FixedBackground';
+import Article                 from '../blog/Article';
 
 import Config                   from 'config/config';
 import Articles                 from 'config/articles';
@@ -29,12 +30,25 @@ export default class Blog extends Component {
 
     constructor( props ) {
         super( props );
+        this.state = {hover: false};
         this.onLeave = this.onLeave.bind(this);
         this.tl = new TimelineLite();
     }
     
     onLeave() {
+        console.log("blogLeave");
         this.tl.reverse();
+    }
+
+    mouseOver() {
+        console.log("triggered");
+        this.setState({hover: true});
+    }
+
+
+    mouseOut() {
+        console.log("triggered");
+        this.setState({hover: false});
     }
 
     componentDidMount(){
@@ -43,6 +57,7 @@ export default class Blog extends Component {
         window.scrollTo(0,0);
         
         var illustration = this.refs.illustration;
+        var blog = this.refs.blog;
 
         var mySVG = $(illustration).drawsvg({
             duration: 2000,
@@ -53,7 +68,6 @@ export default class Blog extends Component {
             mySVG.drawsvg('animate');
         }, 200 );
 
-        var blog = this.refs.blog;
         this.tl
         .fromTo(blog, 0.3, {opacity:0, y:-20, ease: Cubic.linear},{opacity:1, y:0, ease: Cubic.linear}, "+=0.5");
     }
@@ -71,30 +85,22 @@ export default class Blog extends Component {
         return (
             <div ref="blog" className="screen-box blog">
                 {illustration("#CCCCCC")}
-                <div className="container">
+                <div className={classNames("container", this.state.hover ? "hover-wrapper-active" : "")}>
                  {Articles.map((object, i) =>
-                    <div id={i} key={`project${i}`} className="cell force-1" ref={`project${i}`} >
+                    <section className="articles-of-the-year" key={`articles-of-the-year${i}`} >
                         <header>
-                            <div className="square-date">
-                                <h4>{object.month}</h4>
-                                <h5>{object.year}</h5>
-                            </div>
-                            <div className="sub-header">
-                                <h2>{object.title}</h2>
-                                {/*<h5 className="i">
-                                    <span>{object.themes}</span>
-                                </h5>*/}
-                            </div>
+                            <h2>{object.date}</h2>
                         </header>
-                        <div className="clearfix"/>
-                        {/*<div className="cell-img" style={{backgroundImage: 'url(' + `${object.imgUrl}` + ')'}}>
-                        </div>*/}
-                        <p dangerouslySetInnerHTML={{__html: object.contentHtml}}/>
-                        <br/><br/>
-                        {/*{object.tags.map((object, i) => <div className="tech-tag">{object} </div>)}*/}
-                        <hr/>
-                        <br/><br/><br/><br/>
-                    </div>
+                         {object.articles.map((object, i) =>
+                            <Article
+                                data={object}
+                                id={i}
+                                key={`article${i}`}
+                                handleMouseOver={ () => {this.mouseOver()} }
+                                handleMouseOut={ () => {this.mouseOut()} }
+                            />
+                         )}
+                    </section>
                  )}
                 </div>
                 <footer>
@@ -105,4 +111,3 @@ export default class Blog extends Component {
         );
     }
 }
-

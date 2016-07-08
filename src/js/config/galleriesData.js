@@ -1,15 +1,18 @@
 var GalleriesData = [
 
   {
-    title:"Black&White",
-    type:0
+    title:"Noir & Blanc",
+    type:0,
+    src:"images/portfolio/jpgs/photos/large/4.jpg",
   },
   {
-    title:"Animals",
-    type:1
+    title:"Nature",
+    type:1,
+    src:"images/portfolio/jpgs/photos/large/10.jpg"
   },
   {
     title:"Voyages",
-    type:2
+    type:2,
+    src:"images/portfolio/jpgs/photos/large/13.jpg"
   }
 ]; export default GalleriesData;

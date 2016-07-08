@@ -33,18 +33,9 @@ $radius: $circle-size * 0.85;
 		overflow:hidden;
 		display:flex;
 		background-color: white;
-		border: $border-size solid rgba(color("grey", "darken-1"), 0.5);
-		.hi {
-			width: $circle-size;
-			height: $circle-size;
-			background-image: url("../images/portfolio/svgs/hi.svg");
-			background-size: cover;
-			margin: auto;
-			transition: all 200ms ease;
-			&:hover{
-				transform:translateY(-10px);
-			}
-		}
+		background-image: url("../images/portfolio/jpgs/thibaud.jpg");
+		background-size: cover;
+
 	}
 	a {
 		margin-left:10px;

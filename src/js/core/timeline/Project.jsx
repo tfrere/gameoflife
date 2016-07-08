@@ -119,7 +119,7 @@ export default class Article extends Component {
         .from(title, 0.6, { opacity:0, x:-50, ease: Circ.easeInOut }, "+0.5")
         .from(purpose, 0.8, { opacity:0, x:-50, ease: Circ.easeInOut }, "+0.5")
         .from(text, 0.3, { opacity:0, y:5, ease: Circ.easeInOut }, "+1")
-        .from(year, 0.6, { opacity:1, ease: Circ.easeInOut }, "+0.5")
+        //.from(year, 0.6, { opacity:1, ease: Circ.easeInOut }, "+0.5")
         //.from(techTag, 0.3, { opacity:0, x:0, ease: Circ.easeInOut }, "+1.5")
         .from(sitelink, 0.3, { opacity:0, ease: Circ.easeInOut, clearProps: "all" }, "+1.3");
         
@@ -186,8 +186,8 @@ export default class Article extends Component {
                                 </p>
                                 {/*<div ref="techTagWrapper" className="tech-tag-wrapper">
                                     {Projects[url].tags.map((object, i) => <div className="tech-tag">{object} </div>)}
-                                </div>*/}
-                                <hr className="invisible clearfix"/>
+                                </div>
+                                <hr className="invisible clearfix"/>*/}
                                 <a href={Projects[url].website} target="_blank" ref="sitelink" className="special-button">
                                     <span className="content">Visiter le site</span>
                                     <span className="extra first"></span>
@@ -200,7 +200,7 @@ export default class Article extends Component {
                             <a ref="nextProject" className="next-project" onClick={ () => {this.nextProject("next")} } >
                                 <span/>
                             </a>
-                            <div ref="year" className="project-year">{Projects[url].year}</div>
+                            {/*<div ref="year" className="project-year">{Projects[url].year}</div>*/}
                             {/*<ImageZoomer alt="Image alt"
                                 src='images/portfolio/pngs/framework_desktop.png'
                                 zoomSrc='images/portfolio/pngs/framework_desktop.png'/>*/}

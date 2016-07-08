@@ -73,55 +73,14 @@
 
 	.cta {
 		z-index: 5;
-		display:block;
+		display:inline-block;
+		width:200px;
 		position:absolute;
-		bottom:0;
+		bottom:-20px;
 		left:0;
 		right:0;
-		width:150px;
-		height: 100px;
-    	overflow: hidden;
 		margin: 0 auto;
-		font-size: modular-scale(0, $text-size, $ratio);
-		display:inline-block;
-		white-space: nowrap;
-		background:transparent;
-		border: none;
-		color: color("primary", "base");
-		padding: 1em;
-		transition:all 200ms ease;
 		opacity:0;
-		span {
-			transition: all 200ms ease;
-			//opacity:0.6;
-		}
-		span.arrow-down {
-			background-image: url("../images/portfolio/svgs/arrow_down.svg");
-			background-repeat: no-repeat;
-			width:44px;
-			height:44px;
-			display:block;
-			margin: 0 auto;
-			margin-top:10px;
-			opacity:1;
-			transition: all 350ms ease;
-		}
-		&:hover {
-			span {
-				//opacity:1;
-			}
-			span.arrow-down {
-				animation:none;
-				transform: translateY(10px);
-			}
-		}
-		&.active {
-			span.arrow-down {
-				animation:none;
-				transform: translateY(25px);
-				opacity:0;
-			}
-		}
 	}
 }
 

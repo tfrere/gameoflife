@@ -43,7 +43,6 @@ export default class Contact extends Component {
 
         var title = this.refs.title;
         var content = this.refs.content;
-        var hi = this.refs.hi;
 
         this.tl
         .from(circle, 1, { y:-500, ease: Circ.easeInOut })
@@ -52,8 +51,7 @@ export default class Contact extends Component {
         .set(circle2, {className: '+=active'}, "+.8")
         .set(circle3, {className: '+=active'}, "+.9")
         .from(title, 0.5, { opacity:0, y:-20, ease: Cubic.linear }, "+0.5")
-        .from(content, 0.5, { opacity:0, y:-50, ease: Cubic.linear }, "+0.5")
-        .from(hi, 0.250, { opacity:0, y:150, ease: Cubic.linear, clearProps: "all" });
+        .from(content, 0.5, { opacity:0, y:-50, ease: Cubic.linear }, "+0.5");
     }
 
     componentWillUnmount() {
@@ -67,7 +65,6 @@ export default class Contact extends Component {
                 <header>
                     <div ref="contactCircle" className="circle say-hi">
                         <div className="circle-form">
-                            <div ref="hi" className="hi"/>
                         </div>
                         <a target="_blank" href="https://www.linkedin.com/in/thibaud-frere-3462b264">
                             <div ref="contactCircle0" className="delay-0 small-circle linkedin"/>

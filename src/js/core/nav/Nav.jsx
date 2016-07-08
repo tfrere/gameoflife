@@ -22,6 +22,7 @@ export default class Nav extends Component {
         super( props );
         this.state = {};
         this.tl = new TimelineLite();
+        this.enterTl = new TimelineLite();
         this.leavingEvent = document.createEvent('Event');
         this.leavingEvent.initEvent('leaving', true, true);
         this.onClick = this.onClick.bind(this);
@@ -63,7 +64,6 @@ export default class Nav extends Component {
          }
          else{
             this.tl.timeScale(1.5);
-            this.tl.seek(-0.4);
             this.tl.reverse();
             setTimeout( () => {
                 this.setState( { active: false } );
@@ -91,14 +91,15 @@ export default class Nav extends Component {
         document.dispatchEvent(this.leavingEvent);
 
         setTimeout( () => {
+              
             const url = this.props.location.pathname;
             var re = /.*\/.*\/[0-9]*/i;
 
-            if (url.match(re))
+            if (url.match(re) && url.match(/projet/i) )
                 this.props.history.push('/portfolio');
-            else if( url.match(/portfolio/i) ) 
-                this.props.history.push('/');
-            else if (window.history.length > 1)
+            else if (url.match(re) && url.match(/photo/i) )
+                this.props.history.push('/photo');
+            else if( url.match(/portfolio/i) || url.match(/photo/i)) 
                 this.props.history.push('/');
             else
                 this.props.history.goBack();
@@ -108,19 +109,21 @@ export default class Nav extends Component {
 
     componentDidMount() {
 
-        var footer = this.refs.navFooter;
+        var navBack = this.refs.navBack;
+        var navUrl = this.refs.navUrl;
+        var navButton = this.refs.navButton;
         var link0 = this.refs.navLink0;
         var link1 = this.refs.navLink1;
         var link2 = this.refs.navLink2;
 
-        console.log($(this.refs.navLink1).hasClass("active"));
+        this.enterTl
+        .from([navBack, navUrl, navButton], 0.4, { y:-80, ease: Circ.easeOut, opacity: 1, clearProps: "all" }, "+0.5");
 
         this.tl.stop();
         this.tl
         .from(link0, 0.2, { opacity:0, y:-15, ease: Circ.easeInOut }, "+=0.3")
         .from(link1, 0.2, { opacity:0, y:-15, ease: Circ.easeInOut }, "-=0.1")
-        .from(link2, 0.2, { opacity:0, y:-15, ease: Circ.easeInOut }, "-=0.1")
-        .from(footer, 0.4, { opacity:0, ease: Circ.easeInOut })
+        .from(link2, 0.2, { opacity:0, y:-15, ease: Circ.easeInOut }, "-=0.1");
 
     }
 
@@ -130,32 +133,36 @@ export default class Nav extends Component {
     render() {
 
         const url = this.props.location.pathname.replace(/\//g, '');
-        //console.log(url);
+
         var isBackButtonDisplayed = true;
         var urlToDisplay = "menu";
 
         if (url == "")
             isBackButtonDisplayed = false;
-        console.log(url);
         if (url.includes("projet"))
             urlToDisplay = "projet";
+        if (url.includes("gallerie"))
+            urlToDisplay = "gallerie";
         if (url == "portfolio")
             urlToDisplay = "portfolio";
-        if (url == "guidelines")
-            urlToDisplay = "charte graphique";
         if (url == "about")
             urlToDisplay = "a propos";
-
+        if (url == "guidelines")
+            urlToDisplay = "charte graphique";
+        if (url == "blog")
+            urlToDisplay = "blog";
+        if (url == "photo")
+            urlToDisplay = "photo";
 
         return (
             <div>
-                <div className={ classNames( 'nav-wrapper displayed', { active : this.state.active }) }>
+                <div ref="nav" className={ classNames( 'nav-wrapper displayed', { active : this.state.active }) }>
                     {/*<PreLoader/>*/}
                     <div className="nav-mobile-gradient"/>
                     {(function(props, isBackButtonDisplayed, onBack) {
                       if (isBackButtonDisplayed) {
                         return (
-                            <div className="nav-back" onClick={onBack.bind(null, "")}>
+                            <div ref="navBack" className="nav-back" onClick={onBack.bind(null, "")}>
                                 <div className="back-arrow"/>
                                 <h5 className="nav-typo"> retour </h5>
                             </div>
@@ -163,10 +170,10 @@ export default class Nav extends Component {
                       } 
                     })(this.props, isBackButtonDisplayed, this.onBack)}
 
-                    <h5 className={classNames("nav-info", "nav-typo", { "active": this.state.active})}>
+                    <h5 ref="navUrl" className={classNames("nav-info", "nav-typo", { "active": this.state.active})}>
                         {urlToDisplay}
                     </h5>
-                    <div className="nav-button">
+                    <div ref="navButton" className="nav-button">
                         <div onClick={ ::this.onClick } className={ classNames( 'burger-menu', { active : this.state.active } ) }>
                             <div></div>
                         </div>
@@ -175,36 +182,22 @@ export default class Nav extends Component {
                     <div className="nav">
                         <div>
                             <ul>
-                                <li ref="navLink0" className={ classNames( { active: url == "contact" } ) }>
-                                    <a onClick={ () => { this.onClick("contact") }}>
-                                        contact
-                                    </a>
-                                </li>
-                                <li ref="navLink1" className={ classNames( { active: url == "about" } ) }>
-                                    <a onClick={ () => { this.onClick("about") }}>
-                                        a propos
-                                    </a>
-                                </li>
-                                <li ref="navLink2" className={ classNames( { active: url == "portfolio" }, { active: url.includes("projet") } ) }>
+                                <li ref="navLink0" className={ classNames( { active: url == "portfolio" }, { active: url.includes("projet") } ) }>
                                     <a onClick={ () => { this.onClick("portfolio") }}>
                                         portfolio
                                     </a>
                                 </li>
+                                <li ref="navLink1" className={ classNames( { active: url == "about" } ) }>
+                                    <a onClick={ () => { this.onClick("about") }}>
+                                        à propos
+                                    </a>
+                                </li>
+                                <li ref="navLink2" className={ classNames( { active: url == "contact" } ) }>
+                                    <a onClick={ () => { this.onClick("contact") }}>
+                                        contact
+                                    </a>
+                                </li>
                             </ul>
-                            <footer ref="navFooter">
-                                <a onClick={ () => { this.onClick("blog") }} >
-                                    blog
-                                </a>
-                                <a onClick={ () => { this.onClick("photo") }} >
-                                    photo
-                                </a>
-                                <a onClick={ () => { this.onClick("guidelines") }} >
-                                    charte graphique 
-                                </a>
-                                <a className="right" href="mailto:ecrire@tfrere.fr">
-                                    ecrire@tfrere.fr
-                                </a>
-                            </footer>
                         </div>
                     </div>
                 </div> 

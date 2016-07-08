@@ -19,26 +19,26 @@ import AlternativeNav          from 'core/nav/AlternativeNav';
 import Timeline     from 'core/timeline/Timeline';
 import ProjectWrapper      from 'core/timeline/ProjectWrapper';
 
-import Galleries      from 'core/photo/galleries';
-import GalleryWrapper from 'core/photo/gallery';
+import Galleries      from 'core/photo/Galleries';
+import GalleryWrapper from 'core/photo/GalleryWrapper';
 
 import KeyPress     from 'component/KeyPress';
 
 import { Router, Route, Link, browserHistory } from 'react-router';
 
 ReactDOM.render((
-  <Router history={browserHistory}>
-  	<Router component={KeyPress}/>
-	<Route path="photo" component={Galleries}/>
-	<Route path="photo/gallerie/:galleryId" component={GalleryWrapper}/>
-  	<Route component={Nav}>
+	<Router history={browserHistory}>
+		<Router component={KeyPress}/>
 		<Route path="/" component={Intro}/>
-		<Route path="portfolio" component={Timeline}/>
-		<Route path="projet/:projectId" component={ProjectWrapper}/>
-		<Route path="blog" component={Blog}/>
-		<Route path="contact" component={AlternativeContact}/>
-		<Route path="guidelines" component={Guidelines}/>
-		<Route path="about" component={About}/>
-  	</Route>
-  </Router>
+		<Route component={Nav}>
+			<Route path="photo" component={Galleries}/>
+			<Route path="photo/gallerie/:galleryId" component={GalleryWrapper}/>
+			<Route path="portfolio" component={Timeline}/>
+			<Route path="projet/:projectId" component={ProjectWrapper}/>
+			<Route path="blog" component={Blog}/>
+			<Route path="contact" component={AlternativeContact}/>
+			<Route path="guidelines" component={Guidelines}/>
+			<Route path="about" component={About}/>
+		</Route>
+	</Router>
 ), document.getElementById( 'app-container' ))

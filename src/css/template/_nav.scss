@@ -10,13 +10,13 @@ $hover-bracket-offset: 100px;
 	z-index: $base-index;
 
 	.nav-info {
+		opacity:1;
 		position:fixed;
-		@extend fadeIn();
-		transition:all 200ms ease;
+		transition:transform 200ms ease;
+		transform:translateX(0);
 		top: 26px;
 		right:100px;
 		z-index: $base-index;
-		opacity:1;
 		&.active {
 			float:left;
 			transform:translateX($text-size / 2);
@@ -61,39 +61,44 @@ $hover-bracket-offset: 100px;
 		div {
 			
 			text-align: center;
+			width:100%;
+			ul {
+				width:100%;
+			}
 			li {
 				width:100%;
 				margin-top:8px;
 				a {
-					text-transform: uppercase;
+					//text-transform: uppercase;
 					color:white;
-					@include modular-scale(3, $title-size, $ratio);
+					@include modular-scale(4, $title-size, $ratio);
 					font-family: $nav-font;
-					font-weight: 100;
+					font-weight: 300;
 					position: relative;
 					display: inline-block;
-
+					width:100%;
+					position:relative;
 					&::before,
 					&::after {
-						display: inline-block;
-						opacity: 0;
-						transition: transform 0.3s ease, opacity 0.2s ease;
+						content: '';
+						height: 1px;
+						width: 0%;
+						background-color: color("primary", "lighten-2");
+						margin-top: -5px;
+						display: block;
+						transition: width 0.3s ease;
+						position: absolute;
+						top: 45px;
 					}
 
 					&::before {
-						margin-right: $hover-bracket-offset;
-						content: '[';
-						-webkit-transform: translateX($hover-translate-value);
-						-moz-transform: translateX($hover-translate-value);
-						transform: translateX($hover-translate-value);
+						left:0;
+						margin-right:20px;
 					}
 
 					&::after {
-						margin-left: $hover-bracket-offset;
-						content: ']';
-						-webkit-transform: translateX(-$hover-translate-value);
-						-moz-transform: translateX(-$hover-translate-value);
-						transform: translateX(-$hover-translate-value);
+						right:0;
+						margin-left:20px;
 					}
 				}
 				&.active a {
@@ -101,10 +106,7 @@ $hover-bracket-offset: 100px;
 				}
 				&.deployed a::before,
 				&.deployed a::after {
-					opacity: 0.3;
-					-webkit-transform: translateX(0px);
-					-moz-transform: translateX(0px);
-					transform: translateX(0px);
+					width: 35%;
 				}
 			}
 			margin: auto;
