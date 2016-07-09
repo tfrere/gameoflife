@@ -39,21 +39,31 @@ export default class Nav extends Component {
         var link0 = this.refs.navLink0;
         var link1 = this.refs.navLink1;
         var link2 = this.refs.navLink2;
+//        var link3 = this.refs.navLink3;
+        var link4 = this.refs.navLink4;
 
         if ($(this.refs.navLink0).hasClass("active")) {
-            this.tl.kill({className:true}, [link1, link2]);
+            this.tl.kill({className:true}, [link1, link2, link4]); // , link3
             this.tl.set(link0, {className: '+=deployed'}, "-=0.1");
         }
         else if ($(this.refs.navLink1).hasClass("active")) {
-            this.tl.kill({className:true}, [link0, link2]);
+            this.tl.kill({className:true}, [link0, link2, link4]); // , link3
             this.tl.set(link1, {className: '+=deployed'}, "-=0.1");
         }
         else if ($(this.refs.navLink2).hasClass("active")) {
-            this.tl.kill({className:true}, [link0, link1]);
+            this.tl.kill({className:true}, [link0, link1, link4]); // , link3
             this.tl.set(link2, {className: '+=deployed'}, "-=0.1");
         }
+        // else if ($(this.refs.navLink3).hasClass("active")) {
+        //     this.tl.kill({className:true}, [link0, link1, link2, link4]);
+        //     this.tl.set(link3, {className: '+=deployed'}, "-=0.1");
+        // }
+        else if ($(this.refs.navLink4).hasClass("active")) {
+            this.tl.kill({className:true}, [link0, link1, link2]); // , link3
+            this.tl.set(link4, {className: '+=deployed'}, "-=0.1");
+        }
         else {
-            this.tl.kill({className:true}, [link0, link1, link2]);
+            this.tl.kill({className:true}, [link0, link1, link2, link4]); // , link3
         }
 
 
@@ -111,12 +121,16 @@ export default class Nav extends Component {
         var link0 = this.refs.navLink0;
         var link1 = this.refs.navLink1;
         var link2 = this.refs.navLink2;
+//        var link3 = this.refs.navLink3;
+        var link4 = this.refs.navLink4;
 
         this.tl.stop();
         this.tl
         .from(link0, 0.2, { opacity:0, y:-15, ease: Circ.easeInOut }, "+=0.3")
         .from(link1, 0.2, { opacity:0, y:-15, ease: Circ.easeInOut }, "-=0.1")
-        .from(link2, 0.2, { opacity:0, y:-15, ease: Circ.easeInOut }, "-=0.1");
+        .from(link2, 0.2, { opacity:0, y:-15, ease: Circ.easeInOut }, "-=0.1")
+//        .from(link3, 0.2, { opacity:0, y:-15, ease: Circ.easeInOut }, "-=0.1")
+        .from(link4, 0.2, { opacity:0, y:-15, ease: Circ.easeInOut }, "-=0.1")
 
     }
 
@@ -188,6 +202,16 @@ export default class Nav extends Component {
                                 <li ref="navLink2" className={ classNames( { active: url == "contact" } ) }>
                                     <a onClick={ () => { this.onClick("contact") }}>
                                         contact
+                                    </a>
+                                </li>
+                                {/*<li ref="navLink3" className={ classNames( { active: url == "photo" } ) }>
+                                    <a onClick={ () => { this.onClick("photo") }}>
+                                        photo
+                                    </a>
+                                </li>*/}
+                                <li ref="navLink4" className={ classNames( { active: url == "blog" } ) }>
+                                    <a onClick={ () => { this.onClick("blog") }}>
+                                        blog
                                     </a>
                                 </li>
                             </ul>
