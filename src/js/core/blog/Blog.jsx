@@ -85,7 +85,7 @@ export default class Blog extends Component {
         return (
             <div ref="blog" className="screen-box blog">
                 {illustration("#CCCCCC")}
-                <div className={classNames("container", this.state.hover ? "hover-wrapper-active" : "")}>
+                <div className={classNames("container", (this.state.hover) ? "hover-wrapper-active" : "")}>
                  {Articles.map((object, i) =>
                     <section className="articles-of-the-year" key={`articles-of-the-year${i}`} >
                         <header>
@@ -96,8 +96,8 @@ export default class Blog extends Component {
                                 data={object}
                                 id={i}
                                 key={`article${i}`}
-                                handleMouseOver={ () => {this.mouseOver()} }
-                                handleMouseOut={ () => {this.mouseOut()} }
+                                handleMouseOver={ () => {this.mouseOver(i)} }
+                                handleMouseOut={ () => {this.mouseOut(i)} }
                             />
                          )}
                     </section>

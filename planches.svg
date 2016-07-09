@@ -243,9 +243,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7071068"
-     inkscape:cx="6204.8685"
-     inkscape:cy="-1384.0486"
+     inkscape:zoom="1"
+     inkscape:cx="6240.7516"
+     inkscape:cy="-1508.6581"
      inkscape:current-layer="layer1"
      inkscape:document-units="px"
      showgrid="false"
@@ -3317,8 +3317,8 @@
          y="2207.0071"
          style="font-size:23.77150536px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#cccccc;fill-opacity:1;font-family:Libre Baskerville;-inkscape-font-specification:Libre Baskerville">14 octobre</tspan></text>
     <path
-       style="fill:#e6e6e6;fill-opacity:1;stroke:#f2f2f2;stroke-width:0.69314724px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 6287.9348,2198.0729 -138.0555,0"
+       style="fill:#e6e6e6;fill-opacity:1;stroke:#f2f2f2;stroke-width:0.93558586px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 6416.4028,2198.1717 -252.0926,0"
        id="path12277-9"
        inkscape:connector-curvature="0" />
     <text
@@ -3346,8 +3346,8 @@
          y="2249.679"
          style="font-size:23.77150535999999903px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#cccccc;fill-opacity:1;font-family:Libre Baskerville;-inkscape-font-specification:Libre Baskerville">23  décembre</tspan></text>
     <path
-       style="fill:#e6e6e6;fill-opacity:1;stroke:#f2f2f2;stroke-width:0.74300849px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 6292.1183,2240.8422 -158.6318,0"
+       style="fill:#e6e6e6;fill-opacity:1;stroke:#f2f2f2;stroke-width:0.93088156px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 6388.0052,2240.8436 -249.5637,0"
        id="path12277-9-2"
        inkscape:connector-curvature="0" />
     <text
@@ -3375,8 +3375,8 @@
          y="2293.5195"
          style="font-size:23.77150536px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#cccccc;fill-opacity:1;font-family:Libre Baskerville;-inkscape-font-specification:Libre Baskerville">18 aout</tspan></text>
     <path
-       style="fill:#e6e6e6;fill-opacity:1;stroke:#f2f2f2;stroke-width:0.75924307px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="m 6290.5942,2284.7829 -165.6396,0"
+       style="fill:#e6e6e6;fill-opacity:1;stroke:#f2f2f2;stroke-width:1.06926715px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 6454.4387,2284.6843 -329.2798,0"
        id="path12277-9-2-8"
        inkscape:connector-curvature="0" />
     <text
@@ -14404,5 +14404,20 @@
          x="-2454.7607"
          id="tspan2987-3-6-1-4-1-3-2-3-4-5-1-3-16-7-6-8"
          sodipodi:role="line">2016</tspan></text>
+    <path
+       style="fill:#e6e6e6;fill-opacity:1;stroke:#f2f2f2;stroke-width:1.19282877px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 6416.9055,2209.188 0,-22.8362"
+       id="path12277-9-2-8-61-6-9-5-5"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#e6e6e6;fill-opacity:1;stroke:#f2f2f2;stroke-width:1.19282877px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 6387.649,2252.3215 0,-22.8362"
+       id="path12277-9-2-8-61-6-9-5-5-5"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#e6e6e6;fill-opacity:1;stroke:#f2f2f2;stroke-width:1.19282877px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 6453.4099,2296.1621 0,-22.8362"
+       id="path12277-9-2-8-61-6-9-5-5-0"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>

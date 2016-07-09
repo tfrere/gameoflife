@@ -88,7 +88,7 @@ export default class Article extends Component {
                        onMouseOut={ () => {this.mouseOut()} }
                        style={ articleStyle }
                        ref="article"
-                       className={classNames("cell force-1 article-wrapper", this.state.hover ? "hover-active" : "")} >
+                       className={classNames("cell force-1 article-wrapper", this.state.isOpen ? "open" : "", this.state.hover ? "hover-active" : "")} >
 
                   <header ref="head" onClick={ () => {this.handleClick()} }>
                       <div ref="date" className="date">

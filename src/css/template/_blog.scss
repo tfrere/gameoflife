@@ -4,11 +4,10 @@
 		margin-top:125px;
 		margin-bottom:0px;
 		margin-left:calc(50% - 225px);
-	    display: block;
-	    scale:0.7;
-	    @extend .levitation;
+		display: block;
+		scale:0.7;
+		@extend .levitation;
 	}
-
 
 	.articles-of-the-year {
 		position:relative;
@@ -71,6 +70,7 @@
 					font-family: $nav-font;
 					letter-spacing: 0.1rem;
 					transition: color .4s ease;
+					@extend unselectable();
 				}
 				
 			}
@@ -79,6 +79,7 @@
 				background-color: white;
 				padding-right:$text-size * 2;
 				h3{
+					@extend unselectable();
 					padding-top:10px;
 					margin: 0;
 					font-weight: 600;
@@ -128,10 +129,15 @@
 				//opacity:0.8;
 			}
 		}
+		.article-wrapper.open {
+			.sub-header h3 {
+				background-size: 100% 100%;
+				cursor: pointer;
+			}
+
+		}
 	}
-
 }
-
 
 @include phablet {
 	.blog {

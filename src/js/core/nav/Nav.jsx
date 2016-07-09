@@ -22,7 +22,6 @@ export default class Nav extends Component {
         super( props );
         this.state = {};
         this.tl = new TimelineLite();
-        this.enterTl = new TimelineLite();
         this.leavingEvent = document.createEvent('Event');
         this.leavingEvent.initEvent('leaving', true, true);
         this.onClick = this.onClick.bind(this);
@@ -109,15 +108,9 @@ export default class Nav extends Component {
 
     componentDidMount() {
 
-        var navBack = this.refs.navBack;
-        var navUrl = this.refs.navUrl;
-        var navButton = this.refs.navButton;
         var link0 = this.refs.navLink0;
         var link1 = this.refs.navLink1;
         var link2 = this.refs.navLink2;
-
-        this.enterTl
-        .from([navBack, navUrl, navButton], 0.4, { y:-80, ease: Circ.easeOut, opacity: 1, clearProps: "all" }, "+0.5");
 
         this.tl.stop();
         this.tl
@@ -162,7 +155,7 @@ export default class Nav extends Component {
                     {(function(props, isBackButtonDisplayed, onBack) {
                       if (isBackButtonDisplayed) {
                         return (
-                            <div ref="navBack" className="nav-back" onClick={onBack.bind(null, "")}>
+                            <div className="nav-back" onClick={onBack.bind(null, "")}>
                                 <div className="back-arrow"/>
                                 <h5 className="nav-typo"> retour </h5>
                             </div>
@@ -170,10 +163,10 @@ export default class Nav extends Component {
                       } 
                     })(this.props, isBackButtonDisplayed, this.onBack)}
 
-                    <h5 ref="navUrl" className={classNames("nav-info", "nav-typo", { "active": this.state.active})}>
+                    <h5 className={classNames("nav-info", "nav-typo", { "active": this.state.active})}>
                         {urlToDisplay}
                     </h5>
-                    <div ref="navButton" className="nav-button">
+                    <div className="nav-button">
                         <div onClick={ ::this.onClick } className={ classNames( 'burger-menu', { active : this.state.active } ) }>
                             <div></div>
                         </div>

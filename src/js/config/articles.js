@@ -73,12 +73,7 @@ var Articles =
 	 			themes: "programmation, illustration",
 	 			tags:["pixel art", "programmation", "illustration"],
 	 			contentHtml: "Réalisation d'une suite de textures au format xpixmap et png dans le cadre du développement d'un jeu en raycaster à 42.\<br/\>\<br/\> \<img src='images/portfolio/pngs/texture.png'\>",
-	 		}
-	 	]
-	},
-	{
-		date:"2013",
-		articles: [
+	 		},
 	 		{
 	 			title:"Recherches logo",
 	 			descHtml: "\<b\>blabla2\</b\>\<b\>blabla2\</b\>",
@@ -115,16 +110,11 @@ var Articles =
 				imgUrl:"images/portfolio/jpgs/aos_final.jpg",
 				tags:["album", "musique"],
 				contentHtml: "Définition d'une identité visuelle et cover d'album pour le groupe Strasbourgeois Ash of Sound. <br/><br/> \<img src='images/portfolio/jpgs/aos_final.jpg'\> <a target='_blank' href='http://www.deezer.com/artist/341769'> Ecouter l'album</a><br/><br/>",
-			}
-		]
-	},
-	{
-		date:"2011",
-		articles: [
+			},
 			{
 				title:"Modélisation",
 				descHtml: "\<b\>blabla2\</b\>\<b\>blabla2\</b\>",
-				year: "2011",
+				year: "2012",
 				month: "OCT",
 				date: "14 octobre",
 				themes: "3D, Maya",
