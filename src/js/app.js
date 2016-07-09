@@ -30,7 +30,7 @@ ReactDOM.render((
 	<Router history={browserHistory}>
 		<Router component={KeyPress}/>
 		<Route path="/" component={Intro}/>
-		<Route component={AlternativeNav}>
+		<Route component={Nav}>
 			<Route path="photo" component={Galleries}/>
 			<Route path="photo/gallerie/:galleryId" component={GalleryWrapper}/>
 			<Route path="portfolio" component={Timeline}/>
