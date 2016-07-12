@@ -68,22 +68,23 @@ export default class About extends Component {
 
     }
 
-
     render() {
 
         var heart = "♡";
 
         return (
             <div ref="about" className="screen-box about">
+                <div className="rotated-square"/>
                 <div className="center">
                     <article>
 
                         <div className="row">
                             <div className="cell">
+                                <h2 className="rotated-title">A propos</h2>
                                 {/*<div className="circle-placeholder"></div>*/}
                                 <div className="bloc-intro">
                                     <p ref="textIntro" className="text-introduction"> <b>Designer front end</b> avec plus de 7 ans d'éxperience dans le monde professionnel.</p>
-                                    <p className="two-col" ref="textComplement"> De formation <b>peintre en lettre</b>— passionné de technologies depuis mon plus jeune âge — <b>Directeur de création 3D</b> en agence à 16 ans, j'ai complété par la suite ma formation à l'école 42 le temps d'aquérir une certaine méthodologie dans ma manière de programmer. Je peux travailler avec des <b>designers</b> comme des <b>ingénieurs back-end</b> ou comme <b>développeur fullstack</b> sur de petits projets. Ai connaissance des méthodologies agiles.</p>
+                                    <p className="two-col" ref="textComplement"> De formation <b>peintre en lettre</b> — passionné de technologies — <b>Directeur de création 3D</b> en agence à 16 ans, j'ai complété par la suite ma formation à l'école 42 le temps d'aquérir une certaine méthodologie dans ma manière de programmer. Je peux travailler avec des <b>designers</b> comme des <b>ingénieurs back-end</b> ou comme <b>développeur fullstack</b> sur de petits projets. Ai connaissance des méthodologies agiles.</p>
                                 </div>
                                 {/*<div ref="contactCircle" className="circle photo">
                                     <div className="circle-form">
@@ -103,6 +104,7 @@ export default class About extends Component {
                                 </div>*/}
                             </div>
                         </div>
+                        <hr className="threedots left"/>
                         <h2 ref="firstTitle">Compétences & Techniques</h2>
                         <section className="row">
                           <section className="cell">
@@ -110,6 +112,7 @@ export default class About extends Component {
                                   <i className="icon icon-tools"></i>
                                   <h3>Développement</h3>
                               </div>
+                              <div className="clearfix invisible"></div>
                               <span className="square-tag">Compétences</span>
                               <div className="row row-gutter">
                                   <ul className="ul cell">
@@ -141,6 +144,7 @@ export default class About extends Component {
                                 <i className="icon icon-design"></i>
                                 <h3>Design</h3>
                               </div>
+                              <div className="clearfix invisible"></div>
                               <span className="square-tag">Outils</span>
                               <div className="row row-gutter">
                                   <ul className="ul cell">
@@ -165,6 +169,7 @@ export default class About extends Component {
                               </ul>
                           </section>
                         </section>
+                        <hr className="threedots left six-top"/>
                         <h2>Prix & distinctions</h2>
                         <section className="row">
                           <section className="cell">

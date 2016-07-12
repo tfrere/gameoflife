@@ -211,6 +211,7 @@
 		.add-top 		{ margin-top: $text-size !important; }
 		.double-top 	{ margin-top: $text-size * 2 !important; }
 		.quad-top 		{ margin-top: $text-size * 4 + 0.6 !important; }
+		.six-top 		{ margin-top: $text-size * 6 !important; }
 		.octo-top 		{ margin-top: $text-size * 8 !important; }
 
 		.remove-left 	{ margin-left: 0 !important; }
@@ -232,6 +233,7 @@
 		.add-bottom 	{ margin-bottom: $text-size !important; }
 		.double-bottom 	{ margin-bottom: $text-size * 2 !important; }
 		.quad-bottom 	{ margin-bottom: $text-size * 4 !important; }
+		.six-bottom 	{ margin-bottom: $text-size * 6 !important; }
 		.octo-bottom 	{ margin-bottom: $text-size * 8 !important; }
 
 		.valign-bottom { vertical-align: bottom }

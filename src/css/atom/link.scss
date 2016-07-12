@@ -9,3 +9,36 @@
 		&:active 	{ outline: 0; }
 		&:focus	 	{  outline: 0; }
 	}
+
+	$background-color: #fff;
+	$link-color: #333;
+	$link-color-active: #55abad;
+	$link-underline-color: $link-color;
+	$link-underline-color-active: $link-color-active;
+	$link-underline-width: 1px;
+	$link-underline-offset: 0px;
+
+	@mixin underline($color: $link-underline-color, $weight: $link-underline-width, $offset: $link-underline-offset) {
+		background-image: linear-gradient(bottom, transparent, transparent $offset, $color $offset, $color ($offset + $weight), transparent ($offset + $weight))
+	}
+
+	a.custom {
+		color: $link-color;
+		text-decoration: none;
+		position: relative;
+		text-shadow: -1px -1px 0 $background-color, 1px -1px 0 $background-color, -1px 1px 0 $background-color, 1px 1px 0 $background-color;
+		transition: color 200ms ease;
+		@include underline($link-color);
+		&:hover, &:focus {
+			color: $link-color-active;
+		}
+
+	}
+
+
+// @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)
+// +underline($link-color, 0.5)
+// &:hover, &:focus
+// +underline($link-color-active)
+// @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 144dpi)
+// +underline($link-color-active, 0.5)

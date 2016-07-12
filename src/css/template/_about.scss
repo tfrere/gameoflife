@@ -1,6 +1,6 @@
 .about {
 	width:100%;
-	margin-top:125px;
+	margin-top:175px;
 	.dafoe {
 		font-family: "Dafoe";
 	}
@@ -40,6 +40,30 @@
 			@extend .icon-2x;
 		}
 	}
+	.rotated-title {
+		font-family: $nav-font;
+		font-weight: 100;
+		position:absolute;
+		transform: rotate(-90deg);
+		color:color("grey", "lighten-1");
+		top: 10px;
+		left: -8.7rem;
+		font-size: 1.5rem;
+		text-transform: uppercase;
+		font-style: normal;
+		letter-spacing: 0.3rem;
+	}
+
+	.rotated-square {
+		width: 650px;
+		height: 650px;
+		background-color: rgba(0, 0, 0, 0.01);
+		position: fixed;
+		right: -325px;
+		top: -65px;
+		transform: rotate(45deg);
+	}
+
 	h5 {
 		margin:$text-size 0;
 	}
@@ -56,6 +80,7 @@
 		width:60%;
 		color: color("grey", "darken-3");
 		font-style: italic;
+		text-shadow: 2px 2px 0 #fff, 3px 3px 0 rgba(0, 0, 0, 0.1);
 	}
 	.icon-title {
 		.icon {
@@ -78,14 +103,14 @@
 			top:-20px;
 			background-color: color("grey", "lighten-2");
 		}
-		&:after {
-			content:"";
-			height:1px;
-			width:30px;
-			position:absolute;
-			bottom:-30px;
-			background-color: color("grey", "lighten-2");
-		}
+		// &:after {
+		// 	content:"";
+		// 	height:1px;
+		// 	width:30px;
+		// 	position:absolute;
+		// 	bottom:-30px;
+		// 	background-color: color("grey", "lighten-2");
+		// }
 		margin-bottom: $text-size * 3;
 	}
 	.center {

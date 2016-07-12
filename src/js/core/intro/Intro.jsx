@@ -33,10 +33,13 @@ export default class Intro extends Component {
     onClick() {
 
         this.setState( { active: true } );
+        this.tl.timeScale(1.5);
         this.tl.reverse();
+        this.tl.seek(-2.4);
         setTimeout( () => {
             this.props.history.pushState(null, '/portfolio');
             this.setState( { active : false } );
+            this.tl.timeScale(1);
         }, 1500 );
     }
 
@@ -54,7 +57,7 @@ export default class Intro extends Component {
 
         var illustration = this.refs.illustration;
 
-        $(work).arctext({radius: 100, dir: 1});
+        $(name).arctext({radius: 100, dir: 1});
         $(since).arctext({radius: 80, dir: -1});
 
         var drawIllu = $(illustration).drawsvg({
@@ -92,14 +95,14 @@ export default class Intro extends Component {
         this.tl.stop();
 
         this.tl
-        .fromTo(work, 0.5, { opacity:0, y:-30, ease: Expo.easeInOut, rotationY:0, rotationX:0 },
+        .fromTo(work, 0.6, { opacity:0, y:-30, ease: Expo.easeInOut, rotationY:0, rotationX:0 },
                            {opacity:1, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:0}
-                           , "+=0.4")
-        .fromTo([name, since], 0.5, { opacity:0, y:-30, ease: Expo.easeInOut, rotationY:0, rotationX:0 },
+                           , "+=0.2")
+        .fromTo([name, since], 0.6, { opacity:0, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:0 },
                            {opacity:1, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:0}
-                           , "-=0.4")
-        .fromTo(cta, 0.2, { opacity:0 }, { opacity:1 })
-        .fromTo(illustration, 0.5, {opacity:0}, {opacity:1});
+                           , "-=0.2")
+        .fromTo(illustration, 0.5, {opacity:0}, {opacity:1})
+        .fromTo(cta, 0.4, { opacity:0 }, { opacity:1 }, "+=2.2");
         //.fromTo(background, 0.5, {opacity:0}, {opacity:1}, "-=0.5");
         // .fromTo(background2, 0.5, {opacity:0}, {opacity:1}, "-=0.5")
         // .fromTo(background3, 0.5, {opacity:0}, {opacity:1}, "-=0.5");
@@ -135,8 +138,8 @@ export default class Intro extends Component {
                         <div className="center">
                             {illustration("#DDD")}
                             <div className="text">
-                                <h4 ref="work">THIBAUD FRERE</h4>
-                                <h1 ref="name" className="i uppercase">web designer </h1>
+                                <h4 ref="name">THIBAUD FRERE</h4>
+                                <h1 ref="work" className="i uppercase">web designer </h1>
                                 <h5 ref="since">DEPUIS 2008</h5>
                             </div>
                             <a ref="cta" className={classNames("cta special-button", {active: this.state.active}) } onClick={ ::this.onClick }>
