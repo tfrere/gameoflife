@@ -102,7 +102,6 @@
     "buildDir": "./build",
     "devHost": "localhost",
     "devPort": 9200
-    }
   },
   "engines": {
     "node": "5.2.x"
