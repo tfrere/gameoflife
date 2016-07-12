@@ -100,7 +100,7 @@ export default class Intro extends Component {
                            , "+=0.2")
         .fromTo([name, since], 0.6, { opacity:0, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:0 },
                            {opacity:1, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:0}
-                           , "-=0.2")
+                           , "-=0.4")
         .fromTo(illustration, 0.5, {opacity:0}, {opacity:1})
         .fromTo(cta, 0.4, { opacity:0 }, { opacity:1 }, "+=2.2");
         //.fromTo(background, 0.5, {opacity:0}, {opacity:1}, "-=0.5");

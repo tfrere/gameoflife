@@ -6,13 +6,15 @@ $base-index: 0;
 $line-color: rgba(0,0,0,0.2);
 
 .timeline {
-	margin-top:120px;
+	margin-top:250px;
 	&>.row {
 		padding-bottom:120px;
 	}
 	.cell {
 		width: 80%;
 		margin: 0 auto;
+		text-align: center;
+		padding-left:0;
 		:before {
 			display:none;
 		}
@@ -49,6 +51,10 @@ $line-color: rgba(0,0,0,0.2);
 		}
 	}
 
+	.year {
+		margin-left: 0px;
+	}
+
 	.this-year {
 		position:relative;
 		width:66px;
@@ -56,6 +62,7 @@ $line-color: rgba(0,0,0,0.2);
 		overflow: hidden;
 		opacity:0;
 		transition: all .2s ease;
+		margin: 0 auto;
 		span {
 			transform: translateY(0px);
 			position:absolute;
@@ -115,7 +122,6 @@ $line-color: rgba(0,0,0,0.2);
 		}
 
 		.this-year {
-			margin: 0 auto;
 			&.clicked {
 				opacity:0!important;
 			}
@@ -124,6 +130,7 @@ $line-color: rgba(0,0,0,0.2);
 		.cell {
 			opacity:0;
 			transition:all 200ms ease;
+			padding-left:2.4rem;
 			.cell-wrapper {
 				margin: 3em 40px 0px 3em;
 			}

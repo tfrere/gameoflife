@@ -84,7 +84,7 @@ export default class About extends Component {
                                 {/*<div className="circle-placeholder"></div>*/}
                                 <div className="bloc-intro">
                                     <p ref="textIntro" className="text-introduction"> <b>Designer front end</b> avec plus de 7 ans d'éxperience dans le monde professionnel.</p>
-                                    <p className="two-col" ref="textComplement"> De formation <b>peintre en lettre</b> — passionné de technologies — <b>Directeur de création 3D</b> en agence à 16 ans, j'ai complété par la suite ma formation à l'école 42 le temps d'aquérir une certaine méthodologie dans ma manière de programmer. Je peux travailler avec des <b>designers</b> comme des <b>ingénieurs back-end</b> ou comme <b>développeur fullstack</b> sur de petits projets. Ai connaissance des méthodologies agiles.</p>
+                                    <p className="two-col" ref="textComplement"> De formation <b>peintre en lettre</b> — passionné de technologies — <b>directeur de création 3D</b> en agence à 16 ans, j'ai complété par la suite ma formation à l'école 42 le temps d'aquérir une certaine méthodologie dans ma manière de programmer. Je peux travailler avec des <b>designers</b> comme des <b>ingénieurs back-end</b> ou comme <b>développeur fullstack</b> sur de petits projets. Ai connaissance des méthodologies agiles.</p>
                                 </div>
                                 {/*<div ref="contactCircle" className="circle photo">
                                     <div className="circle-form">
