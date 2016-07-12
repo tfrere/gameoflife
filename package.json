@@ -18,6 +18,7 @@
     "google-maps-api": "^2.0.0",
     "gsap": "^1.18.2",
     "history": "^1.17.0",
+    "imagesloaded": "^4.1.0",
     "jquery": "^2.2.3",
     "json-loader": "^0.5.4",
     "jss": "^3.11.1",
@@ -26,7 +27,9 @@
     "jss-px": "^1.0.0",
     "jss-vendor-prefixer": "^2.0.0",
     "linebreak": "^0.3.0",
-    "lodash": "3.10.0",
+    "lodash": "^4.13.1",
+    "masonry": "0.0.2",
+    "masonry-layout": "^4.1.0",
     "moment": "^2.11.1",
     "nodemailer": "^1.10.0",
     "object-assign": "^4.0.1",
@@ -46,10 +49,7 @@
     "react-swipeable": "^3.4.0",
     "react-toolbar": "^0.1.1",
     "react-tooltip": "^0.9.8",
-    "react-typewriter": "^0.3.0",
-    "lodash": "^4.13.1",
-    "masonry": "0.0.2",
-    "masonry-layout": "^4.1.0"
+    "react-typewriter": "^0.3.0"
   },
   "devDependencies": {
     "babel-core": "^6.3.13",
