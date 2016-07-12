@@ -96,20 +96,15 @@
     "dev": "NODE_ENV=dev node ./webpack/dev-server  --colors --display-error-details --progress",
     "build": "npm run webpack",
     "prepublish": "npm run build",
-    "publish": "aws s3 cp $npm_package_config_buildDir $npm_package_config_aws_s3_bucket --recursive --exclude \"*.DS_Store\"",
-    "heroku-postbuild": "npm run build"
+    "postinstall": "npm run build"
   },
   "config": {
     "buildDir": "./build",
     "devHost": "localhost",
-    "devPort": 9200,
-    "aws": {
-      "s3": {
-        "bucket": "s3://board.winckell.com/"
-      }
+    "devPort": 9200
     }
   },
   "engines": {
-    "node": ">=5.0.0"
+    "node": "5.2.x"
   }
 }
