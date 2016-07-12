@@ -62,7 +62,7 @@ export default class About extends Component {
         .from(textIntro, 0.4, {opacity: 0, x:-20, ease: Circ.easeInOut}, "-=.3")
         .from(textComplement, 0.4, {opacity: 0, x:-20, ease: Circ.easeInOut}, "-=.3")
         .from(firstTitle, 0.4, {opacity: 0, x:-20, ease: Circ.easeInOut}, "-=.3")
-        .fromTo(rotatedTitle, 0.4, {opacity: 0, x:-20, rotate: -90, ease: Circ.easeInOut}, {opacity: 1, y:0, rotate: -90, ease: Circ.easeInOut}, "-=.3")
+        .fromTo(rotatedTitle, 0.4, {opacity: 0, x:-20, rotate: -90, ease: Circ.easeInOut}, {opacity: 1, x:0, rotate: -90, ease: Circ.easeInOut}, "-=.3")
         .fromTo(rotatedSquare, 0.6, {opacity: 0, x:600, rotate: 45, ease: Circ.easeInOut}, {opacity: 1, x:0, rotate: 45, ease: Circ.easeInOut}, "-=.3")
 
     }
