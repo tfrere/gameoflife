@@ -43,6 +43,8 @@ export default class About extends Component {
         var textIntro = this.refs.textIntro;
         var textComplement = this.refs.textComplement;
         var firstTitle = this.refs.firstTitle;
+        var rotatedSquare = this.refs.rotatedSquare;
+        var rotatedTitle = this.refs.rotatedTitle;
 
         // var circle = this.refs.contactCircle;
         
@@ -60,6 +62,8 @@ export default class About extends Component {
         .from(textIntro, 0.4, {opacity: 0, x:-20, ease: Circ.easeInOut}, "-=.3")
         .from(textComplement, 0.4, {opacity: 0, x:-20, ease: Circ.easeInOut}, "-=.3")
         .from(firstTitle, 0.4, {opacity: 0, x:-20, ease: Circ.easeInOut}, "-=.3")
+        .fromTo(rotatedTitle, 0.4, {opacity: 0, x:-20, rotate: -90, ease: Circ.easeInOut}, {opacity: 1, y:0, rotate: -90, ease: Circ.easeInOut}, "-=.3")
+        .fromTo(rotatedSquare, 0.6, {opacity: 0, x:600, rotate: 45, ease: Circ.easeInOut}, {opacity: 1, x:0, rotate: 45, ease: Circ.easeInOut}, "-=.3")
 
     }
 
@@ -74,13 +78,13 @@ export default class About extends Component {
 
         return (
             <div ref="about" className="screen-box about">
-                <div className="rotated-square"/>
+                <div ref="rotatedSquare" className="rotated-square"/>
                 <div className="center">
                     <article>
 
                         <div className="row">
                             <div className="cell">
-                                <h2 className="rotated-title">A propos</h2>
+                                <h2 ref="rotatedTitle" className="rotated-title">A propos</h2>
                                 {/*<div className="circle-placeholder"></div>*/}
                                 <div className="bloc-intro">
                                     <p ref="textIntro" className="text-introduction"> <b>Designer front end</b> avec plus de 7 ans d'éxperience dans le monde professionnel.</p>

@@ -44,7 +44,6 @@
 		font-family: $nav-font;
 		font-weight: 100;
 		position:absolute;
-		transform: rotate(-90deg);
 		color:color("grey", "lighten-1");
 		top: 10px;
 		left: -8.7rem;
@@ -52,16 +51,18 @@
 		text-transform: uppercase;
 		font-style: normal;
 		letter-spacing: 0.3rem;
+		//transform: rotate(-90deg);
 	}
 
 	.rotated-square {
 		width: 650px;
 		height: 650px;
-		background-color: rgba(0, 0, 0, 0.01);
+		background-color: rgba(0, 0, 0, 0.02);
 		position: fixed;
 		right: -325px;
 		top: -65px;
-		transform: rotate(45deg);
+		// gsap purpose
+		//transform: rotate(45deg);
 	}
 
 	h5 {
