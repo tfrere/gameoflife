@@ -5,7 +5,6 @@ import TweenLite from 'gsap/src/minified/TweenLite.min.js';
 
 import React, { Component, PropTypes }  from 'react';
 import classNames                       from 'classnames';
-import {Motion, spring, TransitionMotion}                         from 'react-motion';
 
 
 export default class MotionTest extends Component {

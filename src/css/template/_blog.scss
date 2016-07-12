@@ -50,7 +50,7 @@
 			width: 100%;
 			height: 50px;
 			cursor:pointer;
-			@extend unselectable();
+			@extend .unselectable;
 			&:after {
 				content:"";
 				width:100%;
@@ -72,7 +72,7 @@
 					font-family: $nav-font;
 					letter-spacing: 0.1rem;
 					transition: color .4s ease;
-					@extend unselectable();
+					@extend .unselectable;
 				}
 				
 			}
@@ -81,7 +81,7 @@
 				background-color: white;
 				padding-right:$text-size * 2;
 				h3{
-					@extend unselectable();
+					@extend .unselectable;
 					padding-top:10px;
 					margin: 0;
 					font-weight: 600;

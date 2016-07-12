@@ -1,6 +1,6 @@
 import React, { Component, PropTypes, render } from 'react';
 import Lightbox from './images/Lightbox.js';
-import Masonry from 'react-masonry-component';
+import Masonry from './masonry/masonry';
 import $ from 'jquery';
 import classNames from 'classnames';
 import Pictures from 'config/pictures';
