@@ -1,7 +1,9 @@
 Purposes
 =================
-This project is a proof of concept 
 
+For auto build on heroku
+use this command to disabling production mode and install devDependencies for building the app directly on heroku's servers
+heroku config:set NPM_CONFIG_PRODUCTION=false
 
 Compatibility
 =================
