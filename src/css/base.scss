@@ -146,9 +146,9 @@
 
 		.text-introduction {
 			font-family: $title-font;
-			@include modular-scale(2, $text-size * 1.2, $ratio);
+			@include modular-scale(2, $text-size * 1.5, $ratio);
 			font-weight: 400;
-			line-height: $text-size * 2.8;
+			line-height: $text-size * 3.2;
 			&.lettrine:first-letter {
 				font-size: 8.7rem;
 				line-height: 7rem;

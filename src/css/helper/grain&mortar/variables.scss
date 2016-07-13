@@ -1,0 +1,136 @@
+/*	-------------------------------------
+	:: Media Queries
+	---------------------------------- */
+	// General Sizes
+	$max-width: 1300px;
+	$nav-height: 80px;
+	$nav-inactive-height: 95px;
+	$nav-min-height: 50px;
+
+	$preview-content-max-width: 660px;
+
+/*	-------------------------------------
+	:: Client Brand Colors
+	---------------------------------- */
+	// Default Colors
+	$gray: #999999;
+	$gray-light: #ECF1F3;
+	$gray-mid: #cecece;
+
+	$gold: #DAA25A;
+	$grey: #5B5B5B;
+	$light-blue: #9DB9D6;
+
+	// Generic
+	$body: #989EA3;
+	$body-light: #ECF1F3;
+	$body-dark: #333E48;
+	$cta: $gold;
+	$cta-active: $body-dark;
+
+
+
+/*	-------------------------------------
+	:: Client Fonts
+	---------------------------------- */
+	// $custom-font: 'Custom Font Name', sans-serif;
+	/*
+	.millerbanneritalic {
+		font-family: "Miller Banner";
+		font-style: italic;
+		font-weight: normal;
+	}
+	.millerbannerroman {
+		font-family: "Miller Banner";
+		font-style: normal;
+		font-weight: normal;
+	}
+	*/
+	$miller: "Miller Banner";
+
+
+	// Replace the 'inherit' value with the proper
+	// font variables from directly above
+	$body-font: 'Libre Baskerville', serif;
+	$heading-font: "Miller Banner", 'Libre Baskerville', serif;
+	$button-font: 'Open Sans', sans-serif;
+	$nav-font: 'Pathway Gothic One', sans-serif;
+
+
+
+/*	-------------------------------------
+	:: Client Global Easing (Animation)
+	---------------------------------- */
+	$cubic-bezier: cubic-bezier(.2,.3,.25,.9);
+
+
+
+/*	-------------------------------------
+	:: Third Party Brand Colors
+	---------------------------------- */
+	// Twitter
+	$twitter: #55acee;
+	$twitter-active: #41b7d8;
+
+	// Facebook
+	$facebook: #3b5997;
+	$facebook-active:#263960;
+
+	// Google
+	$google: #d64937;
+	$google-active: #a02f21;
+
+	// LinkedIn
+	$linkedin: #0073b2;
+	$linkedin-active: #004265;
+
+	// Pinterest
+	$pinterest: #cb2027;
+	$pinterest-active: #89161a;
+
+	// GitHub
+	$github: #3a3838;
+	$github-active: #131212;
+
+	// SoundCloud
+	$soundcloud: #f80;
+	$soundcloud-active: #f30;
+
+	// Instagram
+	$instagram: #3f729b;
+	$instagram-active: darken($instagram, 10%);
+
+	// Dribbble
+	$dribbble: #ea4c89;
+	$dribbble-active: darken($dribbble, 10%);
+
+	// Flickr
+	$flickr: #ff0084;
+	$flickr-secondary: #0063dc;
+	$flickr-active: darken($flickr, 10%);
+	$flickr-secondary-active: darken($flickr-secondary, 10%);
+
+	// Behance
+	$behance: #3a3838;
+	$behance-active: #131212;
+
+	// DeviantArt
+	$deviantart: #4e6252;
+	$deviantart-active: darken($deviantart, 10%);
+
+	// Wordpress
+	$wordpress: #21759b;
+	$wordpress-active: darken($wordpress, 10%);
+
+	// Youtube
+	$youtube: #e52d27;
+	$youtube-active: #b31217;
+
+	// Vine
+	$vine: #00b488;
+	$vine-active: darken($vine, 10%);
+
+	// Vimeo
+	$vimeo: #1ab7ea;
+	$vimeo-active: darken($vimeo, 10%);
+

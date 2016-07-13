@@ -95,7 +95,7 @@ export default class Intro extends Component {
         this.tl.stop();
 
         this.tl
-        .fromTo(work, 0.6, { opacity:0, y:-30, ease: Expo.easeInOut, rotationY:0, rotationX:0 },
+        .fromTo(work, 0.8, { opacity:0, y:-30, ease: Expo.easeInOut, rotationY:0, rotationX:0 },
                            {opacity:1, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:0}
                            , "+=0.2")
         .fromTo([name, since], 0.6, { opacity:0, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:0 },
