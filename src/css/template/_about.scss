@@ -28,7 +28,7 @@
 			opacity:0.3;
 			font-family: $nav-font;
 			bottom:0;
-			font-size: 1.2rem;
+			font-size: 2.2rem;
 			line-height: 1.2;
 			position:absolute;
 			left: -60px;
@@ -184,23 +184,19 @@
 	img {
 		width: 100%;
 
+		transition: all .2s ease-in-out;
 		-webkit-filter: grayscale(100%);
-		-webkit-transition: .5s ease-in-out;
 		-moz-filter: grayscale(100%); 
-		-moz-transition: .5s ease-in-out;
 		-o-filter: grayscale(100%); 
-		-o-transition: .5s ease-in-out;
-
+		filter: grayscale(100%); 
 		opacity:0.4;
 
-		&:hover {
-			-webkit-filter: grayscale(0%);
-			-webkit-transition: .5s ease-in-out;
-			-moz-filter: grayscale(0%);
-			-moz-transition: .5s ease-in-out;
-			-o-filter: grayscale(0%);
-			-o-transition: .5s ease-in-out;
-		}
+	}
+	.cell:hover img {
+		-webkit-filter: grayscale(0%);
+		-moz-filter: grayscale(0%);
+		-o-filter: grayscale(0%);
+		filter: grayscale(0%);
 	}
 }
 

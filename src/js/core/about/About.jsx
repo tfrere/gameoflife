@@ -32,6 +32,7 @@ export default class About extends Component {
         this.tl = new TimelineLite();
     }
     onLeave() {
+        this.tl.timeScale(1.5);
         this.tl.reverse();
     }
 
@@ -60,12 +61,12 @@ export default class About extends Component {
         // .set(circle1, {className: '+=active'}, "-=.5")
         // .set(circle2, {className: '+=active'}, "-=.4")
         // .set(circle3, {className: '+=active'}, "-=.3")
+        .set(blocIntro, {className: '+=active'})
         .from(textIntro, 0.4, {opacity: 0, x:-20, ease: Circ.easeInOut}, "-=.3")
-        .set(blocIntro, {className: '+=active'}, "+=.3")
         .from(textComplement, 0.4, {opacity: 0, x:-20, ease: Circ.easeInOut}, "-=.3")
         .from(firstTitle, 0.4, {opacity: 0, x:-20, ease: Circ.easeInOut}, "-=.3")
-        .fromTo(rotatedTitle, 0.4, {opacity: 0, x:-20, rotate: -90, ease: Circ.easeInOut}, {opacity: 1, x:0, rotate: -90, ease: Circ.easeInOut}, "-=.3")
-        .fromTo(rotatedSquare, 0.6, {opacity: 0, x:600, rotate: 45, ease: Circ.easeInOut}, {opacity: 1, x:0, rotate: 45, ease: Circ.easeInOut}, "-=.3")
+        .fromTo(rotatedTitle, 0.4, {opacity: 0, x:-20, rotation: -90, ease: Circ.easeInOut}, {opacity: 1, x:0, rotation: -90, ease: Circ.easeInOut}, "-=.3")
+        .fromTo(rotatedSquare, 0.6, {opacity: 0, x:600, y:600, rotation: 45, ease: Circ.easeInOut}, {opacity: 1, x:0, y:0, rotation: 45, ease: Circ.easeInOut}, "-=.3")
 
     }
 

@@ -11,12 +11,12 @@
 	}
 
 	$background-color: #fff;
-	$link-color: #333;
-	$link-color-active: #55abad;
-	$link-underline-color: $link-color;
-	$link-underline-color-active: $link-color-active;
+	$link-color: color("primary", "base");
+	$link-color-active: color("primary", "darken-1");
+	$link-underline-color: color("grey", "lighten-2");
+	$link-underline-color-active:  color("primary", "lighten-3");
 	$link-underline-width: 1px;
-	$link-underline-offset: 0px;
+	$link-underline-offset: -2px;
 
 	@mixin underline($color: $link-underline-color, $weight: $link-underline-width, $offset: $link-underline-offset) {
 		background-image: linear-gradient(bottom, transparent, transparent $offset, $color $offset, $color ($offset + $weight), transparent ($offset + $weight))
