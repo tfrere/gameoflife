@@ -8,6 +8,8 @@ import classNames               from 'classnames';
 
 import GalleriesData            from 'config/galleriesData';
 
+import GalleryLink             from './GalleryLink';
+
 import arctext                  from '../intro/arctext.js';
 import svgdraw                  from '../intro/svgdraw.js';
 
@@ -18,6 +20,7 @@ export default class Galleries extends Component {
 
     constructor( props ) {
         super( props );
+        this.state = {isActive: false, context: null};
         this.onLeave = this.onLeave.bind(this);
         this.onClick = this.onClick.bind(this);
         this.tl = new TimelineLite();
@@ -28,7 +31,18 @@ export default class Galleries extends Component {
         this.tl.reverse();
     }
 
+    onMouseOver(context) {
+        console.log("GalleryHoverOn");
+        this.setState({isActive: true, context: context});
+    }
+
+    onMouseOut() {
+        console.log("GalleryHoverOff");
+        this.setState({isActive: false, context: null});
+    }
+
     onClick(id) {
+        console.log(123);
         this.tl.reverse();
         setTimeout( () => {
             this.props.history.pushState(null, '/photo/gallerie/'+ id);
@@ -57,22 +71,34 @@ export default class Galleries extends Component {
     }
 
     render() {
+        console.log({backgroundImage: this.state.context});
 
         return (
-            <div className="galleries">
-                 {GalleriesData.map((gallery, i) =>
-                    <figure onClick={() => { this.onClick(i) }} key={`${i}`} ref={`gallery${i}`}>
-                        <div className="img" style={{backgroundImage: `url(${gallery.src})` }}></div>
-                        <div className="number">{`.0${i}`}</div>
-                        <figcaption className="caption">
-                            <div className="repeat-title">{gallery.title}</div>
-                            <h1>{gallery.title}</h1>
-                        </figcaption>
-                    </figure>
-                 )}
+            <div className={classNames("galleries screen-box", {active: this.state.isActive})}>
+                <div className={classNames("cover",
+                                            {nature: this.state.context == 0 },
+                                            {travel: this.state.context == 1 },
+                                            {black: this.state.context == 2 }
+                                          )} />
+                <div className="content">
+                    <ul className="gallery-list">
+                        <div className="header">
+                            <h3>Galleries</h3>
+                        </div>
+                        {GalleriesData.map((gallery, i) =>
+                            <GalleryLink
+                                onMouseOver={ () => { this.onMouseOver(i) } }
+                                onMouseOut={ () => { this.onMouseOut() } }
+                                onClick={() => { this.onClick(i) }}
+                                key={`${i}`}
+                                data={gallery}
+                                index={i}
+                                ref={`gallery${i}`} />
+                         )}
+                    </ul>
+                </div>
             </div>
         );
 
     }
 }
-

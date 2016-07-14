@@ -6,6 +6,7 @@ import ReactDOM 	from 'react-dom';
 import Guidelines   from 'core/guidelines/Guidelines';
 import Blog         from 'core/blog/Blog';
 import Intro        from 'core/intro/Intro';
+import notFound     from 'core/404/404';
 import SmoothWheel  from 'component/SmoothWheel';
 
 import Contact      from 'core/contact/Contact';
@@ -39,6 +40,7 @@ ReactDOM.render((
 			<Route path="contact" component={AlternativeContact}/>
 			<Route path="guidelines" component={Guidelines}/>
 			<Route path="about" component={About}/>
+			<Route path="*" component={notFound} />
 		</Route>
 	</Router>
 ), document.getElementById( 'app-container' ))

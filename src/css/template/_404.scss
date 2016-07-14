@@ -1,0 +1,29 @@
+.not-found {
+	.center-box {
+		position:absolute;
+		top:0;
+		left:0;
+		.center {
+			position:relative;
+		}
+	}
+	.title {
+		margin-left:-34px;
+		font-size: 24rem;
+		height:160px;
+		text-shadow: 5px 5px 0 white, 10px 10px 0 rgba(0,0,0,0.05);
+		color:color("grey", "lighten-2");
+		text-align: center;
+		font-weight: 600;
+	}
+	.cta {
+		z-index: 5;
+		display:inline-block;
+		width:260px;
+		position:absolute;
+		bottom:-60px;
+		left:0;
+		right:0;
+		margin: 0 auto;
+	}
+}
