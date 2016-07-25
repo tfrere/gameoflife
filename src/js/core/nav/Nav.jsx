@@ -22,6 +22,7 @@ export default class Nav extends Component {
         super( props );
         this.state = {};
         this.tl = new TimelineLite();
+        this.loadingTl = new TimelineLite();
         this.leavingEvent = document.createEvent('Event');
         this.leavingEvent.initEvent('leaving', true, true);
         this.onClick = this.onClick.bind(this);
@@ -118,6 +119,12 @@ export default class Nav extends Component {
 
     componentDidMount() {
 
+        var navTopWrapper = this.refs.navTopWrapper;
+
+        this.loadingTl
+        .fromTo(navTopWrapper, 0.2, { opacity:0 }, { opacity:1 }, "+=0.5")
+        ;
+
         var link0 = this.refs.navLink0;
         var link1 = this.refs.navLink1;
         var link2 = this.refs.navLink2;
@@ -162,7 +169,7 @@ export default class Nav extends Component {
             urlToDisplay = "photo";
 
         return (
-            <div>
+            <div ref="navTopWrapper">
                 <div ref="nav" className={ classNames( 'nav-wrapper displayed', { active : this.state.active }) }>
                     {/*<PreLoader/>*/}
                     <div className="nav-mobile-gradient"/>
@@ -171,7 +178,7 @@ export default class Nav extends Component {
                         return (
                             <div className="nav-back" onClick={onBack.bind(null, "")}>
                                 <div className="back-arrow"/>
-                                <h5 className="nav-typo"> retour </h5>
+                                {/*<h5 className="nav-typo"> retour </h5>*/}
                             </div>
                             ); 
                       } 
@@ -216,6 +223,14 @@ export default class Nav extends Component {
                                 </li>*/}
                             </ul>
                         </div>
+                        {/*<footer ref="navFooter">
+                            <Link onClick={ ::this.onClick }
+                                    activeClassName='active'
+                                    to={`/guidelines`}
+                            >
+                                Guidelines
+                            </Link>
+                        </footer>*/}
                     </div>
                 </div> 
                 {this.props.children}

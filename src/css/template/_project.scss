@@ -12,20 +12,25 @@ $small-img-ratio: 1/4;
 
 .project-wrapper {
 	width:100%;
+	height:100%;
+	display:flex;
 }
 .project {
 	animation:fadeIn;
 	animation-duration:300ms;
 	width: 70%;
-	margin: 0 auto;
-	text-align: left;
-	margin-bottom: 50px;
+	margin: auto;
+	padding-top:120px;
+	text-align: center;
 	.title-wrapper {
-		margin-top:150px
+		margin-top:0px;
+	}
+	.cell {
+		flex: 0 0 100%;
 	}
 	.content-wrapper {
 		margin-top:$text-size * 0.45;
-		margin-bottom: $text-size * 6;
+		//margin-bottom: $text-size * 6;
 	}
 	h1{
 		letter-spacing: .1rem;
@@ -42,22 +47,27 @@ $small-img-ratio: 1/4;
 	}
 	p {
 		margin: 0;
-		width:90%;
+		width:100%;
 		margin-bottom:$text-size * 2;
 	}
 	a.special-button {
-		transform:translateX(-20px);
+		transform:translateX(0px);
 		transition: transform .35s ease;
 		&:hover {
 			transform:translateX(0px);
 		}
 	}
+	.square-tag {
+		margin-bottom: $text-size;
+	}
 	.img-wrapper {
 		position:relative;
 		width:100%;
-		margin-top:200px;
-		display:block;
-		.perspective-wrapper {			
+		display:flex;
+		.perspective-wrapper {
+			margin: auto;
+			width:100%;
+			height:50%;
 			perspective:1200px;
 			transition: -webkit-filter 200ms ease;
 		}
@@ -84,6 +94,8 @@ $small-img-ratio: 1/4;
 		box-shadow: 1px 0px 0 #fff,0 0 10px rgba(0,95,99,0.2);
 		position:absolute;
 		&.img-article-0 {
+			@extend .unselectable;
+			display:none;
 			opacity:0;
 			width: 100%;
 			right:0px;
@@ -92,6 +104,8 @@ $small-img-ratio: 1/4;
 			top:0px;
 		}
 		&.img-article-1 {
+			@extend .unselectable;
+			display:none;
 			width: 105px;
 			height:125px;
 			right:65px;
@@ -110,8 +124,9 @@ $small-img-ratio: 1/4;
 	    @extend .unselectable;
 	}
 	header {
-		text-align:left;
+		text-align:center;
 		h1 {
+			width:100%;
 			font-weight: bold;
 		}
 	}
@@ -164,10 +179,52 @@ $small-img-ratio: 1/4;
 	}
 }
 
-@include phablet {
+@include phone {
 	.project {
-		.prev-project, .next-project {
+		padding-top:20px;
+	}
+}
+
+@include desktop {
+	.project {
+		text-align: left;
+		padding-top:0px;
+		.cell {
+			margin-right:30px;
+		}
+		header {
+			text-align:left;
+			h1 {
+				margin:0;
+				margin-bottom:$text-size * 2;
+				width:90%;
+				text-align:left;
+			}
+		}
+		p {
+			width:90%;
+		}
+		.cell {
+			flex: 1;
+		}
+		a.special-button {
+			transform:translateX(-20px);
+		}
+		.img-article-0 {
 			display:block!important;
 		}
+		.prev-project, .next-project {
+			display:block;
+		}
+	}
+}
+
+@include hd {
+	.img-article-0 {
+    	margin-top: -30px!important;
+	}
+	.img-article-1 {
+    	margin-top: -30px!important;
+		display:block!important;
 	}
 }

@@ -9,41 +9,47 @@ import classNames               from 'classnames';
 import TweenMax from 'gsap/src/minified/TweenMax.min.js';
 import TweenLite from 'gsap/src/minified/TweenLite.min.js';
 
-import {illustration}             from '../blog/blogillu.jsx';
-
 export default class Contact extends Component {
 
     constructor( props ) {
         super( props );
+        this.onBack = this.onBack.bind(this);
         this.onLeave = this.onLeave.bind(this);
         this.tl = new TimelineLite();
     }
     
     onLeave() {
-        document.dispatchEvent(this.leavingEvent);
         this.tl.reverse();
+    }
+
+    onBack() {
+        this.tl.reverse();
+        setTimeout( () => {
+            this.props.history.push('/about');
+        }, 1000);
     }
 
     componentDidMount(){
         document.addEventListener('leaving', this.onLeave, false);
 
         window.scrollTo(0,0);
+
+        var circle = this.refs.contactCircle;
         
-        var illustration = this.refs.illustration;
-
-        var mySVG = $(illustration).drawsvg({
-            duration: 2000,
-            stagger: 5
-        });
-
-        setTimeout( () => {
-            mySVG.drawsvg('animate');
-        }, 200 );
+        var circle0 = this.refs.contactCircle0;
+        var circle1 = this.refs.contactCircle1;
+        var circle2 = this.refs.contactCircle2;
+        var circle3 = this.refs.contactCircle3;
 
         var title = this.refs.title;
         var content = this.refs.content;
 
         this.tl
+        .from(circle, 1, { y:-500, ease: Circ.easeInOut })
+        .set(circle0, {className: '+=active'}, "+.6")
+        .set(circle1, {className: '+=active'}, "+.7")
+        .set(circle2, {className: '+=active'}, "+.8")
+        .set(circle3, {className: '+=active'}, "+.9")
         .from(title, 0.5, { opacity:0, y:-20, ease: Cubic.linear }, "+0.5")
         .from(content, 0.5, { opacity:0, y:-50, ease: Cubic.linear }, "+0.5");
     }
@@ -57,11 +63,26 @@ export default class Contact extends Component {
         return (
             <div className="contact">
                 <header>
-                    {illustration("#CCCCCC")}
+                    <div ref="contactCircle" className="circle say-hi">
+                        <div className="circle-form">
+                        </div>
+                        <a target="_blank" href="https://www.linkedin.com/in/thibaud-frere-3462b264">
+                            <div ref="contactCircle0" className="delay-0 small-circle linkedin"/>
+                        </a>    
+                        <a target="_blank" href="https://codepen.io/tfrere">
+                            <div ref="contactCircle1" className="delay-1 small-circle twitter"/>
+                        </a>    
+                        <a target="_blank" href="http://github.com/tfrere">
+                            <div ref="contactCircle2" className="delay-2 small-circle github"/>
+                        </a>    
+                        <a target="_blank" href="https://www.behance.net/frerethibaud9207">
+                            <div ref="contactCircle3" className="delay-3 small-circle behance"/>
+                        </a>    
+                    </div>
                     <h1 ref="title">Bonjour,</h1>
                     <p ref="content">
                         Un project cool en tête et vous pensez que je pourrais y contribuer ?
-                        Pensez à aller jeter un oeil à <a target="_blank" href="images/cv.pdf">mes compétences</a> et
+                        Pensez à aller jeter un oeil à mes <a onClick={ () => { this.onBack() }}> compétences </a> et
                         envoyez moi un email à <a href="mailto:ecrire@tfrere.fr">ecrire@tfrere.fr</a>
                         <br/>
                         <small className="i">Je suis disponible à</small>
@@ -79,4 +100,3 @@ export default class Contact extends Component {
 
     }
 }
-

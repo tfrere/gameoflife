@@ -68,6 +68,7 @@ export default class Nav extends Component {
             <div>
                 <div className={ classNames( 'displayed' ) }>
 
+                    <div id="logo"/> 
                     <div className="nav-mobile-gradient"/>
 
                     <ul className="alternative-nav">

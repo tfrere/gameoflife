@@ -40,6 +40,7 @@ export default class Article extends Component {
         this.navTl = new TimelineLite();
         this.imgTl = new TimelineLite();
         this.imgSwapTl = new TimelineLite();
+        this.imgSwapReverseTl = new TimelineLite();
     }
 
     nextProject(direction) {
@@ -63,19 +64,16 @@ export default class Article extends Component {
         }
 
         this.tl.seek(0.5).stop();
-
-        this.imgSwapTl.timeScale(1);
-        this.imgSwapTl.reverse();
+        this.imgSwapTl.seek(0).stop();
+        this.imgSwapReverseTl.play();
 
         setTimeout( () => {
 
-            this.imgSwapTl.timeScale(0.3);
             this.imgSwapTl.play();
-
             this.props.history.push('/projet/' + currentUrl + "");
 
             setTimeout( () => {
-
+                this.imgSwapReverseTl.seek(0).stop();
                 this.tl.play();
 
             }, 300);
@@ -129,10 +127,13 @@ export default class Article extends Component {
         
         this.imgSwapTl.stop();
         this.imgSwapTl
-        .fromTo(img0, 0.3, {opacity:0, y:-10, ease: Expo.easeInOut, rotationY:-10, rotationX:0}, {opacity:1, y:0, ease: Expo.easeInOut, rotationY:-10, rotationX:0})
-        .fromTo(img1, 0.3, {opacity:0, y:-10, ease: Expo.easeInOut, rotationY:-10, rotationX:0}, {opacity:1, y:0, ease: Expo.easeInOut, rotationY:-10, rotationX:0}, "-=0.3")
-        .add("end");
-        this.imgSwapTl.seek("end");
+        .fromTo(img0, 0.5, {opacity:0, y:-10, ease: Expo.easeInOut}, {opacity:1, y:0, ease: Expo.easeInOut})
+        .fromTo(img1, 0.5, {opacity:0, y:-10, ease: Expo.easeInOut}, {opacity:1, y:0, ease: Expo.easeInOut}, "-=0.3");
+
+        this.imgSwapReverseTl.stop();
+        this.imgSwapReverseTl
+        .fromTo(img0, 0.3, {opacity:1, y:0, ease: Expo.easeInOut}, {opacity:0, y:10, ease: Expo.easeInOut})
+        .fromTo(img1, 0.3, {opacity:1, y:0, ease: Expo.easeInOut}, {opacity:0, y:10, ease: Expo.easeInOut}, "-=0.3");
 
         this.navTl
         .from(prevProject, 0.5, { opacity:0, x:-100, ease: Circ.easeInOut, clearProps: "all" }, "+0.5")

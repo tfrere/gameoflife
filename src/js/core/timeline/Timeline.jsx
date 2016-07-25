@@ -59,6 +59,7 @@ export default class Timeline extends Component {
     }
 
     onLeave() {
+        document.removeEventListener('scroll', this.scroll);
         this.tl.seek(1)
         this.tl.reverse();
     }

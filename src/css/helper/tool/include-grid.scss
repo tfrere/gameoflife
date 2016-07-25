@@ -53,6 +53,10 @@ $gutter: 2.4rem !default;
   flex: 0 0 80%;
 }
 
+.sm-force-2 {
+  flex: 0 0 50%!important;
+}
+
 
 @include desktop {
     .cell {

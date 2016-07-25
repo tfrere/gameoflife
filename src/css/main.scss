@@ -114,6 +114,17 @@ iframe {
 
 }
 
+@keyframes bounce {
+  0%, 25%, 100% {
+      -webkit-transform: translate(0, 0);
+      transform: translate(0, 0);
+  }
+  12% {
+      -webkit-transform: translate(0, -15px);
+      transform: translate(0, -15px);
+  }
+}
+
 .levitation {
   animation: levitate 3s alternate ease-in-out infinite; 
 }

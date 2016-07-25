@@ -6,7 +6,7 @@ $base-index: 0;
 $line-color: rgba(0,0,0,0.2);
 
 .timeline {
-	margin-top:250px;
+	margin-top:200px;
 	&>.row {
 		padding-bottom:120px;
 	}
@@ -15,6 +15,12 @@ $line-color: rgba(0,0,0,0.2);
 		margin: 0 auto;
 		text-align: center;
 		padding-left:0;
+		.data {
+			background-color:white;
+			h5 {
+				display:none;
+			}
+		}
 		:before {
 			display:none;
 		}
@@ -33,7 +39,17 @@ $line-color: rgba(0,0,0,0.2);
 		}
 
 	}
-
+	.line {
+		content:"";
+		z-index: $base-index - 2;
+		position:absolute;
+		width: 50%;
+		top: 0px;
+		left:0;
+		height:100%;
+		margin-top:2.56em;
+		border-right:1px solid $line-color;
+	}
 	.year, .this-year {
 	    display: none;
 	    padding: 10px 15px;
@@ -90,6 +106,50 @@ $line-color: rgba(0,0,0,0.2);
 			}
 		}
 	}
+	.clicked .data {
+		transition:all 500ms ease;
+	}
+	.cell:nth-child(2n) {
+		.clicked .data{
+			transform:translateX(100px)!important;
+			h2,h5,p,span {
+				opacity:0;
+			}
+		}
+	}
+	.cell:nth-child(2n + 1) {
+		.clicked .data{
+			transform:translateX(-100px)!important;
+			h2,h5,p,span {
+				opacity:0;
+			}
+		}
+	}
+
+
+	&.clicked {
+		.cell>div:not(.clicked) {
+			opacity:0;
+			transition:all 300ms ease;
+		}
+		.cell>div.clicked {
+			h2,h5,p,span {
+				transition:all 100ms ease;
+				opacity:1;
+			}
+		
+		}
+		header, .circle, .cell:before {
+			opacity:0!important;
+		}
+
+		.circle {
+			transform:scale(0);
+		}
+		.line {
+			opacity:0!important;
+		}
+	}
 }
 
 
@@ -131,6 +191,11 @@ $line-color: rgba(0,0,0,0.2);
 			opacity:0;
 			transition:all 200ms ease;
 			padding-left:2.4rem;
+			text-align:left;
+			width:50%;
+			position:relative;
+			z-index: $base-index + 2;
+			perspective:1200px;
 			.cell-wrapper {
 				margin: 3em 40px 0px 3em;
 			}
@@ -138,45 +203,40 @@ $line-color: rgba(0,0,0,0.2);
 				margin-top:50px;
 			}
 			.data {
-				transition:all 500ms ease;
 				h2,h5,p,span {
 					opacity:1;
 				}
+				h5 {
+					display: block;
+					//font-weight: bold;
+					font-style: italic;
+					letter-spacing: .05rem;
+					margin-bottom:$text-size * 2;
+				}
+				h2{
+					letter-spacing: .1rem;
+					font-weight: 600;
+					font-style: italic;
+					background-image: linear-gradient(180deg,rgba(0, 0, 0, 0) 50%,color("primary", "lighten-3") 0);
+					margin-bottom:$text-size * 2;
+					display:inline;
+					background-size: 0 100%;
+					background-repeat: no-repeat;
+					text-decoration: none;
+					transition: background-size .4s ease;
+				}
+				p {
+					margin-bottom:0;
+				}
+				span {
+					margin-top:$text-size * 2;
+					color:color("grey", "base");
+				}
 			}
-			h2{
-				letter-spacing: .1rem;
-				font-weight: 600;
-				font-style: italic;
-				background-image: linear-gradient(180deg,rgba(0, 0, 0, 0) 50%,color("primary", "lighten-3") 0);
-				margin-bottom:$text-size * 2;
-				display:inline;
-				background-size: 0 100%;
-				background-repeat: no-repeat;
-				text-decoration: none;
-				transition: background-size .4s ease;
-			}
-			&>div:hover h2 {
+			&>div:hover .data h2 {
 				background-size: 100% 100%;
 				cursor: pointer;
 			}
-			h5 {
-				//font-weight: bold;
-				font-style: italic;
-				letter-spacing: .05rem;
-				margin-bottom:$text-size * 2;
-			}
-			p {
-				margin-bottom:0;
-			}
-			span {
-				margin-top:$text-size * 2;
-				color:color("grey", "base");
-			}
-			text-align:left;
-			width:50%;
-			position:relative;
-			z-index: $base-index + 2;
-			perspective:1200px;
 			&:before {
 				content:"";
 				z-index: $base-index - 1;
@@ -222,9 +282,9 @@ $line-color: rgba(0,0,0,0.2);
 				display:block;
 				position:absolute;
 				right:50px;
-				opacity:1;
+				opacity:0;
 				width:30%;
-				top:75px;
+				top:25px;
 				transform: rotateX(0deg) rotateY(0deg) translateX(0px);
 				transition: all 350ms ease;
 			}
@@ -245,9 +305,15 @@ $line-color: rgba(0,0,0,0.2);
 				}
 			}
 		}
-
+		a {
+			width: 99%;
+			display: block;
+		}
 		.cell:nth-child(2n) {
-			padding-left:55%;
+			padding-left:45%;
+			a {
+				padding-left: 20%;
+			}
 			&:before {
 				margin-left:50%;
 			}
@@ -266,9 +332,12 @@ $line-color: rgba(0,0,0,0.2);
 		}
 		.cell:nth-child(2n + 1) {
 			text-align:right;
-			padding-right:55%;
+			padding-right:45%;
 			&:before {
 				margin-left:calc(50% - #{$dash-lenght});
+			}
+			a {
+				padding-right: 20%;
 			}
 			.clicked .data{
 				transform:translateX(-100px)!important;
@@ -276,30 +345,6 @@ $line-color: rgba(0,0,0,0.2);
 					opacity:0;
 				}
 			}
-		}
-	}
-
-	.timeline.clicked {
-		.cell>div:not(.clicked) {
-			opacity:0;
-		
-		}
-		.cell>div.clicked {
-			h2,h5,p,span {
-				transition:all 100ms ease;
-				opacity:1;
-			}
-		
-		}
-		header, .circle, .cell:before {
-			opacity:0!important;
-		}
-
-		.circle {
-			transform:scale(0);
-		}
-		.line {
-			opacity:0!important;
 		}
 	}
 

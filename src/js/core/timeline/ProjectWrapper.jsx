@@ -21,7 +21,7 @@ export default class ProjectWrapper extends Component {
 
     render() {
     	return (
-	    	<div className="projectWrapper">
+	    	<div className="project-wrapper">
 	        	<Project history={this.props.history} url={this.props.params.projectId}/> 
 	    	</div>
     	);

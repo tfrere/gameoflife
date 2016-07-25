@@ -56,7 +56,7 @@ export default class ProjectCard extends Component {
                             <div className="data">
                                 <h5 className="italic">{this.props.data.month}</h5>
                                 <h2>{this.props.data.title}</h2>
-                                {/*<p>{this.props.data.short}</p>*/}
+                                <p>{this.props.data.short}</p>
                                 <div className="clearfix"></div>
                                 <span className="square-tag">{this.props.data.purpose}</span>
                             </div>
