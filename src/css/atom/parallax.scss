@@ -10,4 +10,16 @@
     position: absolute;
 	width:100%;
 	height:100%;
+	display:none!important;
+}
+
+@include phablet {
+
+	.layer {
+	    position: absolute;
+		width:100%;
+		height:100%;
+		display:block!important;
+	}
+
 }

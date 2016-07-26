@@ -134,24 +134,71 @@ $small-img-ratio: 1/4;
 		transition:all 200ms ease-in-out;
 		position:fixed;
 		top:50%;
-		i {@include modular-scale(3, $title-size, $ratio); opacity:0.2; }
 		border:none;
 		text-decoration: none;
 		opacity:1;
 		display:none;
+		margin: 1em;
+		padding: 0;
+		border: none;
+		color: #286aab;
+		font-size: 1.4em;
+		overflow: visible;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+		span {
+			background-repeat: no-repeat;
+			width:38px;
+			height:38px;
+			display:block;
+		}
+		i {
+			display: block;
+			@include modular-scale(3, $title-size, $ratio);
+			opacity:0.2;
+		}
+		&:focus, &.active {
+			outline: none;
+			color: #3c8ddc;
+		}
+		&::after {
+			border: 2px solid rgba(color("primary", "base"), 1);
+			position: absolute;
+			top: 50%;
+			left: 47%;
+			margin: -35px 0 0 -35px;
+			width: 70px;
+			height: 70px;
+			border-radius: 50%;
+			content: '';
+			opacity: 0;
+			pointer-events: none;
+		}
+		&.active::after {
+			-webkit-animation: anim-effect-jelena 0.3s ease-out forwards;
+			animation: anim-effect-jelena 0.3s ease-out forwards;
+		}
+
 	}
 	.next-project {
 		right:40px;
 		span {
 			background-image: url("../images/portfolio/svgs/arrow_right.svg");
-			background-repeat: no-repeat;
-			width:46px;
-			height:38px;
-			display:block;
 		}
 		&:hover {
 			transform:translateX(10px);
-			text-decoration: none;
+		}
+	}
+	.prev-project {
+		left:40px;
+		span {
+			background-image: url("../images/portfolio/svgs/arrow_left.svg");
+		}
+		&::after {
+			left: 53%;
+		}
+		&:hover {
+			transform:translateX(-10px);
 		}
 	}
 	a:not(.prev-project):not(.next-project):not(.special-button) {
@@ -161,20 +208,6 @@ $small-img-ratio: 1/4;
 		&:focus, &:hover {
 			text-decoration: none;
 			border-bottom: 1px solid color("grey", "darken-2");
-		}
-	}
-	.prev-project {
-		left:40px;
-		span {
-			background-image: url("../images/portfolio/svgs/arrow_left.svg");
-			background-repeat: no-repeat;
-			width:44px;
-			height:44px;
-			display:block;
-		}
-		&:hover {
-			transform:translateX(-10px);
-			text-decoration: none;
 		}
 	}
 }
@@ -214,7 +247,7 @@ $small-img-ratio: 1/4;
 			display:block!important;
 		}
 		.prev-project, .next-project {
-			display:block;
+			display:inline-block;
 		}
 	}
 }

@@ -58,7 +58,7 @@ export default class FixedBackground extends Component {
     }
 
     render() {
-
+        console.log(this.state.progress);
         return (
             <section className={ classNames(
                                 'fixed-background',

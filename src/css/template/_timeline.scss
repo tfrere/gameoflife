@@ -152,7 +152,6 @@ $line-color: rgba(0,0,0,0.2);
 	}
 }
 
-
 @include phablet {
 
 	.timeline {
@@ -233,7 +232,7 @@ $line-color: rgba(0,0,0,0.2);
 					color:color("grey", "base");
 				}
 			}
-			&>div:hover .data h2 {
+			a:hover .data h2 {
 				background-size: 100% 100%;
 				cursor: pointer;
 			}
@@ -279,20 +278,26 @@ $line-color: rgba(0,0,0,0.2);
 				}
 			}
 			img {
+				visibility:hidden;
 				display:block;
 				position:absolute;
-				right:50px;
+				right:85px;
 				opacity:0;
 				width:30%;
-				top:25px;
+				top:80px;
 				transform: rotateX(0deg) rotateY(0deg) translateX(0px);
 				transition: all 350ms ease;
+				box-shadow: 1px 0px 0 #fff,0 0 10px rgba(0,95,99,0.2);
+				&.hover {
+					opacity:1;
+					transform: rotateX(0deg) rotateY(-20deg) translateX(-20px);
+				}
+				&.clicked {
+					opacity:0!important;
+					transform: rotateX(0deg) rotateY(0deg) translateX(0px)!important;
+				}
 			}
-			&>div:hover img {
-				opacity:1;
-				transform: rotateX(0deg) rotateY(-20deg) translateX(-20px);
-			}
-			&>div:hover .circle{
+			a:hover .circle{
 				width:$circle-size * $circle-hover-ratio;
 				height:$circle-size * $circle-hover-ratio;
 				margin-top:-$circle-size * $circle-hover-ratio / 2;
@@ -318,10 +323,10 @@ $line-color: rgba(0,0,0,0.2);
 				margin-left:50%;
 			}
 			img {
-				left: 50px;
-			}
-			&>div:hover img {
-				transform: rotateX(0deg) rotateY(20deg) translateX(20px);
+				left: 85px;
+				&.hover {
+					transform: rotateX(0deg) rotateY(20deg) translateX(20px);
+				}
 			}
 			.clicked .data{
 				transform:translateX(100px)!important;
@@ -349,3 +354,11 @@ $line-color: rgba(0,0,0,0.2);
 	}
 
 }
+
+
+@include desktop {
+	.timeline img {
+		visibility:visible!important;
+	}
+}
+

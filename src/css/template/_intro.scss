@@ -55,18 +55,6 @@
 
 
 	}
-
-	.background-1 {
-		z-index: 1;
-	}
-
-	.background-2 {
-		z-index: 2;
-	}
-
-	.background-3 {
-		z-index: 3;
-	}
 	.button-wrapper {
 		position:absolute;
 		bottom:-20px;
@@ -134,6 +122,17 @@
 @include phablet {
 
 	.intro {
+		.background-1 {
+			display:block;
+		}
+
+		.background-2 {
+			display:block;
+		}
+
+		.background-3 {
+			display:block;
+		}
 		svg, .text {
 			width:400px;
 			height:400px;

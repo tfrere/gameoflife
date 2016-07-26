@@ -19,14 +19,22 @@ export default class ProjectCard extends Component {
 
     constructor( props ) {
         super( props );
-        this.state = {active:false};
+        this.state = {active:false, hover: false};
         this.onClick = this.onClick.bind(this);
     }
     componentWillMount() {
     }
 
     componentDidMount() {
-        //console.log(this.props);
+    }
+
+    mouseOver() {
+        this.setState({hover: true});
+    }
+
+
+    mouseOut() {
+        this.setState({hover: false});
     }
 
     componentWillUnmount() {
@@ -49,7 +57,13 @@ export default class ProjectCard extends Component {
 
         return (
             <div className={ classNames( {clicked:this.state.active} ) }>
-                <a onClick={ ::this.onClick }>
+                <div className="img-wrapper">
+                    <img className={classNames({hover:this.state.hover, clicked:this.state.active})}
+                         src={this.props.data.img[0]} />
+                </div>
+                <a  onMouseOver={ () => {this.mouseOver()} }
+                    onMouseOut={ () => {this.mouseOut()} }
+                    onClick={ ::this.onClick }>
                     <div className={classNames("delay-" + this.props.id)}>
                         <div className="circle"></div>
                         <div className="cell-wrapper">

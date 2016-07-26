@@ -213,25 +213,58 @@ $hover-bracket-offset: 100px;
 
 .nav-back {
 	position:fixed;
-	cursor:pointer;
 	top:32px;
 	left:40px;
 	z-index: $base-index - 4;
-	transition:all 200ms ease;
 	h5 {
 		margin-left:65px;
 		margin-top:11px;
+		transition:all 200ms ease;
+		opacity:0;
+		transform:translateX(10px);
 		display:none;
+		&.visible {
+			opacity:1;
+			transform:translateX(-10px);
+		}
 	}
 	.back-arrow {
+		cursor:pointer;
 		float:left;
 		width:46px;
 		height:38px;
 		background-image: url("../images/portfolio/svgs/back.svg");
 		background-size: cover;
-	}
-	&:hover {
-		transform:translateX(-10px);
+		transform:translateX(0px);
+		transition:all 200ms ease-in-out;
+		border:none;
+		text-decoration: none;
+		overflow: visible;
+		-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+		&:focus, &.active {
+			outline: none;
+			color: #3c8ddc;
+		}
+		&::after {
+			border: 2px solid rgba(color("primary", "base"), 1);
+			position: absolute;
+			top: 50%;
+			left: 47%;
+			margin: -35px 0 0 -35px;
+			width: 70px;
+			height: 70px;
+			border-radius: 50%;
+			content: '';
+			opacity: 0;
+			pointer-events: none;
+		}
+		&.active::after {
+			-webkit-animation: anim-effect-jelena 0.3s ease-out forwards;
+			animation: anim-effect-jelena 0.3s ease-out forwards;
+		}
+		&:hover {
+			transform:translateX(-10px);
+		}
 	}
 }
 

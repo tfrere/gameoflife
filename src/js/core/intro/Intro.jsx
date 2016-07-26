@@ -53,7 +53,7 @@ export default class Intro extends Component {
         var work = this.refs.work;
         var since = this.refs.since;
         var parallax = this.refs.parallax;
-        var background = this.refs.background;
+        //var background = this.refs.background;
         var background2 = this.refs.background2;
         var background3 = this.refs.background3;
 
@@ -66,10 +66,10 @@ export default class Intro extends Component {
             duration: 2000,
             stagger: 5
         });
-        var drawBg = $(background).drawsvg({
-            duration: 1700,
-            stagger: 5
-        });
+        // var drawBg = $(background).drawsvg({
+        //     duration: 1700,
+        //     stagger: 5
+        // });
         var drawBg2 = $(background2).drawsvg({
             duration: 1700,
             stagger: 5
@@ -104,7 +104,7 @@ export default class Intro extends Component {
                            {opacity:1, y:0, ease: Expo.easeInOut, rotationY:0, rotationX:0}
                            , "-=0.4")
         .fromTo(illustration, 0.5, {opacity:0}, {opacity:1})
-        .fromTo(background, 0.5, {opacity:0}, {opacity:1}, "-=0.5")
+        //.fromTo(background, 0.5, {opacity:0}, {opacity:1}, "-=0.5")
         .fromTo(background2, 0.5, {opacity:0}, {opacity:1}, "-=0.5")
         .fromTo(background3, 0.5, {opacity:0}, {opacity:1}, "-=0.5")
         .fromTo(cta, 0.4, { opacity:0 }, { opacity:1 }, "+=2.2")
@@ -115,7 +115,7 @@ export default class Intro extends Component {
         setTimeout( () => {
             drawIllu.drawsvg('animate');
             setTimeout( () => {
-                drawBg.drawsvg('animate');
+                //drawBg.drawsvg('animate');
                 drawBg2.drawsvg('animate');
                 drawBg3.drawsvg('animate');
             }, 600 );
@@ -129,23 +129,25 @@ export default class Intro extends Component {
             return (
                 <div className="screen-box">
                     <div ref="parallax" id="parallax" className="parallax-viewport">
-                        <div className="layer" data-depth="0.25" >
-                            {background("#EEE")}
-                        </div>
+                        {/*<div className="layer" data-depth="0.25" >
+                            {background("#DDD")}
+                        </div>*/}
                         <div className="layer" data-depth="0.50">
-                            {background2("#EEE")}
+                            {background2("#DDD")}
                         </div>
                         <div className="layer" data-depth="0.75">
-                            {background3("#EEE")}
+                            {background3("#DDD")}
                         </div>
                     </div>
                     <div className="intro">
                         <div className="center">
-                            {illustration("#DDD")}
-                            <div className="text">
-                                <h4 ref="name">THIBAUD FRERE</h4>
-                                <h1 ref="work" className="i uppercase">web designer </h1>
-                                <h5 ref="since">DEPUIS 2008</h5>
+                            <div className="levitate levitation">
+                                {illustration("#DDD")}
+                                <div className="text">
+                                    <h4 ref="name">THIBAUD FRERE</h4>
+                                    <h1 ref="work" className="i uppercase">web designer </h1>
+                                    <h5 ref="since">DEPUIS 2008</h5>
+                                </div>
                             </div>
                             <div className="button-wrapper">
                                 <button ref="cta" className={classNames("cta", {active: this.state.active}) } onClick={ () => { this.onClick("portfolio") } } >

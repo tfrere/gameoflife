@@ -20,18 +20,29 @@ export default class Nav extends Component {
 
     constructor( props ) {
         super( props );
-        this.state = {};
+        this.state = {hover:false, isBackClicked: false};
         this.tl = new TimelineLite();
         this.loadingTl = new TimelineLite();
         this.leavingEvent = document.createEvent('Event');
         this.leavingEvent.initEvent('leaving', true, true);
         this.onClick = this.onClick.bind(this);
+        this.mouseOver = this.mouseOver.bind(this);
+        this.mouseOut = this.mouseOut.bind(this);
         this.scroll = this.scroll.bind(this);
         this.onBack = this.onBack.bind(this);
     }
 
     scroll() {
 
+    }
+
+    mouseOver() {
+        this.setState({hover: true});
+    }
+
+
+    mouseOut() {
+        this.setState({hover: false});
     }
 
     onClick(dest) {
@@ -99,6 +110,12 @@ export default class Nav extends Component {
     onBack() {
 
         document.dispatchEvent(this.leavingEvent);
+
+        this.setState( { isBackClicked : true } );
+
+        setTimeout( () => {
+            this.setState( { isBackClicked : false } );
+        }, 300);
 
         setTimeout( () => {
               
@@ -173,16 +190,22 @@ export default class Nav extends Component {
                 <div ref="nav" className={ classNames( 'nav-wrapper displayed', { active : this.state.active }) }>
                     {/*<PreLoader/>*/}
                     <div className="nav-mobile-gradient"/>
-                    {(function(props, isBackButtonDisplayed, onBack) {
+                    {(function(mouseOver, mouseOut, props, isBackButtonDisplayed, onBack, isBackClicked, isHover) {
                       if (isBackButtonDisplayed) {
                         return (
-                            <div className="nav-back" onClick={onBack.bind(null, "")}>
-                                <div className="back-arrow"/>
-                                {/*<h5 className="nav-typo"> retour </h5>*/}
+                            <div className="nav-back">
+                                <div
+                                    onClick={onBack.bind(null, "")}
+                                    onMouseOver={ () => {mouseOver()} }
+                                    onMouseOut={ () => {mouseOut()} }
+                                    className={ classNames( 'back-arrow', { active : isBackClicked }) }/>
+                                <h5 className={ classNames( 'nav-typo', { visible : isHover }) }>
+                                    retour
+                                </h5>
                             </div>
                             ); 
                       } 
-                    })(this.props, isBackButtonDisplayed, this.onBack)}
+                    })(this.mouseOver, this.mouseOut, this.props, isBackButtonDisplayed, this.onBack, this.state.isBackClicked, this.state.hover)}
 
                     <h5 className={classNames("nav-info", "nav-typo", { "active": this.state.active})}>
                         {urlToDisplay}

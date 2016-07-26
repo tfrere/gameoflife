@@ -10,7 +10,6 @@ import classNames               from 'classnames';
 import ReactTooltip             from 'react-tooltip';
 
 import FixedBackground          from 'component/FixedBackground';
-import Article                 from '../blog/Article';
 
 import Config                   from 'config/config';
 import Articles                 from 'config/articles';
@@ -34,7 +33,14 @@ export default class Blog extends Component {
         this.onLeave = this.onLeave.bind(this);
         this.tl = new TimelineLite();
     }
-    
+
+    handleClick(yearIndex, articleIndex) {
+        this.tl.reverse();
+        setTimeout( () => {
+            this.props.history.pushState(null, '/blog/'+ yearIndex + '/'+ articleIndex);
+        }, 450 );
+    }
+
     onLeave() {
         console.log("blogLeave");
         this.tl.reverse();
@@ -86,19 +92,24 @@ export default class Blog extends Component {
             <div ref="blog" className="screen-box blog">
                 {illustration("#CCCCCC")}
                 <div className={classNames("container", (this.state.hover) ? "hover-wrapper-active" : "")}>
-                 {Articles.map((object, i) =>
-                    <section className="articles-of-the-year" key={`articles-of-the-year${i}`} >
+                 <h1>Projets annexes</h1>
+                 {Articles.map((object, yearIndex) =>
+                    <section className="articles-of-the-year" key={`articles-of-the-year${yearIndex}`} >
                         <header>
                             <h2>{object.date}</h2>
                         </header>
-                         {object.articles.map((object, i) =>
-                            <Article
-                                data={object}
-                                id={i}
-                                key={`article${i}`}
-                                handleMouseOver={ () => {this.mouseOver(i)} }
-                                handleMouseOut={ () => {this.mouseOut(i)} }
-                            />
+                         {object.articles.map((object, articleIndex) =>
+                              <article ref="head" onClick={ () => {this.handleClick(yearIndex, articleIndex)} }>
+                                  <header>
+                                      <div ref="date" className="date">
+                                          <h4>{object.date}</h4>
+                                      </div>
+                                      <div ref="sub-header" className="sub-header">
+                                          <h3>{object.title}</h3>
+                                      </div>
+                                  </header>
+                                  <hr/>
+                              </article>
                          )}
                     </section>
                  )}

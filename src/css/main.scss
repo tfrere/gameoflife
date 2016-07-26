@@ -52,6 +52,7 @@
 @import "template/timeline";
 @import "template/contact";
 @import "template/blog";
+@import "template/blog-article";
 @import "template/article";
 @import "template/project";
 @import "template/intro";
@@ -122,6 +123,33 @@ iframe {
   12% {
       -webkit-transform: translate(0, -15px);
       transform: translate(0, -15px);
+  }
+}
+
+
+@-webkit-keyframes anim-effect-jelena {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.5, 0.5, 1);
+    transform: scale3d(0.5, 0.5, 1);
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: scale3d(1.2, 1.2, 1);
+    transform: scale3d(1.2, 1.2, 1);
+  }
+}
+
+@keyframes anim-effect-jelena {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.5, 0.5, 1);
+    transform: scale3d(0.5, 0.5, 1);
+  }
+  to {
+    opacity: 0;
+    -webkit-transform: scale3d(1.2, 1.2, 1);
+    transform: scale3d(1.2, 1.2, 1);
   }
 }
 

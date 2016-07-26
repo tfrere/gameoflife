@@ -14,8 +14,6 @@ import Placeholders             from 'config/placeholder';
 import Config                   from 'config/config';
 import Projects                 from 'config/projects';
 
-import ImageZoomer              from 'component/ImageZoomer';
-
 import TweenMax from 'gsap/src/minified/TweenMax.min.js';
 import TweenLite from 'gsap/src/minified/TweenLite.min.js';
 
@@ -28,7 +26,7 @@ export default class Article extends Component {
 
     constructor( props ) {
         super( props );
-        this.state = {};
+        this.state = {clickNextActive: false, clickPrevActive: false};
         this.onClick = this.onClick.bind(this);
         this.nextProject = this.nextProject.bind(this);
         this.onKeyPress = this.onKeyPress.bind(this);
@@ -49,6 +47,7 @@ export default class Article extends Component {
         
         if (direction == "next")
         {
+            this.setState( { clickNextActive : true } );
             if (currentUrl + 1 >= Projects.length) {
                 currentUrl = 0;
             }
@@ -56,6 +55,8 @@ export default class Article extends Component {
                 currentUrl++;
         }
         else {
+            this.setState( { clickPrevActive : true } );
+
             if (currentUrl <= 0) {
                 currentUrl = Projects.length - 1;
             }
@@ -68,7 +69,7 @@ export default class Article extends Component {
         this.imgSwapReverseTl.play();
 
         setTimeout( () => {
-
+            this.setState( { clickNextActive : false, clickPrevActive : false } );
             this.imgSwapTl.play();
             this.props.history.push('/projet/' + currentUrl + "");
 
@@ -195,16 +196,17 @@ export default class Article extends Component {
                                     <span className="extra last"></span>
                                 </a>
                             </div>
-                            <a ref="prevProject" className="prev-project" onClick={ () => {this.nextProject("prev")} } >
+                            <a ref="prevProject"
+                            className={classNames( 'prev-project', { active : this.state.clickPrevActive } ) }
+                               onClick={ () => {this.nextProject("prev")} } >
                                 <span/>
                             </a>
-                            <a ref="nextProject" className="next-project" onClick={ () => {this.nextProject("next")} } >
+                            <a ref="nextProject"
+                            className={classNames( 'next-project', { active : this.state.clickNextActive } ) }
+                               onClick={ () => {this.nextProject("next")} } >
                                 <span/>
                             </a>
                             {/*<div ref="year" className="project-year">{Projects[url].year}</div>*/}
-                            {/*<ImageZoomer alt="Image alt"
-                                src='images/portfolio/pngs/framework_desktop.png'
-                                zoomSrc='images/portfolio/pngs/framework_desktop.png'/>*/}
                         </div>
                         <div className="cell img-wrapper">
                             <div className="perspective-wrapper">

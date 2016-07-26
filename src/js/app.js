@@ -4,7 +4,6 @@ import '../css/main.scss';
 import React    			   from 'react';
 import ReactDOM 			   from 'react-dom';
 import Guidelines   		   from 'core/guidelines/Guidelines';
-import Blog         		   from 'core/blog/Blog';
 import Intro        		   from 'core/intro/Intro';
 import notFound     		   from 'core/404/404';
 import SmoothWheel  		   from 'component/SmoothWheel';
@@ -15,6 +14,9 @@ import About      			   from 'core/about/About';
 
 import Nav          		   from 'core/nav/Nav';
 import AlternativeNav          from 'core/nav/AlternativeNav';
+
+import Blog         		   from 'core/blog/Blog';
+import ArticleWrapper          from 'core/blog/ArticleWrapper';
 
 import Timeline     		   from 'core/timeline/Timeline';
 import ProjectWrapper      	   from 'core/timeline/ProjectWrapper';
@@ -36,6 +38,7 @@ ReactDOM.render((
 			<Route path="portfolio" component={Timeline}/>
 			<Route path="projet/:projectId" component={ProjectWrapper}/>
 			<Route path="blog" component={Blog}/>
+			<Route path="blog/:yearId/:articleId" component={ArticleWrapper}/>
 			<Route path="contact" component={Contact}/>
 			<Route path="guidelines" component={Guidelines}/>
 			<Route path="about" component={About}/>

@@ -112,7 +112,6 @@ export default class Timeline extends Component {
 
                      {Projects.map((object, i) => <div key={`project${i}`} className={classNames("cell force-1", {addPlaceForYear: object.isLastProjectOfYear && i != 0}) }
                                                     ref={`project${i}`}>
-                                                    {/*<img src={object.img[0]} />*/}
                                                     <div key={`date${i}`} className={classNames("year", {visible: object.isLastProjectOfYear && i != 0}) }>{object.year}</div>
                                                     <ProjectCard 
                                                         onClick={ ::this.onClick } 
