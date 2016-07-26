@@ -217,6 +217,7 @@ $hover-bracket-offset: 100px;
 	left:40px;
 	z-index: $base-index - 4;
 	h5 {
+		cursor:default;
 		margin-left:65px;
 		margin-top:11px;
 		transition:all 200ms ease;
@@ -231,7 +232,7 @@ $hover-bracket-offset: 100px;
 	.back-arrow {
 		cursor:pointer;
 		float:left;
-		width:46px;
+		width:38px;
 		height:38px;
 		background-image: url("../images/portfolio/svgs/back.svg");
 		background-size: cover;
@@ -248,11 +249,11 @@ $hover-bracket-offset: 100px;
 		&::after {
 			border: 2px solid rgba(color("primary", "base"), 1);
 			position: absolute;
-			top: 50%;
-			left: 47%;
-			margin: -35px 0 0 -35px;
-			width: 70px;
-			height: 70px;
+			top: 46%;
+			left: 51%;
+			margin: -25px 0 0 -25px;
+			width: 50px;
+			height: 50px;
 			border-radius: 50%;
 			content: '';
 			opacity: 0;
