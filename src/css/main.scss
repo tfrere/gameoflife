@@ -9,179 +9,44 @@
 ––––––––––––––––––––––––––––––––––––
 */
 
-@import "helper/core";
-
 @import "color";
-@import "base";
 
-@import "atom/button";
-@import "atom/input";
-@import "atom/list";
-@import "atom/blockquote";
-@import "atom/link";
-@import "atom/code";
-@import "atom/hr";
-@import "atom/tag";
-@import "atom/select";
-@import "atom/underlined-link";
-@import "atom/special-button";
-@import "atom/parallax";
+* { margin:0; padding:0; } 
 
-@import "molecule/inclined";
-@import "molecule/form";
-@import "molecule/card";
+html, body { width:100%; height:100%; 
+  background: radial-gradient( #941616, #821919);
+overflow: hidden; 
+} 
 
-@import "component/modal";
-@import "component/navbar";
-@import "component/fixed-background";
-@import "component/burger-menu";
-@import "component/scroll-progress";
-@import "component/article";
-@import "component/side-menu";
-@import "component/share-menu";
-@import "component/video-handler";
-@import "component/preloader";
-@import "component/say-hi-circle";
-@import "component/photo-circle";
-
-@import "template/guidelines";
-@import "template/404";
-@import "template/about";
-@import "template/light-nav";
-@import "template/heavy-nav";
-@import "template/timeline";
-@import "template/contact";
-@import "template/blog";
-@import "template/blog-article";
-@import "template/article";
-@import "template/project";
-@import "template/intro";
-@import "template/galleries";
-@import "template/gallerie";
-
-#app-container, #app-container>div, .screen-box  {
-	width:100%;
-	height:100%;
-}
-
-.center-box {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  height:auto;
-  min-height:100%;
-  .center {
+.wrapper {
     position:relative;
-    margin: auto;
-  }  
+     width:100%;
+     height:100%;
+  -webkit-filter: url("#goo");
+  z-index: 2;
 }
 
-.container {
-  position:relative;
-  width:80%;
-  max-width: 960px;
-  margin: 0 auto;
+#canvas { display:block; margin: 0;
+padding: 0; 
+     width:100%;
+     height:100%;  
+} 
+
+#bgCanvas {
+      display:block; margin: 0;
+      padding: 0; 
+     width:100%;
+     height:100%;  
+  z-index: 1;
+  position:absolute;
+  top:0;
+  left:0;
 }
 
-
-// #app-container>div:before {
-//     content: ' ';
-//     display: block;
-//     position: fixed;
-//     left: 0;
-//     top: 0;
-//     width: 100%;
-//     height: 100%;
-//     z-index: -1;
-//     opacity: 0.6;
-// 	background-image: url('../images/patterns/old_wall.png');
-//   background-repeat: repeat-xy;
-// }
-
-iframe {
-  width:100%;
+svg {
+  display:none;
 }
 
-@keyframes levitate{
-  0% {
-      transform: translateY(-10px);
-  }
-  50% {
-      transform: translateY(0px);
-  }
-  100%{
-      transform: translateY(-10px);
-  }
-
-}
-
-@keyframes bounce {
-  0%, 25%, 100% {
-      -webkit-transform: translate(0, 0);
-      transform: translate(0, 0);
-  }
-  12% {
-      -webkit-transform: translate(0, -15px);
-      transform: translate(0, -15px);
-  }
-}
-
-
-@-webkit-keyframes anim-effect-jelena {
-  0% {
-    opacity: 1;
-    -webkit-transform: scale3d(0.5, 0.5, 1);
-    transform: scale3d(0.5, 0.5, 1);
-  }
-  to {
-    opacity: 0;
-    -webkit-transform: scale3d(1.2, 1.2, 1);
-    transform: scale3d(1.2, 1.2, 1);
-  }
-}
-
-@keyframes anim-effect-jelena {
-  0% {
-    opacity: 1;
-    -webkit-transform: scale3d(0.5, 0.5, 1);
-    transform: scale3d(0.5, 0.5, 1);
-  }
-  to {
-    opacity: 0;
-    -webkit-transform: scale3d(1.2, 1.2, 1);
-    transform: scale3d(1.2, 1.2, 1);
-  }
-}
-
-.levitation {
-  animation: levitate 3s alternate ease-in-out infinite; 
-}
-
-
-#preload-1 { background: url(~/images/portfolio/pngs/derock_desktop.png) no-repeat -9999px -9999px; }
-#preload-2 { background: url(~/images/portfolio/pngs/derock_phone.png) no-repeat -9999px -9999px; }
-#preload-3 { background: url(~/images/portfolio/pngs/ethienne_desktop.png) no-repeat -9999px -9999px; }
-#preload-4 { background: url(~/images/portfolio/pngs/ethienne_phone.png) no-repeat -9999px -9999px; }
-#preload-5 { background: url(~/images/portfolio/pngs/framework_desktop.png) no-repeat -9999px -9999px; }
-#preload-6 { background: url(~/images/portfolio/pngs/jab_desktop.png) no-repeat -9999px -9999px; }
-#preload-7 { background: url(~/images/portfolio/pngs/jab_phone.png) no-repeat -9999px -9999px; }
-#preload-8 { background: url(~/images/portfolio/pngs/microsite_desktop.png) no-repeat -9999px -9999px; }
-#preload-9 { background: url(~/images/portfolio/pngs/microsite_phone.png) no-repeat -9999px -9999px; }
-#preload-10 { background: url(~/images/portfolio/pngs/peon_desktop.png) no-repeat -9999px -9999px; }
-#preload-11 { background: url(~/images/portfolio/pngs/peon_phone.png) no-repeat -9999px -9999px; }
-
-.underline-by-scale {
-  @include underline-by-scale(color("primary", "base"));
-}
-.underline-by-left {
-  @include underline-by-left(color("primary", "base"));
-}
-.underline-by-right {
-  @include underline-by-right(color("primary", "base"));
-}
-.underline-by-double {
-  @include underline-by-double(color("primary", "base"));
-}
-.underline-fancy {
-  @include underline-fancy(color("primary", "base"));
+.dg.ac {
+  z-index: 10!important;
 }
