@@ -14,7 +14,3 @@ npm-debug.log
 
 # Release
 dist
-
-# raw photo
-./src/images/portfolio/jpgs/photo/raw/*
-./build/images/portfolio/jpgs/photo/raw/*
