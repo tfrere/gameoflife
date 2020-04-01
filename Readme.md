@@ -3,6 +3,8 @@ Purposes
 
 A tiny gooey game of life canvas experiment
 
+Demo : http://gooeygameoflife.herokuapp.com/
+
 Requirements
 ============
 
